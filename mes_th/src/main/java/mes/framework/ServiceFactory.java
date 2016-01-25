@@ -7,8 +7,7 @@ import java.sql.Statement;
 import java.util.Hashtable;
 import java.util.Map;
 
-import common.Conn;
-
+import common.Conn_MES;
 import mes.framework.dao.DAOFactory_Core;
 import mes.framework.dao.IDAO_Core;
 
@@ -44,7 +43,7 @@ public final class ServiceFactory {
 
 		Connection con = null;
 		try {
-			con =  (new Conn()).getConn();
+			con =  (new Conn_MES()).getConn();
 			IDAO_Core daoservice = DAOFactory_Core.getInstance(DataBaseType
 					.getDataBaseType(con));
 			return loadService(
@@ -92,7 +91,7 @@ public final class ServiceFactory {
 	 *             此方法可能会跑出SQLException异常
 	 */
 	static void loadAllService(Connection con) throws SQLException {
-		con =  (new Conn()).getConn();
+		con =  (new Conn_MES()).getConn();
 		IDAO_Core daoservice = DAOFactory_Core.getInstance(DataBaseType
 				.getDataBaseType(con));
 		loadService(daoservice.getSQL_QueryAllServices(null,null), con);

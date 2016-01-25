@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
-import common.Conn;
+import common.Conn_MES;
 
 /**
  * 服务总线工厂，此工厂应用单例模式
@@ -90,7 +90,7 @@ public final class ServiceBusFactory {
 		try {
 			//加载配置文件
 			//PropertyConfigurator.configure("properties.lcf");
-			Connection con =  (new Conn()).getConn();
+			Connection con =  (new Conn_MES()).getConn();
 			esb = new DefServiceBus(con);
 			con.close();
 			return esb;

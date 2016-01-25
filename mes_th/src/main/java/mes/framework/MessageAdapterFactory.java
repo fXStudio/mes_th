@@ -7,8 +7,7 @@ import java.sql.Statement;
 import java.util.Hashtable;
 import java.util.Map;
 
-import common.Conn;
-
+import common.Conn_MES;
 import mes.framework.dao.DAOFactory_Core;
 import mes.framework.dao.IDAO_Core;
 
@@ -26,10 +25,8 @@ public final class MessageAdapterFactory {
 	 * @param con
 	 * @throws SQLException
 	 */
-	public static void loadAllMessageAdapter(Connection con)
-			throws SQLException {
-		IDAO_Core ma = DAOFactory_Core.getInstance(DataBaseType
-				.getDataBaseType(con));
+	public static void loadAllMessageAdapter(Connection con) throws SQLException {
+		IDAO_Core ma = DAOFactory_Core.getInstance(DataBaseType.getDataBaseType(con));
 		loadMessageAdapter(ma.getSQL_QueryAllAdapterInfos(), con);
 	}
 
@@ -46,13 +43,11 @@ public final class MessageAdapterFactory {
 	 *            消息对象
 	 * @return 若适配器不存在则直接返回消息对象
 	 */
-	public static IMessage getMessage(String processid, String serviceName,
-			IMessage message) {
+	public static IMessage getMessage(String processid, String serviceName, IMessage message) {
 		return getMessage(processid, serviceName, message, true);
 	}
 
-	private static IMessage getMessage(String processid, String serviceName,
-			IMessage message, boolean b) {
+	private static IMessage getMessage(String processid, String serviceName, IMessage message, boolean b) {
 		if (b) {
 			IMessageAdapter adapter = mamap.get(processid + "." + serviceName);
 			if (adapter != null) {
@@ -63,14 +58,12 @@ public final class MessageAdapterFactory {
 
 		Connection con = null;
 		try {
-			con =  (new Conn()).getConn();
-			IDAO_Core ma = DAOFactory_Core.getInstance(DataBaseType
-					.getDataBaseType(con));
+			con = new Conn_MES().getConn();
+			IDAO_Core ma = DAOFactory_Core.getInstance(DataBaseType.getDataBaseType(con));
 
-			IMessageAdapter message2 = loadMessageAdapter(ma
-					.getSQL_QueryAdepterInfo(processid, serviceName), con);
+			IMessageAdapter message2 = loadMessageAdapter(ma.getSQL_QueryAdepterInfo(processid, serviceName), con);
 			if (message2 == null) {
-				message2 = new DefMessageAdapter(processid,serviceName);
+				message2 = new DefMessageAdapter(processid, serviceName);
 			}
 			message2.setSource(message);
 			return message2;
@@ -86,8 +79,7 @@ public final class MessageAdapterFactory {
 		return message;
 	}
 
-	private static IMessageAdapter loadMessageAdapter(String sql, Connection con)
-			throws SQLException {
+	private static IMessageAdapter loadMessageAdapter(String sql, Connection con) throws SQLException {
 		Statement st_base = con.createStatement();
 		ResultSet set = st_base.executeQuery(sql);
 		DefMessageAdapter temp = null;
@@ -99,16 +91,13 @@ public final class MessageAdapterFactory {
 			if (temp == null)
 				temp = new DefMessageAdapter(temp_pid, temp_sname);
 
-			if (!temp.getProcessid().equals(temp_pid)
-					|| !temp.getServiceName().equals(temp_sname))
+			if (!temp.getProcessid().equals(temp_pid) || !temp.getServiceName().equals(temp_sname))
 				temp = new DefMessageAdapter(temp_pid, temp_sname);
 
 			String targetServiceName = set.getString("COALIASNAME");
 			// 若不是其它服务的输出
-			if (targetServiceName == null
-					|| targetServiceName.trim().equals("")) {
-				temp.setAdapterName(set.getString("ciparameter"), set
-						.getString("COPARAMETER"));
+			if (targetServiceName == null || targetServiceName.trim().equals("")) {
+				temp.setAdapterName(set.getString("ciparameter"), set.getString("COPARAMETER"));
 			} else {
 				temp.setAdapterName(set.getString("ciparameter"),
 						targetServiceName + "." + set.getString("COPARAMETER"));

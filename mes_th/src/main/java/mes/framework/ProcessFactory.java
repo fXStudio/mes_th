@@ -7,10 +7,9 @@ import java.sql.Statement;
 import java.util.Hashtable;
 import java.util.Map;
 
+import common.Conn_MES;
 import mes.framework.dao.DAOFactory_Core;
 import mes.framework.dao.IDAO_Core;
-
-import common.Conn;
 
 /**
  * 流程工厂
@@ -39,7 +38,7 @@ public final class ProcessFactory {
 		}
 		Connection con = null;
 		try {
-			con = (new Conn()).getConn();
+			con = (new Conn_MES()).getConn();
 			IDAO_Core daoprocess = DAOFactory_Core.getInstance(DataBaseType
 					.getDataBaseType(con));
 
