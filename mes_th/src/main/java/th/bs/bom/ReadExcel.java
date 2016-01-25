@@ -8,10 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import common.Conn_MES;
+import com.qm.mes.th.helper.Conn_MES;
 
 /**
- * 东阳Excel读取，测试
+ * Excel读取，测试
  * 
  * @author AjaxFan
  * @date 2009-9-23
@@ -58,17 +58,17 @@ public class ReadExcel {
 			for (; i < ds.getRows(); i++) {
 				ThBean dbe = new ThBean();
 				dbe.setCtfass(i < ctfass.size() ? ctfass.get(i) : null);
-				dbe.setNTFASSNum(i < ntfassnum.size() ? ntfassnum.get(i): null);
-				dbe.setCVWMainPart(i < cvwmainpart.size() ? cvwmainpart.get(i): null);
-				dbe.setCVWMainPartQuan(i < cvwmainpartquan.size() ? cvwmainpartquan.get(i): null);
-				dbe.setCVWMainPartType(i < cvwmainparttype.size() ? cvwmainparttype.get(i): null);
-				dbe.setCVWSubPart(i < cvwsubpart.size() ? cvwsubpart.get(i): null);
-				dbe.setNVWSubPartQuan(i < nvwsubpartquan.size() ? nvwsubpartquan.get(i): null);
-				dbe.setNVWSubPartType(i < nvwsubparttype.size() ? nvwsubparttype.get(i): null);
-				dbe.setCTFASSName(i < ctfassname.size() ? ctfassname.get(i): null);
+				dbe.setNTFASSNum(i < ntfassnum.size() ? ntfassnum.get(i) : null);
+				dbe.setCVWMainPart(i < cvwmainpart.size() ? cvwmainpart.get(i) : null);
+				dbe.setCVWMainPartQuan(i < cvwmainpartquan.size() ? cvwmainpartquan.get(i) : null);
+				dbe.setCVWMainPartType(i < cvwmainparttype.size() ? cvwmainparttype.get(i) : null);
+				dbe.setCVWSubPart(i < cvwsubpart.size() ? cvwsubpart.get(i) : null);
+				dbe.setNVWSubPartQuan(i < nvwsubpartquan.size() ? nvwsubpartquan.get(i) : null);
+				dbe.setNVWSubPartType(i < nvwsubparttype.size() ? nvwsubparttype.get(i) : null);
+				dbe.setCTFASSName(i < ctfassname.size() ? ctfassname.get(i) : null);
 				dbe.setCTFASSTypeNo(i < ctfasstypeno.size() ? ctfasstypeno.get(i) : null);
 				dbe.setCQADNo(i < cqadno.size() ? cqadno.get(i) : null);
-				dbe.setCIsTempCar(i < cistempcar.size() ? cistempcar.get(i): null);
+				dbe.setCIsTempCar(i < cistempcar.size() ? cistempcar.get(i) : null);
 				dbe.setCRemark(i < cremark.size() ? cremark.get(i) : null);
 
 				list.add(dbe);
@@ -107,8 +107,7 @@ public class ReadExcel {
 	/**
 	 * 数据库操作
 	 */
-	private static void databaseHandle(List<ThBean> list, Connection conn)
-			throws Exception {
+	private static void databaseHandle(List<ThBean> list, Connection conn) throws Exception {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
@@ -166,20 +165,18 @@ public class ReadExcel {
 	 * @param newCars
 	 * @throws Exception
 	 */
-	private static void saveNewCars(List<ThBean> list, List<String> newCars, Connection conn)
-			throws Exception {
+	private static void saveNewCars(List<ThBean> list, List<String> newCars, Connection conn) throws Exception {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		
 
 		try {
 			stmt = conn.prepareStatement("insert fit_newcar ( CQadno) values (?)");
 
 			String qadno = null;
 			for (int i = 1; i < newCars.size(); i++) {
-				if("y".equals(newCars.get(i).toLowerCase())){
-					String cqadno = list.get(i-1).getCQADNo();
-					
+				if ("y".equals(newCars.get(i).toLowerCase())) {
+					String cqadno = list.get(i - 1).getCQADNo();
+
 					if (!cqadno.equals(qadno)) {
 						stmt.setString(1, qadno = cqadno);
 						stmt.addBatch();
@@ -209,16 +206,15 @@ public class ReadExcel {
 		}
 	}
 
-	private static boolean checkMaterial(Connection conn, ThBean dbe, int index)
-			throws Exception {
+	private static boolean checkMaterial(Connection conn, ThBean dbe, int index) throws Exception {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
 		try {
 
 			if (checkMaiPart(conn, dbe, index)) {
-				if("0".equals(dbe.getNVWSubPartQuan())&&
-				(dbe.getCVWSubPart() == null || "".equals(dbe.getCVWSubPart().trim()))){
+				if ("0".equals(dbe.getNVWSubPartQuan())
+						&& (dbe.getCVWSubPart() == null || "".equals(dbe.getCVWSubPart().trim()))) {
 					return true;
 				}
 				stmt = conn.prepareStatement("select id from partlist where cPartNo = ? and cparttype='00002'");
@@ -254,14 +250,12 @@ public class ReadExcel {
 		}
 	}
 
-	private static boolean checkMaiPart(Connection conn, ThBean dbe, int index)
-			throws Exception {
+	private static boolean checkMaiPart(Connection conn, ThBean dbe, int index) throws Exception {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
 		try {
-			stmt = conn
-					.prepareStatement("select id from partlist where cPartNo = ? and cparttype='00001'");
+			stmt = conn.prepareStatement("select id from partlist where cPartNo = ? and cparttype='00001'");
 			stmt.setString(1, dbe.getCVWMainPart());
 
 			rs = stmt.executeQuery();

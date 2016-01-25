@@ -29,5 +29,4 @@ public class Act_Statement {
 	public void setNactid(String nactid) {
 		this.nactid = nactid;
 	}
-
 }

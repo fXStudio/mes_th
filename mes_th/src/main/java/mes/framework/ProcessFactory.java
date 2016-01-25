@@ -7,7 +7,8 @@ import java.sql.Statement;
 import java.util.Hashtable;
 import java.util.Map;
 
-import common.Conn_MES;
+import com.qm.mes.th.helper.Conn_MES;
+
 import mes.framework.dao.DAOFactory_Core;
 import mes.framework.dao.IDAO_Core;
 
@@ -39,11 +40,9 @@ public final class ProcessFactory {
 		Connection con = null;
 		try {
 			con = (new Conn_MES()).getConn();
-			IDAO_Core daoprocess = DAOFactory_Core.getInstance(DataBaseType
-					.getDataBaseType(con));
+			IDAO_Core daoprocess = DAOFactory_Core.getInstance(DataBaseType.getDataBaseType(con));
 
-			return loadProcess(daoprocess.getSQL_QueryProcess(processid), con,
-					daoprocess);
+			return loadProcess(daoprocess.getSQL_QueryProcess(processid), con, daoprocess);
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			return null;
@@ -56,8 +55,7 @@ public final class ProcessFactory {
 		}
 	}
 
-	private static IProcess loadProcess(String sql, Connection con,
-			IDAO_Core daoprocess) throws SQLException {
+	private static IProcess loadProcess(String sql, Connection con, IDAO_Core daoprocess) throws SQLException {
 		Statement st_base = con.createStatement();
 		Statement st_item = con.createStatement();
 		ResultSet set = st_base.executeQuery(sql);
@@ -69,15 +67,12 @@ public final class ProcessFactory {
 			temp.setDescr(set.getString("CDESCRIPTION"));
 			temp.setNameSpace(set.getString("NNAMESPACEID"));
 
-			ResultSet set_item = st_item.executeQuery(daoprocess
-					.getSQL_QueryProcessItem(temp.getId()));
+			ResultSet set_item = st_item.executeQuery(daoprocess.getSQL_QueryProcessItem(temp.getId()));
 			// 为每一个流程添加子项
 			while (set_item.next())
-				temp.addProcessItem(new DefProcessItem(set_item
-						.getString("NSERVERID"), set_item
-						.getString("CALIASNAME"), set_item.getInt("NSID"),
-						ExceptionDispose.getInstance(set_item
-								.getString("cdescription"))));
+				temp.addProcessItem(new DefProcessItem(set_item.getString("NSERVERID"),
+						set_item.getString("CALIASNAME"), set_item.getInt("NSID"),
+						ExceptionDispose.getInstance(set_item.getString("cdescription"))));
 			pmap.put(temp.getId(), temp);
 		}
 		st_item.close();
@@ -93,8 +88,7 @@ public final class ProcessFactory {
 	 * @throws SQLException
 	 */
 	static void loadAllProcess(Connection con) throws SQLException {
-		IDAO_Core daoprocess = DAOFactory_Core.getInstance(DataBaseType
-				.getDataBaseType(con));
+		IDAO_Core daoprocess = DAOFactory_Core.getInstance(DataBaseType.getDataBaseType(con));
 
 		loadProcess(daoprocess.getSQL_QueryAllProcess(), con, daoprocess);
 	}

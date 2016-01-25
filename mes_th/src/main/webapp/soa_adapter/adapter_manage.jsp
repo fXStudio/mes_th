@@ -3,7 +3,7 @@
 <jsp:directive.page import="java.util.List" />
 <jsp:directive.page import="java.util.ArrayList" />
 <jsp:directive.page import="mes.beans.Adapter" />
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
 <%@ page import="mes.framework.*"%>
 <%@ page import="mes.framework.forjsp.soa.*"%>
 <%@ page import="mes.framework.dao.IDAO_Core"%>

@@ -5,7 +5,7 @@
 <%@ page import="java.sql.SQLException"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="common.Conn_MES"%>
+<%@ page import="com.qm.mes.th.helper.Conn_MES"%>
 <%@ page import="th.bs.bean.SpecKin"%>
 
 <%@ taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>

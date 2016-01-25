@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.qm.mes.th.helper.Conn_MES;
+
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRRewindableDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -28,8 +30,6 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import th.fx.bean.PrintOrder;
 import th.pz.bean.JConfigure;
-
-import common.Conn_MES;
 
 /*
  * 打印说明：该文件用来处理历史打印。

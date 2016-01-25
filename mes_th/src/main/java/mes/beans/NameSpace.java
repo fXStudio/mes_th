@@ -37,5 +37,4 @@ public class NameSpace {
 	public void setNamespace(String namespace) {
 		this.namespace = namespace;
 	}
-
 }

@@ -6,7 +6,7 @@
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="db.PrintData"%>
-<%@ page import="common.Conn_MES"%>
+<%@ page import="com.qm.mes.th.helper.Conn_MES"%>
 
 <% 
 	/***/

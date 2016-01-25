@@ -47,5 +47,4 @@ public class ServicePara {
 	public void setServicename(String servicename) {
 		this.servicename = servicename;
 	}
-
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="db.Terminal"%>
-<%@ page import="common.Conn_MES"%>
+<%@ page import="com.qm.mes.th.helper.Conn_MES"%>
 
 <%
 	Connection con = null;

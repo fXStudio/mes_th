@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
-import common.Conn_MES;
+import com.qm.mes.th.helper.Conn_MES;
+
 
 /**
  * 服务总线工厂，此工厂应用单例模式

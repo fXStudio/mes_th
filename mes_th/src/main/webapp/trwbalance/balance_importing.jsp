@@ -6,7 +6,7 @@
 <%@page import="java.sql.CallableStatement"%>
 <%@page import="java.sql.Statement"%>
 
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <%
     final  Log log = LogFactory.getLog("balance_importing.jsp");
 	Connection con = null;

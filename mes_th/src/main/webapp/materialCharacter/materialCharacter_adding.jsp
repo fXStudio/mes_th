@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,java.util.regex.Pattern,mes.system.dao.*" errorPage="" %>
 <%@page import="java.util.*" %> 
 <%@page import="mes.framework.*" %>  
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />

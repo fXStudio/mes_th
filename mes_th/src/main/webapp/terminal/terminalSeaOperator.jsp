@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="db.Terminal"%>
-<%@ page import="common.Conn_MES"%>
+<%@ page import="com.qm.mes.th.helper.Conn_MES"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.text.SimpleDateFormat"%>
  

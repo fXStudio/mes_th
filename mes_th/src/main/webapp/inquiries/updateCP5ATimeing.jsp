@@ -2,7 +2,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import ="mes.framework.DataBaseType"%>
 <%@page	import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 	
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
 <meta http-equiv="Content-Language" content="zh-cn">

@@ -7,7 +7,8 @@ import java.sql.Statement;
 import java.util.Hashtable;
 import java.util.Map;
 
-import common.Conn_MES;
+import com.qm.mes.th.helper.Conn_MES;
+
 import mes.framework.dao.DAOFactory_Core;
 import mes.framework.dao.IDAO_Core;
 

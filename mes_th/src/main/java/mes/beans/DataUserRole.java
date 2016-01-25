@@ -28,5 +28,4 @@ public class DataUserRole {
 	public void setCdefault(String cdefault) {
 		this.cdefault = cdefault;
 	}
-
 }

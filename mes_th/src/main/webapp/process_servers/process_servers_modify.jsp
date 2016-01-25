@@ -4,7 +4,7 @@
 <jsp:directive.page import="mes.beans.Act_Statement"/>
 <jsp:directive.page import="mes.beans.*"/>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <%@page import="mes.framework.*" %>
 <%@page import="mes.framework.dao.*" %>
 

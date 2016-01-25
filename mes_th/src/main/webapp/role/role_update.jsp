@@ -4,7 +4,7 @@
 <html><!-- InstanceBegin template="/Templates/查看摸板1.dwt.jsp" codeOutsideHTMLIsLocked="true" --> 
  <!-- InstanceBeginEditable name="获得连接" -->
 <%@page import="mes.util.tree.*"%>
- <jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+ <jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
  
   <%@page import="mes.framework.dao.*,mes.framework.DataBaseType"%>
   <!-- InstanceEndEditable -->

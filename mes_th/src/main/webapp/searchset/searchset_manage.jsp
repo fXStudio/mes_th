@@ -10,7 +10,7 @@
 <!-- InstanceBeginEditable name="获得连接" -->
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="获得过滤" -->
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>

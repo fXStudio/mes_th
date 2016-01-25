@@ -16,6 +16,9 @@ import th.listener.InitialListener;
  * @author AjaxFan
  */
 public class NewCarDataServlet extends HttpServlet {
+	/** 序列号 */
+	private static final long serialVersionUID = 1L;
+	
 	/** 用户临时目录 */
 	private String _user_tmp_dir = System.getProperty("java.io.tmpdir");
 

@@ -57,5 +57,4 @@ public class Service {
 	public void setServicedesc(String servicedesc) {
 		this.servicedesc = servicedesc;
 	}
-
 }

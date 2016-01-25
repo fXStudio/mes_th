@@ -58,5 +58,4 @@ public class Function {
 	public void setState(String state) {
 		this.state = state;
 	}
-
 }

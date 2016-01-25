@@ -7,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import common.Conn_MES;
+import com.qm.mes.th.helper.Conn_MES;
+
 
 /**
  * 
@@ -76,7 +77,7 @@ public class Terminal {
 			sql = "SELECT CTFASS,CVINCODE FROM PRINT_DATA WHERE CPAGENO ='"
 					+ cPageNo + "'";
 		} else {
-			// å¦‚:100618070001
+			// Èç:100618070001
 			String strOne = (Integer.parseInt(cPageNo.substring(0, 8)) + 1)
 					+ "";
 
@@ -969,10 +970,10 @@ public class Terminal {
 	}
 
 	/**
-	 * å…³é—­æ•°æ®åº“è¿æ¥
+	 * ¹Ø±ÕÊı¾İ¿âÁ¬½Ó
 	 * 
 	 * @param con
-	 *            æ•°æ®åº“è¿æ¥å¯¹è±¡
+	 *            Êı¾İ¿âÁ¬½Ó¶ÔÏó
 	 */
 	protected void close(Connection con) {
 		if (con != null) {
@@ -987,10 +988,10 @@ public class Terminal {
 	}
 
 	/**
-	 * å…³é—­å‘½ä»¤æ“ä½œ
+	 * ¹Ø±ÕÃüÁî²Ù×÷
 	 * 
 	 * @param pstm
-	 *            å‘½ä»¤æ“ä½œå¯¹è±¡
+	 *            ÃüÁî²Ù×÷¶ÔÏó
 	 */
 	protected void close(PreparedStatement pstm) {
 		if (pstm != null) {
@@ -1005,10 +1006,10 @@ public class Terminal {
 	}
 
 	/**
-	 * å…³é—­è®°å½•é›†
+	 * ¹Ø±Õ¼ÇÂ¼¼¯
 	 * 
 	 * @param rs
-	 *            è®°å½•é›†å¯¹è±¡
+	 *            ¼ÇÂ¼¼¯¶ÔÏó
 	 */
 	protected void close(ResultSet rs) {
 		if (rs != null) {

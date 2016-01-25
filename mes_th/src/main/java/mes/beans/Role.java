@@ -37,5 +37,4 @@ public class Role {
 	public void setRole_no(String role_no) {
 		this.role_no = role_no;
 	}
-
 }

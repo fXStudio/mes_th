@@ -3,7 +3,7 @@
 <jsp:directive.page import="java.util.List" />
 <jsp:directive.page import="java.util.ArrayList" />
 <jsp:directive.page import="mes.beans.NameSpace" />
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
 <%@page import="mes.framework.dao.*"%>
 <%@ page import="mes.framework.DataBaseType"%>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>

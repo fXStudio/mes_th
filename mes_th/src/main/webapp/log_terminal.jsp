@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn_MES" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn_MES" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <%@page import="common.*,mes.util.tree.*"%> 
  
 <%

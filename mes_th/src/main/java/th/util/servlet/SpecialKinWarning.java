@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import common.Conn_MES;
+import com.qm.mes.th.helper.Conn_MES;
 
 /**
  * Ãÿ ‚KIN∫≈æØ∏Ê

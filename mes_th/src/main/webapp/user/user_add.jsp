@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*,mes.beans.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <%@page import="mes.framework.dao.*"%>
 <%@page import="mes.framework.*"%>

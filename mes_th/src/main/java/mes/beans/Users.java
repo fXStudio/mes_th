@@ -117,5 +117,4 @@ public class Users {
 	public void setUserno(String userno) {
 		this.userno = userno;
 	}
-
 }

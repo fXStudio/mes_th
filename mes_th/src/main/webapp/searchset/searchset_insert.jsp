@@ -12,7 +12,7 @@
   	response.setDateHeader("Expires", 0); %>
 <!-- 以下为修改提交参数时用 -->
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <%  String intpage=request.getParameter("intPage");	
 String info = request.getParameter("info");
 		info = info==null?"":new String(info);   

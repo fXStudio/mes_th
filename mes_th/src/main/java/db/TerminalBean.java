@@ -20,5 +20,4 @@ public class TerminalBean {
 	public void setCtfass(String ctfass) {
 		this.ctfass = ctfass;
 	}
-
 }

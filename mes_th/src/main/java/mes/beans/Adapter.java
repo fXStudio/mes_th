@@ -67,5 +67,4 @@ public class Adapter {
 	public void setServername(String servername) {
 		this.servername = servername;
 	}
-
 }

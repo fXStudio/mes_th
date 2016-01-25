@@ -1,7 +1,8 @@
 package mes.util.tree;
 
-import common.MD5;
 import java.sql.*;
+
+import com.qm.mes.th.security.MD5;
 
 public class AccessCtrl
 {

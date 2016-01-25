@@ -23,14 +23,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.qm.mes.th.helper.Conn_MES;
+
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import th.pz.bean.JConfigure;
-
-import common.Conn_MES;
 /*
  * 打印说明：该文件用来处理重复打印。
  * 首次打印，系统将数据插入到print_data表中。

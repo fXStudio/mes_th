@@ -6,7 +6,7 @@
 <%@page import="java.util.Date"%>
 
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
 <script language="JavaScript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
 <html>

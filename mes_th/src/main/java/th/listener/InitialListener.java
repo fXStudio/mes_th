@@ -11,18 +11,19 @@ import java.util.TimerTask;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import common.Conn_MES;
+import com.qm.mes.th.helper.Conn_MES;
+
 
 public class InitialListener implements ServletContextListener {
-	/** ç”¨æˆ·ä¸´æ—¶ç›®å½• */
+	/** ÓÃ»§ÁÙÊ±Ä¿Â¼ */
 	private String _user_tmp_dir = System.getProperty("java.io.tmpdir");
 
-	/** æ–‡ä»¶åç§° */
+	/** ÎÄ¼şÃû³Æ */
 	public static final String FILE_NAME = "mes.txt";
 
 	public void contextInitialized(ServletContextEvent evt) {
 		/**
-		 * æ¯åˆ†é’Ÿæ‰§è¡Œä¸€æ¬¡æ•°æ®æ“ä½œ
+		 * Ã¿·ÖÖÓÖ´ĞĞÒ»´ÎÊı¾İ²Ù×÷
 		 */
 		new Timer().schedule(new TimerTask() {
 			@Override
@@ -33,7 +34,7 @@ public class InitialListener implements ServletContextListener {
 	}
 
 	/**
-	 * æ£€æŸ¥æ˜¯å¦å­˜åœ¨æ–°è½¦å‹
+	 * ¼ì²éÊÇ·ñ´æÔÚĞÂ³µĞÍ
 	 */
 	private synchronized void checkData() {
 		Connection conn = null;
@@ -83,7 +84,7 @@ public class InitialListener implements ServletContextListener {
 	}
 
 	/**
-	 * å†™å‡ºä¸€ä¸ªæœ¬åœ°æ–‡ä»¶ï¼Œåç»­çš„æ“ä½œé€šè¿‡æ–‡ä»¶æ¥åˆ¤æ–­æ˜¯å¦æœ‰æ–°è½¦
+	 * Ğ´³öÒ»¸ö±¾µØÎÄ¼ş£¬ºóĞøµÄ²Ù×÷Í¨¹ıÎÄ¼şÀ´ÅĞ¶ÏÊÇ·ñÓĞĞÂ³µ
 	 */
 	private void wirteFileToLocal() {
 		try {
@@ -94,7 +95,7 @@ public class InitialListener implements ServletContextListener {
 	}
 
 	/**
-	 * æ›´æ–°è¡¨
+	 * ¸üĞÂ±í
 	 */
 	private void updateTbl() {
 		Connection conn = null;
@@ -130,7 +131,7 @@ public class InitialListener implements ServletContextListener {
 	}
 
 	/**
-	 * @return æŸ¥è¯¢è¯­å¥
+	 * @return ²éÑ¯Óï¾ä
 	 */
 	private String querySql() {
 		StringBuilder sb = new StringBuilder();
