@@ -42,9 +42,9 @@
 <%
 			return;
 		}
-		
-		username=Security.clearSingleQuotationMarksFlaw(username);
-		password=Security.clearSingleQuotationMarksFlaw(password);
+
+        username=Security.clearSingleQuotationMarksFlaw(username);
+        password=Security.clearSingleQuotationMarksFlaw(password);
 		
 		con=Conn_MES.getConn();
 		ds = new DataServer_UserManage (con);

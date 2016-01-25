@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <%@page import="mes.framework.*" %>
 <%@page import="mes.framework.dao.*" %>
-<jsp:useBean id="Conn" scope="page" class="common.Conn"/>
+<jsp:useBean id="Conn" scope="page" class="common.Conn_MES"/>
 
 <%
     Connection conn=null;

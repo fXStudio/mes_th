@@ -18,9 +18,8 @@
 	String username=(String)session.getAttribute("username");
 	String password=request.getParameter("txt_password");
 	String newpassword=request.getParameter("txt_newpassword");
-	
-	newpassword=Security.clearSingleQuotationMarksFlaw(newpassword);
-	//System.out.println(newpassword);
+
+    newpassword=Security.clearSingleQuotationMarksFlaw(newpassword);
 	
 	Connection con=null;
 	Statement stmt=null;

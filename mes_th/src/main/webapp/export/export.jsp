@@ -41,7 +41,7 @@
      WritableWorkbook wb = Workbook.createWorkbook(response.getOutputStream());
      
      try{
-    	 conn = new common.Conn().getConn();
+    	 conn = new common.Conn_MES().getConn();
     	 stmt = conn.prepareStatement(sql.toString());
     	 rs = stmt.executeQuery();
     	 

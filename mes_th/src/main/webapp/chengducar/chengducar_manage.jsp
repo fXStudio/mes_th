@@ -26,7 +26,7 @@
     Connection con = null;
     Statement stmt = null;
     ResultSet rs = null;  
-    List<Part> list_part = new ArrayList<Part>();//总成集合
+    List<th.tg.bean.Part> list_part = new ArrayList<th.tg.bean.Part>();//总成集合
     WeldingSearchFactory factory_ws = new WeldingSearchFactory();//焊装查询工厂
     List<Welding_Stat> list_ws = new ArrayList<Welding_Stat>();//焊装统计集合
     SearchSetFactory factory_ss = new SearchSetFactory();//查询设置工厂
