@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.Conn_MES;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -29,8 +30,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.util.JRLoader;
 import th.pz.bean.JConfigure;
-
-import common.Conn_MES;
 
 /**
  * @author Administrator
@@ -195,8 +194,8 @@ public class JdhzServletPrint extends HttpServlet {
 
 					// 架数
 					try {
-						insert_c = con
-								.prepareStatement("SELECT max(iCarNo) FROM print_data WHERE iPrintGroupId= ? AND cremark = ?");
+						insert_c = con.prepareStatement(
+								"SELECT max(iCarNo) FROM print_data WHERE iPrintGroupId= ? AND cremark = ?");
 						insert_c.setString(1, printId[iiPrintId]);
 						insert_c.setString(2, rq);
 						rs_c = insert_c.executeQuery();
@@ -252,8 +251,8 @@ public class JdhzServletPrint extends HttpServlet {
 
 					// 取最大单号 print_data.cpageno
 					try {
-						insert_c = con
-								.prepareStatement("SELECT MAX(cpageNo) FROM print_data WHERE iPrintGroupId = ? AND cremark = ?");
+						insert_c = con.prepareStatement(
+								"SELECT MAX(cpageNo) FROM print_data WHERE iPrintGroupId = ? AND cremark = ?");
 						insert_c.setString(1, printId[iiPrintId]);
 						insert_c.setString(2, rq);
 						rs_c = insert_c.executeQuery();
@@ -339,11 +338,9 @@ public class JdhzServletPrint extends HttpServlet {
 							}
 						}
 					}
-					sqlWhere = " select top "
-							+ tFassCount
+					sqlWhere = " select top " + tFassCount
 							+ " c.cSEQNo_A,c.cVinCode,c.cCarType,cQADNo,sc.ITFASSNameId,sc.iTFASSNum,c.cCarNo,ks.ccode from carData c left outer join carData_D sc"
-							+ " on c.ccarno = sc.icarid and itfassnameid = "
-							+ zcid
+							+ " on c.ccarno = sc.icarid and itfassnameid = " + zcid
 							+ " left join TFASSName t on sc.itfassnameid = t.id left join kinset ks on substring(c.ccarno,6,1)=ks.csubkin "
 							+ " where ((dabegin = '" + abegin + "' and c.cSEQNo_A>'" + seq_A + "')" + " or (dabegin> '"
 							+ abegin + "'))";
@@ -414,27 +411,9 @@ public class JdhzServletPrint extends HttpServlet {
 
 								// 打印表插入
 								insert_sql = " insert into print_data(iPrintGroupId,cPageNo,dPrintTime,iCarNo,inum,cVinCode,cSEQNo,cTFAss,ITFASSNameId,iBigNo,cRemark,ckinno) "
-										+ " values('"
-										+ printId[iiPrintId]
-										+ "','"
-										+ dh
-										+ "','"
-										+ dysj
-										+ "',"
-										+ cjs
-										+ ","
-										+ index
-										+ ",'"
-										+ vincode
-										+ "','"
-										+ sxh
-										+ "','"
-										+ tFass
-										+ "','"
-										+ zcid
-										+ "','"
-										+ ch
-										+ "','" + rq + "','" + kinh + "')";
+										+ " values('" + printId[iiPrintId] + "','" + dh + "','" + dysj + "'," + cjs
+										+ "," + index + ",'" + vincode + "','" + sxh + "','" + tFass + "','" + zcid
+										+ "','" + ch + "','" + rq + "','" + kinh + "')";
 								ps_stmt = con.createStatement();
 								try {
 									ps_stmt.executeUpdate(insert_sql);
@@ -475,13 +454,7 @@ public class JdhzServletPrint extends HttpServlet {
 
 										// 打印表插入
 										insert_sql = " insert into print_data(iPrintGroupId,cPageNo,dPrintTime,iCarNo,inum,cVinCode,cSEQNo,cTFAss,ITFASSNameId,iBigNo,cRemark,ckinno) "
-												+ " values('"
-												+ printId[iiPrintId]
-												+ "','"
-												+ dh
-												+ "','"
-												+ dysj
-												+ "',"
+												+ " values('" + printId[iiPrintId] + "','" + dh + "','" + dysj + "',"
 												+ cjs + "," + index + ",' ',' ',' ',' ','" + ch + "','" + rq + "',' ')";
 										ps_stmt = con.createStatement();
 										try {
@@ -496,7 +469,9 @@ public class JdhzServletPrint extends HttpServlet {
 											}
 										}
 										/** ********打印设置结束 ********* */
-										/** ********printsetvin**************** */
+										/**
+										 * ********printsetvin****************
+										 */
 										tempVinLst = String.valueOf(oldVinLst);
 										lenTempVin = tempVinLst.length();
 										for (int kk = 0; kk < (6 - lenTempVin); kk++) {
@@ -507,9 +482,8 @@ public class JdhzServletPrint extends HttpServlet {
 
 										// 最后vin相等时
 										// 更新printsetvin
-										update_sql = "update printsetvin set clastvin='" + tempVin
-												+ "' where printid='" + printId[iiPrintId] + "' and ctype='"
-												+ tempVin.substring(6, 8) + "'";
+										update_sql = "update printsetvin set clastvin='" + tempVin + "' where printid='"
+												+ printId[iiPrintId] + "' and ctype='" + tempVin.substring(6, 8) + "'";
 										ps_stmt = con.createStatement();
 										try {
 											ps_stmt.executeUpdate(update_sql);
@@ -522,7 +496,10 @@ public class JdhzServletPrint extends HttpServlet {
 												}
 											}
 										}
-										/** ***************printsetvinEnd************* */
+										/**
+										 * ***************printsetvinEnd********
+										 * *****
+										 */
 										oldVinLst = oldVinLst + 1;
 
 									}
@@ -551,27 +528,9 @@ public class JdhzServletPrint extends HttpServlet {
 
 									// 打印表插入
 									insert_sql = " insert into print_data(iPrintGroupId,cPageNo,dPrintTime,iCarNo,inum,cVinCode,cSEQNo,cTFAss,ITFASSNameId,iBigNo,cRemark,ckinno) "
-											+ " values('"
-											+ printId[iiPrintId]
-											+ "','"
-											+ dh
-											+ "','"
-											+ dysj
-											+ "',"
-											+ cjs
-											+ ","
-											+ index
-											+ ",'"
-											+ vincode
-											+ "','"
-											+ sxh
-											+ "','"
-											+ tFass
-											+ "','"
-											+ zcid
-											+ "','"
-											+ ch
-											+ "','" + rq + "','" + kinh + "')";
+											+ " values('" + printId[iiPrintId] + "','" + dh + "','" + dysj + "'," + cjs
+											+ "," + index + ",'" + vincode + "','" + sxh + "','" + tFass + "','" + zcid
+											+ "','" + ch + "','" + rq + "','" + kinh + "')";
 									ps_stmt = con.createStatement();
 									try {
 										ps_stmt.executeUpdate(insert_sql);
@@ -610,7 +569,10 @@ public class JdhzServletPrint extends HttpServlet {
 											}
 										}
 									}
-									/** ***************printsetvinEnd************* */
+									/**
+									 * ***************printsetvinEnd************
+									 * *
+									 */
 								} else {
 									hmVin.put(vincode.substring(6, 8), vincode);
 
@@ -648,27 +610,9 @@ public class JdhzServletPrint extends HttpServlet {
 
 									// 打印表插入
 									insert_sql = " insert into print_data(iPrintGroupId,cPageNo,dPrintTime,iCarNo,inum,cVinCode,cSEQNo,cTFAss,ITFASSNameId,iBigNo,cRemark,ckinno) "
-											+ " values('"
-											+ printId[iiPrintId]
-											+ "','"
-											+ dh
-											+ "','"
-											+ dysj
-											+ "',"
-											+ cjs
-											+ ","
-											+ index
-											+ ",'"
-											+ vincode
-											+ "','"
-											+ sxh
-											+ "','"
-											+ tFass
-											+ "','"
-											+ zcid
-											+ "','"
-											+ ch
-											+ "','" + rq + "','" + kinh + "')";
+											+ " values('" + printId[iiPrintId] + "','" + dh + "','" + dysj + "'," + cjs
+											+ "," + index + ",'" + vincode + "','" + sxh + "','" + tFass + "','" + zcid
+											+ "','" + ch + "','" + rq + "','" + kinh + "')";
 									ps_stmt = con.createStatement();
 									try {
 										ps_stmt.executeUpdate(insert_sql);
@@ -720,19 +664,11 @@ public class JdhzServletPrint extends HttpServlet {
 									}
 								}
 							}
-						}// end while sqlwhere
+						} // end while sqlwhere
 						if (index == 0) {
 							// 打印表插入
 							insert_sql = " insert into print_data(iPrintGroupId,cPageNo,dPrintTime,iCarNo,inum,cVinCode,cSEQNo,cTFAss,ITFASSNameId,iBigNo,cRemark,ckinno) "
-									+ " values('"
-									+ printId[iiPrintId]
-									+ "','"
-									+ dh
-									+ "','"
-									+ dysj
-									+ "',"
-									+ cjs
-									+ ","
+									+ " values('" + printId[iiPrintId] + "','" + dh + "','" + dysj + "'," + cjs + ","
 									+ 1 + ",' ',' ',' ',' ','" + ch + "','" + rq + "',' ')";
 							ps_stmt = con.createStatement();
 							try {
@@ -770,7 +706,7 @@ public class JdhzServletPrint extends HttpServlet {
 					}
 				}
 				iiPrintId++;
-			}// end while of printId[]
+			} // end while of printId[]
 			iiPrintId--;
 
 			ServletContext context = this.getServletConfig().getServletContext();
@@ -806,7 +742,7 @@ public class JdhzServletPrint extends HttpServlet {
 				// 方向盘、安全气囊数据集合
 				List<JConfigure> fxpqnList = new ArrayList<JConfigure>();
 				// 组织数据集合
-				for (int iitFassCount = 0; iitFassCount < tFassCount; iitFassCount++) {
+				for (int iitFassCount = 0; iitFassCount < superlist.get(0).size(); iitFassCount++) {
 					for (int iifxp = 0; iifxp <= iiPrintId; iifxp++) {
 						fxpqnList.add(superlist.get(iifxp).get(iitFassCount));
 					}
@@ -838,8 +774,8 @@ public class JdhzServletPrint extends HttpServlet {
 					printSet_rs = printSet_stmt.executeQuery();
 
 					for (int iiList = 0; printSet_rs.next();) {
-						parameters.put(printSet_rs.getString("cCode"), new JRBeanCollectionDataSource(superlist
-								.get(iiList++)));
+						parameters.put(printSet_rs.getString("cCode"),
+								new JRBeanCollectionDataSource(superlist.get(iiList++)));
 						parameters.put("mc" + String.valueOf(iiList), printSet_rs.getString("ccartypedesc"));
 						parameters.put("id" + String.valueOf(iiList), printSet_rs.getInt("id"));
 						parameters.put("tm" + String.valueOf(iiList), printSet_rs.getString("cremark").trim());

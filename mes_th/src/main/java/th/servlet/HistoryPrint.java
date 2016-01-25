@@ -629,7 +629,7 @@ public class HistoryPrint extends HttpServlet {
 				// 方向盘、安全气囊数据集合
 				List<JConfigure> fxpqnList = new ArrayList<JConfigure>();
 				// 组织数据集合
-				for (int iitFassCount = 0; iitFassCount < tFassCount; iitFassCount++) {
+				for (int iitFassCount = 0; iitFassCount < superlist.get(0).size(); iitFassCount++) {
 					for (int iifxp = 0; iifxp <= iiPrintId; iifxp++) {
 						fxpqnList.add(superlist.get(iifxp).get(iitFassCount));
 					}
