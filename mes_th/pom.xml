@@ -79,11 +79,6 @@
 			<version>3.1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.hynnet</groupId>
-			<artifactId>sqljdbc-chs</artifactId>
-			<version>4.0.2206.100</version>
-		</dependency>
-		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
@@ -104,8 +99,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<source>1.6</source>
-					<target>1.6</target>
-					<encoding>UTF-8</encoding>
+					<target>1.5</target>
+					<encoding>GBK</encoding>
 					<skip>true</skip>
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
