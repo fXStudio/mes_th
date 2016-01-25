@@ -46,13 +46,10 @@ public class Service_UpdateMaterialType extends AdapterService {
 		parent_id = message.getUserParameterValue("parent_id");
 		description = message.getUserParameterValue("description");
 		userid = message.getUserParameterValue("userid");
-		System.out
-				.println("类中： " + "element_name = " + element_name + "  "
-						+ "parent_id = " + parent_id + "  description = "
-						+ description);
+		System.out.println("类中： " + "element_name = " + element_name + "  " + "parent_id = " + parent_id
+				+ "  description = " + description);
 		if (element_name == null || userid == null) {
-			message.addServiceException(new ServiceException(
-					ServiceExceptionType.PARAMETERLOST, "输入参数为空", this.getId(),
+			message.addServiceException(new ServiceException(ServiceExceptionType.PARAMETERLOST, "输入参数为空", this.getId(),
 					processid, new java.util.Date(), null));
 			return false;
 		}
@@ -61,31 +58,24 @@ public class Service_UpdateMaterialType extends AdapterService {
 	}
 
 	@Override
-	public ExecuteResult doAdapterService(IMessage message, String processid)
-			throws SQLException, Exception {
+	public ExecuteResult doAdapterService(IMessage message, String processid) throws SQLException, Exception {
 		try {
 			Statement stmt = null;
 			try {
 				factory = (IMaterialTypeFactory) FactoryAdapter
-						.getFactoryInstance(IMaterialTypeFactory.class
-								.getName());
+						.getFactoryInstance(IMaterialTypeFactory.class.getName());
 				stmt = con.createStatement();
 				// 用以下方式可以直接获得element_name的值 IMaterialType newType =
 				// factory.createElement();
-				IMaterialType newType = factory.queryElement(message
-						.getUserParameterValue("element_name"), con);
-				newType.setParentId(new Integer(message
-						.getUserParameterValue("parent_id")));
-				newType.setDescription(message
-						.getUserParameterValue("description"));
-				newType.setUpdateUserId(new Integer(message
-						.getUserParameterValue("userid")));
+				IMaterialType newType = factory.queryElement(message.getUserParameterValue("element_name"), con);
+				newType.setParentId(new Integer(message.getUserParameterValue("parent_id")));
+				newType.setDescription(message.getUserParameterValue("description"));
+				newType.setUpdateUserId(new Integer(message.getUserParameterValue("userid")));
 				stmt.close();
 				factory.update(newType, con);
 			} catch (SQLException sqle) {
-				message.addServiceException(new ServiceException(
-						ServiceExceptionType.DATABASEERROR, "数据库操作异常", this
-								.getId(), processid, new Date(), null));
+				message.addServiceException(new ServiceException(ServiceExceptionType.DATABASEERROR, "数据库操作异常",
+						this.getId(), processid, new Date(), null));
 				Assert.fail("保存对象时候出现异常");
 				return ExecuteResult.fail;
 			} finally {
@@ -93,8 +83,7 @@ public class Service_UpdateMaterialType extends AdapterService {
 					stmt.close();
 			}
 		} catch (Exception e) {
-			message.addServiceException(new ServiceException(
-					ServiceExceptionType.UNKNOWN, e.toString(), this.getId(),
+			message.addServiceException(new ServiceException(ServiceExceptionType.UNKNOWN, e.toString(), this.getId(),
 					processid, new java.util.Date(), e));
 			return ExecuteResult.fail;
 		}
