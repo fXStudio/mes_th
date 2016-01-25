@@ -1,0 +1,77 @@
+/* 顶部框架第一层 */
+.headfirst{
+background-image:
+url(../images/purplefirst.gif);
+width:100%;
+height:78;
+}
+/* 顶部框架第二层 */
+.headsecond{
+background-image:
+url(../images/purplesecond.gif);
+width:100%;
+height:26;
+padding-top:5px; padding-right:10px;
+}
+/*顶部框架第二层文字*/
+.headsecondfont{
+font-size:16px; color:563d68; font-family:Geneva, Arial, Tahoma; font-weight:500
+}
+/* 左侧框架body*/
+.treebody{
+/*background-color:
+#F9F5FA;*/width:100%;
+background-color:
+#EEEBF3;
+}
+/* 左侧框架目录树层*/
+.treemenu{
+margin-top:0px;
+margin-left:2px;
+}
+/* 底部框架层*/
+.foot{
+background-image:
+url(../images/purplefoot.gif);
+width:100%;
+height:30;position:absolute; right:0px; bottom:0px;
+background-repeat:no-repeat;
+}
+/* 首页备注层*/
+.remark{
+font-size:14px; font-family:Geneva, Arial, Tahoma; font-weight:bold; text-align:center; color:#990033;
+}
+/* 右侧框架层*/
+.rightbody{
+margin-bottom:; margin-left:0; margin-right:0; margin-top:0; font-size:14px; color:blue; font-weight:bold; text-align:center; font-family:Geneva, Arial, Tahoma;
+}
+/* 中间框架层*/
+.middle{
+background-color:#C7ADD6;
+}
+/*菜单栏滚动条*/
+body{
+	scrollbar-face-color:#ffffff;
+	scrollbar-shadow-color:#ffffff;
+	scrollbar-highlight-color:#ffffff;
+	scrollbar-3dlight-color:#C7ADD6;
+	scrollbar-darkshadow-color:#C7ADD6;
+	scrollbar-track-color:#ffffff;
+	scrollbar-arrow-color:#C7ADD6;
+}
+/*框架边框*/
+.frameborder{
+BORDER-LEFT:#C7ADD6 2px solid;BORDER-RIGHT: #C7ADD6 2px solid;BORDER-TOP: #C7ADD6 2px solid;BORDER-BOTTOM: #C7ADD6 2px solid;
+}
+
+
+/*车辆信息管理各功能界面样式*/
+td { border: 0px #3399CC solid; padding-top: 1px; padding-right: 1px; padding-bottom: 1px; padding-left: 1px; font-family:Geneva, Arial, Tahoma}
+table {  border: #3399CC solid; border-width: 0px 0px 0px;font-size:9pt;}
+.thead {  background-color: #3399CC}
+.th {background-color:#DBCCEC; border: 0px #33CCFF solid; font-size: 9pt;}
+a:hover {  color: #0066CC}
+a:visited {  color: #0066CC}
+button {  margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px}
+select{font-size:9pt}
+font{font-family:Geneva, Arial, Tahoma}

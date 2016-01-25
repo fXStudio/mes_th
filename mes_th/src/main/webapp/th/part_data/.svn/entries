@@ -1,0 +1,37 @@
+9
+
+dir
+4256
+https://mes-appserver:8443/svn/framework/branches/mes_th/WebRoot/th/part_data
+https://mes-appserver:8443/svn/framework
+
+
+
+2010-07-04T06:22:06.625000Z
+4238
+ghfeng
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+596e3359-bf31-b34f-b269-810d0a049ba8
+
+hanzhuang
+dir
+
+spec_kincode
+dir
+
+zongzhuang
+dir
+

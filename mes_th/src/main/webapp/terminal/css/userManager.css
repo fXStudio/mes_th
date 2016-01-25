@@ -1,0 +1,82 @@
+.x-grid3-hd-row td.ux-filtered-column {
+	font-style: italic;
+	font-weight: bold;
+}
+ 
+.x-grid3-body .x-grid3-td-cost {
+	background-color: #f1f2f4;
+}
+
+.x-grid3-summary-row .x-grid3-td-cost {
+	background-color: #e1e2e4;
+	font-weight: bold;
+}
+
+.x-panel-mc {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.icon-grid {
+	background-image: url(../images/fam/grid.png) !important;
+}
+
+.icon-add {
+	background-image: url(../images/fam/add.gif) !important;
+}
+
+.icon-edit {
+	background-image: url(../images/fam/edit.gif) !important;
+}
+
+.icon-delete {
+	background-image: url(../images/fam/del.gif) !important;
+}
+.icon-userrole {
+	background-image: url(../images/fam/user_edit.png) !important;
+}
+.icon-userrolesearch {
+	background-image: url(../images/img/find.png) !important;
+}
+
+.x-tbar-loading{
+	background-image:url(../images/refresh.gif)!important;
+}
+
+.icon-clear{
+	background-image:url(../images/close.gif)!important;
+}
+.icon-sortfunction{
+	background-image:url(../images/table_refresh.png)!important;
+}
+
+.icon-return{
+	background-image:url(../images/arrow_rotate_clockwise.png)!important;
+}
+
+.icon-card{
+	background-image:url(../images/ipod_cast_add.png)!important;
+}
+.icon-excel{
+	background-image:url(../images/excel.gif)!important;
+}
+.x-tbar-print{
+		background-image:url(../images/action_print.gif)!important;
+	}
+.x-tbar-keydelete{
+	background-image:url(../images/key_delete.png)!important;
+}
+.x-tbar-keygo{
+	background-image:url(../images/key_go.png)!important;
+}
+.x-tbar-borrowsearch{
+	background-image:url(../images/img/find.png)!important;
+}
+
+.details-info {
+	margin: 15px;
+	padding: 15px;
+	border: 1px dotted #999;
+	color: #555;
+	background: #f9f9f9;
+}

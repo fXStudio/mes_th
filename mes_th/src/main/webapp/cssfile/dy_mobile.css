@@ -1,0 +1,55 @@
+div{
+	font-family: 幼圆;
+	font-weight: 550;
+	color:#000080;
+}
+.item{
+    font-size: 12pt;
+}
+.container{
+	width:330px;
+	height:230px;
+}
+.mobilebox1{
+    border: solid #000080 2px;
+    font-size: 10pt;
+}
+.generate_btn input{
+    background-attachment: fixed; /* 设定背景图不滚动 */
+    font-size: 10pt; /* 设定字体 */
+    font-weight: 800;
+    background-image: url('../images/b4.gif');
+    background-repeat: no-repeat; /* 设置背景图不平铺 */
+    height: 25px; /* 等于背景图高度 */
+    width: 75px; /* 等于背景图宽度 */
+    background-position: center center; /* 设定背景图居中 */
+    border: none; /* 取消边框 */
+    color: yellow;
+}
+
+.small_btn {
+    background-attachment: fixed; /* 设定背景图不滚动 */
+    font-size: 8pt; /* 设定字体 */
+    font-weight: 800;
+    background-repeat: no-repeat; /* 设置背景图不平铺 */
+    height: 18px; /* 等于背景图高度 */
+    width: 45px; /* 等于背景图宽度 */
+    background-position: center center; /* 设定背景图居中 */
+    border: none; /* 取消边框 */
+    color: yellow;
+}
+.normal_btn {
+    background-attachment: fixed; /* 设定背景图不滚动 */
+    font-size: 10pt; /* 设定字体 */
+    font-weight: 800;
+    background-repeat: no-repeat; /* 设置背景图不平铺 */
+    height: 25px; /* 等于背景图高度 */
+    width: 58px; /* 等于背景图宽度 */
+    background-position: center center; /* 设定背景图居中 */
+    border: none; /* 取消边框 */
+    color: yellow;
+}
+
+.radio_content{
+    font-size: 10pt;
+}

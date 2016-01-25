@@ -1,0 +1,271 @@
+/*
+*{ filter:gray; } 
+*/
+body {
+	margin-left: auto;
+	margin-top: 0px;
+	margin-right: auto;
+	font-size: 12px;
+	line-height: 150%;
+	margin-bottom: 0px;
+	text-align: center; //
+	font: normal 11px auto "Trebuchet MS", Verdana, Arial, Helvetica,
+		sans-serif;
+	color: #4f6b72;
+	font-family: 宋体, Arial;
+}
+
+td {
+	font-size: 12px;
+	line-height: 100%;
+	
+
+}
+
+.module-bg {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+
+.mu-bg {
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+a:link {
+	font-size: 12px;
+	line-height: 150%;
+	color: #333333;
+	text-decoration: underline;
+}
+
+a:visited {
+	font-size: 12px;
+	line-height: 150%;
+	color: #333333;
+	text-decoration: underline;
+}
+
+.White {
+	font-size: 12px;
+	line-height: 150%;
+	color: #FFFFFF;
+}
+
+.red {
+	font-size: 12px;
+	line-height: 150%;
+	color: #990000;
+}
+
+a:hover {
+	font-size: 12px;
+	line-height: 150%;
+	color: #333333;
+	text-decoration: none;
+}
+
+.mu a:link {
+	font-size: 12px;
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+.mu a:visited {
+	font-size: 12px;
+	color: #ffffff;
+	text-decoration: underline;
+}
+
+.mu a:hover {
+	font-size: 12px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.r a:link {
+	font-size: 12px;
+	color: #990000;
+	text-decoration: underline;
+}
+
+.r a:visited {
+	font-size: 12px;
+	color: #cc0000;
+	text-decoration: underline;
+}
+
+.r a:hover {
+	font-size: 12px;
+	color: #990000;
+	text-decoration: none;
+}
+
+.ti-1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #990000;
+	line-height: 180%;
+}
+
+.ti-2 {
+	font-size: 14px;
+	line-height: 180%;
+	color: #000000;
+}
+
+.ti-3 {
+	font-size: 12px;
+	line-height: 180%;
+	color: #1B4BB3;
+	text-align: center;
+	background-color: #EEFAFF;
+}
+
+.ti-4 {
+	text-align: center;
+	color: red;
+	font-size: medium;
+	font-weight: bold;
+}
+
+.manager {
+	border-collapse: collapse;
+	width: 80%;
+}
+
+.manager td {
+	border: 1px solid #96C2F1;
+	line-height: 20px;
+}
+
+.manager td table td {
+	border: none;
+}
+
+.queryinfo {
+	border-collapse: collapse;
+	width: 70%;
+}
+
+.queryinfo td {
+	border: 1px solid #1343BF;
+	line-height: 20px;
+	text-align: center;
+}
+
+.configlist {
+	font-size: 20px;
+	margin: -2px;
+}
+
+.table_head,.table_head a:link,.table_head a:visited {
+	color: #ffff00;
+	text-decoration: none;
+}
+
+.form_search {
+	width: 90%;
+	text-align: left;
+}
+
+input {
+	text-align: center;
+	white-space: pre;
+	font-size: 12px;
+	color: #1B4BB3;
+	text-decoration: none;
+	border: 1px solid #BBE1F1;
+	height: 18px;
+}
+
+IMG {
+	border: none;
+}
+
+.btn_normal {
+	border: 1px solid #B3D5E6;
+	font-size: 12px;
+	color: #1343BF;
+	cursor: pointer;
+}
+
+.btn_mouseover {
+	border-color: #0099FF;
+}
+
+.btn_mousedown {
+	border-color: #0099FF;
+	padding-top: 1px;
+	padding-left: 1px;
+	padding-right: -1px;
+}
+
+//
+a {
+	color: #c75f3e;
+}
+
+#mytable {
+	width: 1150px;
+	padding: 0;
+	margin: 0;
+}
+#ctable {
+	width: 1000px;
+	padding: 0;
+	margin: 0;
+	
+}
+#ttable {
+	width: 700px;
+	padding: 0;
+	margin: 0;
+}
+
+th {
+	font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #4f6b72;
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: left;
+	padding: 6px 6px 6px 12px;
+	background: #CAE8EA no-repeat;
+	font-family: 宋体, Arial;
+	font-size: 12px;
+}
+
+.t {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;
+	background: #fff; 
+	text-transform: uppercase;
+	text-align: center;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
+	font-family: 宋体, Arial;
+	font-size: 12px;
+}
+.d {
+	border-right: 1px solid #C1DAD7;
+	border-bottom: 1px solid #C1DAD7;
+	border-top: 1px solid #C1DAD7;
+	border-left: 1px solid #C1DAD7;
+	background: #fff; //
+	font-size: 11px;
+	padding: 6px 6px 6px 12px;
+	color: #4f6b72;
+	font-family: 宋体, Arial;
+	font-size: 12px;
+}
+td.alt {
+	background: #F5FAFA;
+	color: #797268;
+}

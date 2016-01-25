@@ -1,0 +1,48 @@
+/** 表格 */
+.th_table td{
+    border-right: 1px solid #C1DAD7;
+    border-bottom: 1px solid #C1DAD7;
+    border-top: 1px solid #C1DAD7;
+    border-left: 1px solid #C1DAD7;
+    background: #fff;
+    font-size: 11px;
+    padding: 6px 6px 6px 12px;
+    color: #4f6b72;
+    font-family: 宋体, Arial;
+    font-size: 12px;
+}
+
+#th_tbody td{
+	border-color:yellow;
+	color:yellow;
+	background-color:#000000;
+}
+#th_thead td{
+	border-color:red;
+	color:red;
+	background-color:#000000;
+}
+
+.th_table .tbl_title{
+    text-align:right;
+}
+
+.selected td{
+    background-color:#EEDDFF;
+}
+
+.mousehover td{
+    background-color:#AAFFEE;
+}
+
+/** 前景窗体 */
+.fore{
+    position:absolute;
+    background-color:lightblue;
+    left:0px;
+    top:0px;
+    z-index:9999;
+    filter: alpha(Opacity=80);
+    opacity:0.80;
+    visibility:hidden;
+}
