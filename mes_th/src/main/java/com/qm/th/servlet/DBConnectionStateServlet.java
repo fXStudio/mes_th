@@ -18,8 +18,9 @@ import com.qm.th.helpers.Conn_MES;
  * @author GaoHF
  */
 public class DBConnectionStateServlet extends HttpServlet {
-	/***/
+	/** 序列号 */
 	private static final long serialVersionUID = 1L;
+	
 	/** 数据库连接池 */
 	private static Conn_MES cm = new Conn_MES();
 

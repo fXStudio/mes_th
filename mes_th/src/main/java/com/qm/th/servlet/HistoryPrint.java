@@ -36,9 +36,10 @@ import net.sf.jasperreports.engine.util.JRLoader;
  * @author Administrator
  */
 public class HistoryPrint extends HttpServlet {
-	/** */
+	/** 序列号 */
 	private static final long serialVersionUID = 1L;
-	/** */
+	
+	/** 日期格式化 */
 	private SimpleDateFormat date_fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	/**
