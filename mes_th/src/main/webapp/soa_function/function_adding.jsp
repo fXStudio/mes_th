@@ -2,7 +2,7 @@
 	contentType="text/html;charset=gb2312"%>
 <%@page import="java.util.*,java.util.regex.Pattern"%>
 <%@page import="com.qm.mes.framework.*"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES" />
 
 <%
 	 /*

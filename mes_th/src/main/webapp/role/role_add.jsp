@@ -10,7 +10,7 @@
 <%	String userid=(String)session.getAttribute("userid");
     String intpage=request.getParameter("intPage");		%>
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <!-- InstanceEndEditable -->
  
 <head>

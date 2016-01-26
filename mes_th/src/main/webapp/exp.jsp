@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.qm.mes.util.*,java.io.*" %>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <%	
 	response.reset();   
 	response.setContentType("application/x-msdownload");

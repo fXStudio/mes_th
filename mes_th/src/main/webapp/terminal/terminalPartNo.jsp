@@ -1,5 +1,5 @@
 <%@ page language="java" pageEncoding="utf-8"%>
-<%@ page import="com.qm.th.helper.Conn_MES"%>
+<%@ page import="com.qm.th.helpers.Conn_MES"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="com.qm.th.terminal.Terminal"%>
  

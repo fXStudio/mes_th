@@ -9,7 +9,7 @@ import java.util.Map;
 
 import com.qm.mes.framework.dao.DAOFactory_Core;
 import com.qm.mes.framework.dao.IDAO_Core;
-import com.qm.th.helper.Conn_MES;
+import com.qm.th.helpers.Conn_MES;
 
 /**
  * 服务工厂

@@ -3,7 +3,7 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
 <%@page import="java.util.*" %>
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <%@page import="com.qm.mes.framework.*,com.qm.mes.util.SerializeAdapter"%>
 
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>

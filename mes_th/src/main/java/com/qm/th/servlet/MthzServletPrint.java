@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.qm.th.helper.Conn_MES;
-import com.qm.th.pz.bean.JConfigure;
+import com.qm.th.beans.JConfigure;
+import com.qm.th.helpers.Conn_MES;
 
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;

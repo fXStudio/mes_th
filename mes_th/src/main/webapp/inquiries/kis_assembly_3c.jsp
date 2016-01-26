@@ -10,7 +10,7 @@
 <!-- InstanceBeginEditable name="获得连接" -->
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <script language="JavaScript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="获得过滤" -->

@@ -4,7 +4,7 @@
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.SQLException"%>
 
-<jsp:useBean id="Conn_MES" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn_MES" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <% 
 	String userid = (String)session.getAttribute("userid");
 	if(userid == null){

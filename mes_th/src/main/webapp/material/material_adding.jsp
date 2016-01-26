@@ -3,7 +3,7 @@
 	errorPage=""%>
 <%@page import="java.util.*"%>
 <%@page import="com.qm.mes.framework.*"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES" />
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />

@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
 <%@ page import = "java.sql.*" %>
-<%@ page import = "com.qm.th.helper.DataProcess" %>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+<%@ page import = "com.qm.th.helpers.DataProcess" %>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES" />
 
 <% 
 Connection con=null;

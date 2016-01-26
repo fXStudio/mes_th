@@ -8,7 +8,7 @@
 <%//@page import="tree.*"%>
 <%@ include file="security.jsp"  %>
 
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <%
 
 	String id=request.getParameter("id");

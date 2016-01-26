@@ -3,6 +3,7 @@
 <%@page import="com.qm.th.tg.dao.*,com.qm.th.tg.factory.*"%>
 <%@page import="com.qm.th.tg.bean.*,com.qm.mes.ra.util.*"%>
 <%@page import="java.util.*,java.text.SimpleDateFormat"%>
+<%@page import="com.qm.th.tg.bean.Part"%>
 <%@page import="com.qm.mes.framework.*,com.qm.mes.framework.dao.*,com.qm.mes.system.dao.*"%>
 
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
@@ -12,7 +13,7 @@
 	<!-- InstanceBeginEditable name="获得连接" -->
 	<jsp:directive.page import="java.util.List" />
 	<jsp:directive.page import="java.util.ArrayList" />
-	<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+	<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES" />
 	<script language="JavaScript" type="text/javascript"
 		src="../My97DatePicker/WdatePicker.js"></script>
 	<!-- InstanceEndEditable -->

@@ -6,7 +6,7 @@
  <!-- InstanceBeginEditable name="获得连接" -->
 <%@page import="com.qm.mes.util.tree.*"%>
   <%@page import="com.qm.mes.framework.dao.*,com.qm.mes.framework.DataBaseType"%>
- <jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/><!-- InstanceEndEditable -->
+ <jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/><!-- InstanceEndEditable -->
  <!-- InstanceBeginEditable name="获得参数并验证" --><%
  	String roleno = request.getParameter("roleno");
  	String intpage="";

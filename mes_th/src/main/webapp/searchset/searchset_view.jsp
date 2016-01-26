@@ -8,7 +8,7 @@
 <html><!-- InstanceBegin template="/Templates/new_查看.dwt.jsp" codeOutsideHTMLIsLocked="true" -->
  
  <!-- InstanceBeginEditable name="获得连接" -->
- <jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+ <jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
  <!-- InstanceEndEditable -->
  <!-- InstanceBeginEditable name="获得参数并验证" -->	 
  <%

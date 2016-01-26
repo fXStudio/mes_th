@@ -1,19 +1,23 @@
 package com.qm.mes.util;
 import java.io.OutputStream;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.sql.*;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-import jxl.*;
+import com.qm.mes.ra.bean.State;
+import com.qm.mes.ra.dao.DAO_ProduceUnit;
+import com.qm.mes.ra.dao.DAO_ProduceUnitForOracle;
+import com.qm.mes.ra.factory.StateFactory;
+
+import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
-import java.util.*;
-
-import com.qm.mes.ra.bean.*;
-import com.qm.mes.ra.dao.*;
-import com.qm.mes.ra.factory.*;
-
-import java.text.*;
 public class InstructionExport {
 	
 	public static synchronized void createExcelFile(ResultSet rs,

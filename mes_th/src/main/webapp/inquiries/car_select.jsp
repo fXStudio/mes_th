@@ -10,7 +10,7 @@
 <!-- InstanceBeginEditable name="获得连接" -->
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <script language="JavaScript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="获得过滤" -->
@@ -21,7 +21,7 @@
 	response.setHeader("Cache-Control","no-cache");
     Connection con = null;
     WeldingSearchFactory factory_ws = new WeldingSearchFactory();//查询工厂
-    List<Part> list_as = new ArrayList<Part>();//查询集合
+    List<com.qm.th.tg.bean.Part> list_as = new ArrayList<com.qm.th.tg.bean.Part>();//查询集合
     List<AssemblySearch> list_ws = new ArrayList<AssemblySearch>();//车辆信息
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     String condition_One = null;//条件一

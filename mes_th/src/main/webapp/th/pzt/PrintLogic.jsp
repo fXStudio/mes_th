@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="GBK"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.qm.th.fx.ConfigOrderHandler"%>
-<%@ page import="com.qm.th.fx.bean.COrderEntity"%>
+<%@ page import="com.qm.th.mdorder.ConfigOrderHandler"%>
+<%@ page import="com.qm.th.mdorder.bean.COrderEntity"%>
 
 <%
 	// 取前一页面日期

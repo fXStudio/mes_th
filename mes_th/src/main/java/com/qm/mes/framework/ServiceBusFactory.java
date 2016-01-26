@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 
-import com.qm.th.helper.Conn_MES;
+import com.qm.th.helpers.Conn_MES;
 
 
 /**

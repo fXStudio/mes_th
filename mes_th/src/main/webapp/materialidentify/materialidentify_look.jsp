@@ -2,7 +2,7 @@
 <%@page import="com.qm.mes.system.factory.*" %>
 <%@page import="com.qm.mes.system.elements.*" %>
 <html>
- <jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+ <jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
  <%
  	String element_name = request.getParameter("element_name");
 	if(element_name==null){

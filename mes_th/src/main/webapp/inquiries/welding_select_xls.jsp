@@ -5,7 +5,7 @@
 <%@ page import ="com.qm.th.tg.util.*"%>
 <%@ page import = "com.qm.mes.system.dao.DAOFactoryAdapter"%>
 <%@page	import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 	
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  

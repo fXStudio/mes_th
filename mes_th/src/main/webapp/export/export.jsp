@@ -41,7 +41,7 @@
      WritableWorkbook wb = Workbook.createWorkbook(response.getOutputStream());
      
      try{
-    	 conn = new com.qm.th.helper.Conn_MES().getConn();
+    	 conn = new com.qm.th.helpers.Conn_MES().getConn();
     	 stmt = conn.prepareStatement(sql.toString());
     	 rs = stmt.executeQuery();
     	 

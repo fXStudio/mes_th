@@ -4,7 +4,7 @@
 <%@page import="com.qm.mes.system.factory.*" %>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <html>
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  

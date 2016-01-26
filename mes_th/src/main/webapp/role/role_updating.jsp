@@ -4,7 +4,7 @@
 
 <html><!-- InstanceBegin template="/Templates/处理摸板1.dwt.jsp" codeOutsideHTMLIsLocked="true" --> 
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <!-- InstanceEndEditable -->
  
 <%	String nextpage="_manage.jsp";

@@ -9,7 +9,7 @@
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  
   	response.setDateHeader("Expires", 0); %>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <%
     Connection con=null;
     Statement stmt = null;

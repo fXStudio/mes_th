@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="com.qm.th.terminal.Terminal"%>
-<%@ page import="com.qm.th.helper.Conn_MES"%>
+<%@ page import="com.qm.th.helpers.Conn_MES"%>
 <%@page import="com.qm.th.terminal.TerminalBean"%>
  
 <% 

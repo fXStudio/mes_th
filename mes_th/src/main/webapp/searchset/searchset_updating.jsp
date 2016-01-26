@@ -9,7 +9,7 @@
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
     <%@page import="com.qm.mes.system.dao.*,com.qm.mes.framework.*"%>
 	<!-- InstanceBeginEditable name="获得连接对象" -->
-	<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+	<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES" />
 	<!-- InstanceEndEditable -->
 
 	

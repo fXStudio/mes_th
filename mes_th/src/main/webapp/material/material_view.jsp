@@ -5,7 +5,7 @@
 <html>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helpers.Conn_MES"/>
 <%
     String type_info="";
 	type_info=request.getParameter("type_info");

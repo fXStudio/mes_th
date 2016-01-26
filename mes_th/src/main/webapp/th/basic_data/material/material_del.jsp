@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=GBK" language="java" pageEncoding="GBK"%>
-<%@ page import="com.qm.th.helper.Conn_MES"%>
+<%@ page import="com.qm.th.helpers.Conn_MES"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.SQLException"%>
