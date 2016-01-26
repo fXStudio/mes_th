@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,mes.system.elements.*" errorPage="" %>
+<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,com.qm.mes.system.elements.*" errorPage="" %>
 <html>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<%@page import="mes.system.dao.*" %>
-<%@page import="mes.system.factory.*" %>
-<%@page import="mes.framework.*"%>
+<%@page import="com.qm.mes.system.dao.*" %>
+<%@page import="com.qm.mes.system.factory.*" %>
+<%@page import="com.qm.mes.framework.*"%>
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  
   	response.setDateHeader("Expires", 0); %>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%
     Connection con=null;
     Statement stmt=null;

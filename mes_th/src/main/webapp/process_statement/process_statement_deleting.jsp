@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%@page import="java.util.*" %>
-<%@page import="mes.framework.*" %>
-<%@ page import="mes.framework.dao.*" %>
+<%@page import="com.qm.mes.framework.*" %>
+<%@ page import="com.qm.mes.framework.dao.*" %>
 <%
 	/*
 	 * 业务描述：添加适流程服务信息，校验适配器是否重复配置由相应服务完成

@@ -1,11 +1,11 @@
-<%@ page language="java" import="java.sql.*,mes.system.elements.*,mes.framework.*" contentType="text/html;charset=gb2312"%>
-<%@page import="mes.system.dao.*" %>
-<%@page import="mes.system.factory.*" %>
+<%@ page language="java" import="java.sql.*,com.qm.mes.system.elements.*,com.qm.mes.framework.*" contentType="text/html;charset=gb2312"%>
+<%@page import="com.qm.mes.system.dao.*" %>
+<%@page import="com.qm.mes.system.factory.*" %>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <html>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%
     String type_info="";
 	type_info=request.getParameter("type_info");

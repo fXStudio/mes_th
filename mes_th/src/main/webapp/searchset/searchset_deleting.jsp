@@ -1,11 +1,10 @@
 
-<%@page import="th.tg.factory.SearchSetFactory"%><html><!-- InstanceBegin template="/Templates/new_处理提交.dwt.jsp" codeOutsideHTMLIsLocked="true" -->
+<%@page import="com.qm.th.tg.factory.SearchSetFactory"%><html><!-- InstanceBegin template="/Templates/new_处理提交.dwt.jsp" codeOutsideHTMLIsLocked="true" -->
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<%@page import="common.*"%>
 <%@page import="java.util.*" %>
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
-<%@page import="mes.framework.*,mes.util.SerializeAdapter"%>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<%@page import="com.qm.mes.framework.*,com.qm.mes.util.SerializeAdapter"%>
 
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
 <!-- InstanceEndEditable -->

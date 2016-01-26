@@ -1,9 +1,9 @@
-<%@ page language="java" import="java.sql.*,mes.beans.Process" contentType="text/html;charset=gb2312"%>
-<jsp:directive.page import="mes.beans.*"/>
+<%@ page language="java" import="java.sql.*,com.qm.mes.beans.Process" contentType="text/html;charset=gb2312"%>
+<jsp:directive.page import="com.qm.mes.beans.*"/>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<%@page import="mes.framework.*" %>
-<%@page import="mes.framework.dao.*" %>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<%@page import="com.qm.mes.framework.*" %>
+<%@page import="com.qm.mes.framework.dao.*" %>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 
 <%
     Connection conn=null;

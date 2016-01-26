@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html;charset=gb2312"%>
-<%@ page import="mes.util.tree.DataServer_UserManage"%>
-<%@ page import="mes.util.tree.BussinessProcess_UserManage"%>
+<%@ page import="com.qm.mes.util.tree.DataServer_UserManage"%>
+<%@ page import="com.qm.mes.util.tree.BussinessProcess_UserManage"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.SQLException"%>
 
-<jsp:useBean id="Conn_MES" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn_MES" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <% 
 	String userid = (String)session.getAttribute("userid");
 	if(userid == null){

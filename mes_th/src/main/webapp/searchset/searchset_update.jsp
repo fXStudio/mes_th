@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*" errorPage="" %>
-<%@page import="th.tg.factory.SearchSetFactory"%>
+<%@page import="com.qm.th.tg.factory.SearchSetFactory"%>
 <html><!-- InstanceBegin template="/Templates/new_提交.dwt.jsp" codeOutsideHTMLIsLocked="false" -->
 <!-- InstanceBeginEditable name="引入包" -->
-<%@page import="th.tg.bean.*,java.util.*,mes.framework.dao.*,mes.system.dao.*" %>
+<%@page import="com.qm.th.tg.bean.*,java.util.*,com.qm.mes.framework.dao.*,com.qm.mes.system.dao.*" %>
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <!-- InstanceEndEditable -->
@@ -11,7 +11,7 @@
   	response.setDateHeader("Expires", 0); %>
 <!-- 以下为修改提交参数时用 -->
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
  <%
  	String info = request.getParameter("info");
 		info = info==null?"":new String(info);

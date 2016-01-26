@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
-<%@ page import="mes.framework.*,java.sql.*" %>
+<%@ page import="com.qm.mes.framework.*,java.sql.*" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<%@ page import="mes.framework.*" %>
-<%@ page import="mes.framework.forjsp.soa.*" %>
-<%@ page import="mes.framework.dao.IDAO_Core" %>
-<%@ page import="mes.framework.dao.DAOFactory_Core" %>
+<%@ page import="com.qm.mes.framework.*" %>
+<%@ page import="com.qm.mes.framework.forjsp.soa.*" %>
+<%@ page import="com.qm.mes.framework.dao.IDAO_Core" %>
+<%@ page import="com.qm.mes.framework.dao.DAOFactory_Core" %>
 <html>
 <%  
 	

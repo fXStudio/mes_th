@@ -1,8 +1,8 @@
-<%@ page language="java" import="java.sql.*,mes.beans.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<%@ page language="java" import="java.sql.*,com.qm.mes.beans.*" contentType="text/html;charset=gb2312"%>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<%@page import="mes.framework.dao.*"%>
-<%@page import="mes.framework.*"%>
+<%@page import="com.qm.mes.framework.dao.*"%>
+<%@page import="com.qm.mes.framework.*"%>
 <%@page import="java.util.Vector"%>
 <%@page import="java.util.List,java.util.ArrayList" %>
 <%//@page import="tree.*"%>

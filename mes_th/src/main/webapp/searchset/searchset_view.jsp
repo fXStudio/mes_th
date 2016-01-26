@@ -1,14 +1,14 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<%@page import="mes.framework.*,mes.system.dao.*,mes.framework.dao.*" %>
-<%@page import="th.tg.bean.*,java.util.*,th.tg.dao.*" %>
+<%@page import="com.qm.mes.framework.*,com.qm.mes.system.dao.*,com.qm.mes.framework.dao.*" %>
+<%@page import="com.qm.th.tg.bean.*,java.util.*,com.qm.th.tg.dao.*" %>
 <%@page import="java.text.SimpleDateFormat" %>
-<%@page import="th.tg.factory.*" %>
+<%@page import="com.qm.th.tg.factory.*" %>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
 <html><!-- InstanceBegin template="/Templates/new_查看.dwt.jsp" codeOutsideHTMLIsLocked="true" -->
  
  <!-- InstanceBeginEditable name="获得连接" -->
- <jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+ <jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
  <!-- InstanceEndEditable -->
  <!-- InstanceBeginEditable name="获得参数并验证" -->	 
  <%

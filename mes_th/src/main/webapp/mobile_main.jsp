@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn_MES" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
-<%@page import="mes.util.tree.*"%>
+<jsp:useBean id="Conn_MES" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<%@page import="com.qm.mes.util.tree.*"%>
 <% 
 	String userid=(String)session.getAttribute("userid");
 	if(userid==null) 

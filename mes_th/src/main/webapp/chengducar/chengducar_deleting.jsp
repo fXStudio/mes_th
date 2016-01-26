@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*"
 	contentType="text/html;charset=gb2312"%>
 
-<%@page import="th.tg.factory.ChengduCarFactory"%>
+<%@page import="com.qm.th.tg.factory.ChengduCarFactory"%>
 
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
 <%@page
 	import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
 <%

@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=gb2312" language="java" %>
 <%@ page import="java.sql.*" %>
-<%@page import="mes.tg.dao.*,mes.tg.factory.*,mes.tg.bean.*" %>
-<%@ page import ="mes.framework.DataBaseType"%>
-<%@ page import ="th.tg.util.*"%>
-<%@ page import = "mes.system.dao.DAOFactoryAdapter"%>
+<%@page import="com.qm.mes.tg.dao.*,com.qm.mes.tg.factory.*,com.qm.mes.tg.bean.*" %>
+<%@ page import ="com.qm.mes.framework.DataBaseType"%>
+<%@ page import ="com.qm.th.tg.util.*"%>
+<%@ page import = "com.qm.mes.system.dao.DAOFactoryAdapter"%>
 <%@page	import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 	
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  

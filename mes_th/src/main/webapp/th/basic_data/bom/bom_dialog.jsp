@@ -1,11 +1,11 @@
 <%@ page contentType="text/html;charset=GBK" language="java" pageEncoding="GBK"%>
-<%@ page import="com.qm.mes.th.helper.Conn_MES"%>
+<%@ page import="com.qm.th.helper.Conn_MES"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="mes.os.util.LinkQuery"%>
+<%@ page import="com.qm.mes.os.util.LinkQuery"%>
 
 <% 
     //±¾Ò³Ãæ²»»º´æ

@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn_MES" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
-<%@page import="common.*,mes.util.tree.*"%> 
+<jsp:useBean id="Conn_MES" scope="page" class="com.qm.th.helper.Conn_MES"/>
+<%@page import="com.qm.mes.util.tree.*"%> 
+<%@page import="com.qm.th.helper.StringHelper"%> 
  
 <%
 	//获取参数
@@ -43,8 +44,8 @@
 			return;
 		}
 
-        username=Security.clearSingleQuotationMarksFlaw(username);
-        password=Security.clearSingleQuotationMarksFlaw(password);
+        username=StringHelper.clearSingleQuotationMarksFlaw(username);
+        password=StringHelper.clearSingleQuotationMarksFlaw(password);
 		
 		con=Conn_MES.getConn();
 		ds = new DataServer_UserManage (con);

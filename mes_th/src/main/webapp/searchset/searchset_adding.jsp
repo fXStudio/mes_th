@@ -1,18 +1,17 @@
 
-<%@page import="th.tg.factory.SearchSetFactory"%>
-<%@page import="th.tg.bean.SearchSet"%><html>
+<%@page import="com.qm.th.tg.factory.SearchSetFactory"%>
+<%@page import="com.qm.th.tg.bean.SearchSet"%><html>
 	<!-- InstanceBegin template="/Templates/new_处理提交.dwt.jsp" codeOutsideHTMLIsLocked="true" -->
 	<%@ page language="java" import="java.sql.*"
 		contentType="text/html;charset=gb2312"%>
-	<%@page import="common.*"%>
 	<%@page import="java.util.*"%>
-	<%@page import="mes.util.*"%>
-    <%@page import="mes.pm.bean.*,mes.pm.factory.*,mes.pm.dao.*"%>
+	<%@page import="com.qm.mes.util.*"%>
+    <%@page import="com.qm.mes.pm.bean.*,com.qm.mes.pm.factory.*,com.qm.mes.pm.dao.*"%>
 <%@page import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
-    <%@page import="mes.system.dao.*,mes.framework.*"%>
+    <%@page import="com.qm.mes.system.dao.*,com.qm.mes.framework.*"%>
 	<!-- InstanceBeginEditable name="获得连接对象" -->
-	<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
-	<%@page import="mes.framework.*"%>
+	<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+	<%@page import="com.qm.mes.framework.*"%>
 	<!-- InstanceEndEditable -->
 
 	<%

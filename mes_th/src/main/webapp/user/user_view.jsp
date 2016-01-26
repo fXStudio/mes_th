@@ -2,13 +2,13 @@
 	contentType="text/html;charset=gb2312"%>
 <jsp:directive.page import="java.util.List" />
 <jsp:directive.page import="java.util.ArrayList" />
-<jsp:directive.page import="mes.beans.Users" />
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
-<%@page import="mes.framework.dao.*"%>
-<%@page import="mes.framework.*"%>
+<jsp:directive.page import="com.qm.mes.beans.Users" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+<%@page import="com.qm.mes.framework.dao.*"%>
+<%@page import="com.qm.mes.framework.*"%>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <jsp:include flush="true" page="security.jsp" />
-<%@page import="mes.ra.util.*"%>
+<%@page import="com.qm.mes.ra.util.*"%>
 <%
  response.setHeader("progma","no-cache");
  response.setHeader("Cache-Control","no-cache");

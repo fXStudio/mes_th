@@ -1,7 +1,7 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn_MES" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn_MES" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%@page import="java.util.Vector"%>
-<%@page import="mes.util.tree.*"  %>
+<%@page import="com.qm.mes.util.tree.*"  %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>

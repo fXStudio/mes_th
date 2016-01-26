@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.sql.*"
 	contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
-<%@page import="common.*"%>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+<%@page import="com.qm.mes.framework.*"%>
 <%@page import="java.util.*"%>
-<%@page import="mes.framework.*"%>
+<%@page import="com.qm.th.security.MD5"%>
 <%@ include file="security.jsp"%>
 
 <%

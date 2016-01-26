@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn_MES" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
-<%@page import="common.*"%>
+<%@ page import="com.qm.th.security.MD5" %>
+<jsp:useBean id="Conn_MES" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%
 	 /* 
 	 * ʱ�䣺2007-07-5
@@ -19,7 +19,7 @@
 	String password=request.getParameter("txt_password");
 	String newpassword=request.getParameter("txt_newpassword");
 
-    newpassword=Security.clearSingleQuotationMarksFlaw(newpassword);
+    newpassword=com.qm.th.helper.StringHelper.clearSingleQuotationMarksFlaw(newpassword);
 	
 	Connection con=null;
 	Statement stmt=null;

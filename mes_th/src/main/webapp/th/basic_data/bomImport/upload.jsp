@@ -6,7 +6,7 @@
 <%@ page import="org.apache.commons.fileupload.FileUploadException"%>
 <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
 <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
-<%@ page import="th.bs.bom.ReadExcel;"%>
+<%@ page import="com.qm.th.bs.bom.ReadExcel;"%>
 
 <%
     int max_memory_size = 2048;// »º´æÈÝÁ¿

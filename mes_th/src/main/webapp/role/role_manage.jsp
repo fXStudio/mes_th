@@ -5,11 +5,11 @@
 	<!-- InstanceBeginEditable name="获得连接对象" -->
 	<jsp:directive.page import="java.util.List" />
 	<jsp:directive.page import="java.util.ArrayList" />
-	<jsp:directive.page import="mes.beans.Role" />
-	<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
-	<%@page import="mes.framework.dao.*,mes.framework.DataBaseType"%>
+	<jsp:directive.page import="com.qm.mes.beans.Role" />
+	<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
+	<%@page import="com.qm.mes.framework.dao.*,com.qm.mes.framework.DataBaseType"%>
 	<%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-	<%@page import="mes.ra.util.*"%>
+	<%@page import="com.qm.mes.ra.util.*"%>
 	<!-- InstanceEndEditable -->
 	<%	response.setHeader("progma","no-cache");
 	response.setHeader("Cache-Control","no-cache");%>

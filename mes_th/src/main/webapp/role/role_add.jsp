@@ -2,7 +2,7 @@
 <html><!-- InstanceBegin template="/Templates/提交模版1.dwt.jsp" codeOutsideHTMLIsLocked="true" -->
 <!-- InstanceBeginEditable name="引入包" -->
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<%@page import="mes.util.tree.*"%>
+<%@page import="com.qm.mes.util.tree.*"%>
 <!-- InstanceEndEditable -->
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  
@@ -10,7 +10,7 @@
 <%	String userid=(String)session.getAttribute("userid");
     String intpage=request.getParameter("intPage");		%>
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <!-- InstanceEndEditable -->
  
 <head>

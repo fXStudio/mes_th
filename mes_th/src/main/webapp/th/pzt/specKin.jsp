@@ -6,8 +6,8 @@
 <%@ page import="java.sql.SQLException"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="com.qm.mes.th.helper.Conn_MES"%>
-<%@ page import="th.bs.bean.SpecKin"%>
+<%@ page import="com.qm.th.helper.Conn_MES"%>
+<%@ page import="com.qm.th.bs.bean.SpecKin"%>
 
 <% 
 	/** ±¾Ò³Ãæ²»»º´æ */

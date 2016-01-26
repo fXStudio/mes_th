@@ -1,13 +1,13 @@
 <%@ page language="java" import="java.sql.*"
 	contentType="text/html;charset=gb2312"%>
-<%@page import="mes.system.factory.*"%>
-<%@page import="mes.system.elements.*"%>
-<%@page import="mes.system.dao.*"%>
-<%@page import="mes.framework.*"%>
+<%@page import="com.qm.mes.system.factory.*"%>
+<%@page import="com.qm.mes.system.elements.*"%>
+<%@page import="com.qm.mes.system.dao.*"%>
+<%@page import="com.qm.mes.framework.*"%>
 <jsp:directive.page import="java.util.List" />
 <jsp:directive.page import="java.util.ArrayList" />
 <html>
-	<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
+	<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
 	<%
 		String element_name = request.getParameter("element_name");
 		if (element_name == null) {

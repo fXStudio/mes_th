@@ -1,15 +1,15 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,mes.system.elements.*" errorPage="" %>
+<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,com.qm.mes.system.elements.*" errorPage="" %>
 <html>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<%@page import="mes.system.dao.*" %>
-<%@page import="mes.system.factory.*" %>
-<%@page import="mes.framework.*"%>
+<%@page import="com.qm.mes.system.dao.*" %>
+<%@page import="com.qm.mes.system.factory.*" %>
+<%@page import="com.qm.mes.framework.*"%>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  
   	response.setDateHeader("Expires", 0); %>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%
     Connection con=null;
     Statement stmt = null;
@@ -44,7 +44,7 @@
 	String sqlOherType = daoType.getSQL_queryElementOtherType(type.getId());
 	
 	java.util.HashMap<Comparable,String> map = new java.util.HashMap<Comparable,String>();
-	map.put(new mes.util.SelectMap(type.getId(),type.getName()),String.valueOf(type.getId()));
+	map.put(new com.qm.mes.util.SelectMap(type.getId(),type.getName()),String.valueOf(type.getId()));
 	List<IMaterialCharacter> listHaveCharacter = new ArrayList<IMaterialCharacter>();
 	List<IMaterialCharacter> listAllCharacter = new ArrayList<IMaterialCharacter>();
 	List<IMaterialidentify> listHaveIdentify = new ArrayList<IMaterialidentify>();
@@ -55,7 +55,7 @@
 	  IMaterialType materialType = factoryType.createElement();
 	  materialType.setId(rs.getInt(3));
 	  materialType.setName(rs.getString(2));
-	  map.put(new mes.util.SelectMap(materialType.getId(),materialType.getName()),String.valueOf(materialType.getId()));
+	  map.put(new com.qm.mes.util.SelectMap(materialType.getId(),materialType.getName()),String.valueOf(materialType.getId()));
 	}
 	rs = stmt.executeQuery(sqlHaveCharacter);
 	while(rs.next()){

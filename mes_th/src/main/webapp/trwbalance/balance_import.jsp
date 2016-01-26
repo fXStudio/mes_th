@@ -3,7 +3,7 @@
 <!-- InstanceBeginEditable name="引入包" -->
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <%@page	import="org.apache.commons.logging.Log,org.apache.commons.logging.LogFactory"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <!-- InstanceEndEditable -->
 <!-- 以下为修改提交参数时用 -->
 <!-- InstanceBeginEditable name="获得连接对象" -->

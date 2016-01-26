@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,mes.system.elements.*" errorPage="" %>
-<%@page import="mes.framework.*"%>
-<%@page import="mes.system.dao.*" %>
-<%@page import="mes.system.factory.*" %>
+<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,com.qm.mes.system.elements.*" errorPage="" %>
+<%@page import="com.qm.mes.framework.*"%>
+<%@page import="com.qm.mes.system.dao.*" %>
+<%@page import="com.qm.mes.system.factory.*" %>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <html>
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  

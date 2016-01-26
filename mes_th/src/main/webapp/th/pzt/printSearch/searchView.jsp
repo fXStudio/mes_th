@@ -2,7 +2,7 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="java.sql.*"%>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES" />
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES" />
 
 <html>
   <head>

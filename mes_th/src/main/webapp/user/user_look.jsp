@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <%//@page import="tree.*"%>
-<%@page import="mes.framework.dao.*"%>
-<%@page import="mes.framework.*"%>
-<jsp:directive.page import="mes.beans.Role"/>
+<%@page import="com.qm.mes.framework.dao.*"%>
+<%@page import="com.qm.mes.framework.*"%>
+<jsp:directive.page import="com.qm.mes.beans.Role"/>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
 <%@ include file="security.jsp"%>

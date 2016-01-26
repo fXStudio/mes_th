@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=gb2312" language="java"
-	import="java.sql.*,java.util.*,mes.framework.*,java.util.regex.Pattern" errorPage=""%>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+	import="java.sql.*,java.util.*,com.qm.mes.framework.*,java.util.regex.Pattern" errorPage=""%>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>

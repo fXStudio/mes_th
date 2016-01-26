@@ -1,11 +1,11 @@
-<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,mes.system.elements.*" errorPage="" %>
-<%@page import="mes.framework.*"%>
-<%@page import="mes.system.dao.*" %>
-<%@page import="mes.system.factory.*" %>
+<%@ page contentType="text/html; charset=gb2312" language="java" import="java.sql.*,com.qm.mes.system.elements.*" errorPage="" %>
+<%@page import="com.qm.mes.framework.*"%>
+<%@page import="com.qm.mes.system.dao.*" %>
+<%@page import="com.qm.mes.system.factory.*" %>
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <html>
 <%	response.setHeader("Pragma","No-cache");  
    	response.setHeader("Cache-Control","no-cache");  
@@ -37,7 +37,7 @@
 	   IMaterialType materialtype = factory.createElement();
        materialtype.setId(rs.getInt(3));
 	   materialtype.setName(rs.getString(2));
-	  map.put(new mes.util.SelectMap(materialtype.getId(),materialtype.getName()),String.valueOf(materialtype.getId()));
+	  map.put(new com.qm.mes.util.SelectMap(materialtype.getId(),materialtype.getName()),String.valueOf(materialtype.getId()));
     }
 	rs = stmt.executeQuery(sqlCharacter);
 	while(rs.next()){

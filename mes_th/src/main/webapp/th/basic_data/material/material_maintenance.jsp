@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=GBK" language="java" pageEncoding="GBK"%>
 <%@ taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
-<%@ page import="com.qm.mes.th.helper.Conn_MES"%>
+<%@ page import="com.qm.th.helper.Conn_MES"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.sql.Connection"%>

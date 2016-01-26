@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
-<%@page import="th.tg.dao.*,th.tg.factory.*" %>
-<%@page import="th.tg.bean.*,mes.ra.util.*" %>
+<%@page import="com.qm.th.tg.dao.*,com.qm.th.tg.factory.*" %>
+<%@page import="com.qm.th.tg.bean.*,com.qm.mes.ra.util.*" %>
 <%@page import="java.util.*,java.text.SimpleDateFormat" %>
-<%@page	import="mes.framework.*,mes.framework.dao.*,mes.system.dao.*"%>
+<%@page	import="com.qm.mes.framework.*,com.qm.mes.framework.dao.*,com.qm.mes.system.dao.*"%>
 
 <%@taglib uri="http://www.faw-qm.com.cn/mes" prefix="mes"%>
 <html><!-- InstanceBegin template="/Templates/new_view.dwt.jsp" codeOutsideHTMLIsLocked="true" -->
@@ -10,7 +10,7 @@
 <!-- InstanceBeginEditable name="获得连接" -->
 <jsp:directive.page import="java.util.List"/>
 <jsp:directive.page import="java.util.ArrayList"/>
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <script language="JavaScript" type="text/javascript" src="../My97DatePicker/WdatePicker.js"></script>
 <!-- InstanceEndEditable -->
 <!-- InstanceBeginEditable name="获得过滤" -->

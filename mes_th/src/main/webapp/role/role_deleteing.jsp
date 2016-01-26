@@ -1,11 +1,11 @@
 <%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
 <%@page import="java.util.*" %> 
-<%@page import="mes.framework.*" %>
-<%@ page import="mes.framework.dao.*" %>  
+<%@page import="com.qm.mes.framework.*" %>
+<%@ page import="com.qm.mes.framework.dao.*" %>  
 
 <html><!-- InstanceBegin template="/Templates/处理摸板1.dwt.jsp" codeOutsideHTMLIsLocked="true" --> 
 <!-- InstanceBeginEditable name="获得连接对象" -->
-<jsp:useBean id="Conn" scope="page" class="com.qm.mes.th.helper.Conn_MES"/>
+<jsp:useBean id="Conn" scope="page" class="com.qm.th.helper.Conn_MES"/>
 <!-- InstanceEndEditable -->
  
 <%	String nextpage="_manage.jsp";
