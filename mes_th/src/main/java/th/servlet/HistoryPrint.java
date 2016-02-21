@@ -279,7 +279,7 @@ public class HistoryPrint extends HttpServlet {
 						cVinRule = cVinRule.replace(",", "','");
 						sqlWhere = sqlWhere + " and (subString(c.cVinCode,7,2) in(" + cVinRule + ")) ";
 					}
-					sqlWhere = sqlWhere + " order by c.cSEQNo_A, c.dabegin";
+					sqlWhere = sqlWhere + " order by c.dabegin, c.cSEQNo_A";
 
 					try {
 						insert_stmt = con.createStatement();

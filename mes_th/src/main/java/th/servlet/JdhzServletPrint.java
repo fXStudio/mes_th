@@ -364,8 +364,8 @@ public class JdhzServletPrint extends HttpServlet {
 						cvinRule = cvinRule.replace(",", "','");
 						sqlWhere = sqlWhere + " and (subString(c.cVinCode,7,2) in(" + cvinRule + ")) ";
 					}
-					sqlWhere = sqlWhere + " ORDER BY c.cSEQNo_A, c.dabegin";
-
+					sqlWhere = sqlWhere + " ORDER BY c.dabegin, c.cSEQNo_A";
+					
 					// 要打印的数据
 					try {
 						insert_stmt = con.createStatement();
