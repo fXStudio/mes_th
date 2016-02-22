@@ -64,7 +64,7 @@ function openApp(groupid, jPrintRadio, ch, pages, minPartCount, PerTimeRow, IsCo
     }
 
 	// 如果Vin不连续，则需要让用户确认打印操作
-	if(IsContinu === "0" && !window.confirm("vin不连续，是否打印")) { return; }
+	if(IsContinu === 0 && !window.confirm("vin不连续，是否打印")) { return; }
 
 	//提示数量不足是否打印
 	if(minPartCount < PerTimeRow && !window.confirm("辆份不足是否打印？")) { return; }

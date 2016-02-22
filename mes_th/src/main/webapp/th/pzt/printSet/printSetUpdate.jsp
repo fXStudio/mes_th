@@ -60,30 +60,24 @@ try
 	
 	
 	strSql="select distinct iprintGroupid from printSet";
-	//System.out.println(request.getParameter("checkBox1"));
 	con=Conn.getConn();
 	stmt=con.createStatement();
 	rs=stmt.executeQuery(strSql);
-	while(rs.next())
-	{
+	while(rs.next()) {
 		groupId=rs.getString(1);
-		tempRadio="printRadio"+String.valueOf(ii+1);
-		tempAuto="checkBox"+String.valueOf(ii+1);
-		tempSeq="seqText"+String.valueOf(ii+1);
-		tempPrintPage="printPage"+String.valueOf(ii+1);
+		tempRadio="printRadio"+groupId;
+		tempAuto="checkBox"+groupId;
+		tempSeq="seqText"+groupId;
+		tempPrintPage="printPage"+groupId;
 		printRadio[ii]=request.getParameter(String.valueOf(tempRadio));
 		auto[ii]=request.getParameter(String.valueOf(tempAuto));
 		seqNo[ii]=request.getParameter(String.valueOf(tempSeq));
 		printPage[ii]=request.getParameter(String.valueOf(tempPrintPage));
-		if(auto[ii]==null||auto[ii].equals(""))
+		if(auto[ii]==null||auto[ii].equals("")){
 			auto[ii]="0";
-		else
-		{
+		} else {
 			auto[ii]="1";
 		}
-		//System.out.println(tempAuto+":"+auto[ii]);
-		//System.out.println("seqno"+groupId+":"+seqNo[ii]);
-		//groupCount=rs.getString(1);
 		strSql="update printSet set cPrintRadio='"+printRadio[ii]+"',cAuto='"+auto[ii]+"',cLastVin='"+seqNo[ii]+"' ,npage='"+printPage[ii]+"' where iPrintGroupId='"+groupId+"'";
 		
 		//System.out.println(strSql);
@@ -92,7 +86,6 @@ try
 		strSql="delete printsetvin where printid in (select id from printset where iPrintGroupId='"+groupId+"')";
 		v_sql.addElement(strSql);
 		ii++;
-		
 	}
 	
 	sign=DataProcess.updateBatch(con,v_sql);

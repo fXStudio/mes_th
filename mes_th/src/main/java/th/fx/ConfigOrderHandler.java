@@ -276,34 +276,24 @@ public class ConfigOrderHandler {
 
 			rs = stmt.executeQuery();
 
-			// 最近Vin的流水号
-			int oldVinLst = 0;
-			// 车型标志
-			String preVinType = null;
-
 			for (int i = 0; i < perTimeRow && rs.next(); i++) {
 				String vinCode = rs.getString("cVinCode");// Vin码
 				String vinType = vinCode.substring(6, 8);// Vin车型
-
-				// 只有在Vin车型发生变化的时候，才要重新计算流水号
-				if (!vinType.equals(preVinType)) {
-					// 通过Vin车型标志，关联出最后打印的Vin码
-					String tempVin = hmVin.get(vinType);
-
-					// 如果当前车型对应的Vin记录不存在，则将当前的Vin关联该车型
-					if (tempVin == null || tempVin.equals("")) {
-						tempVin = vinCode;
+				String tempVin = hmVin.get(vinType);// 通过Vin车型标志，关联出最后打印的Vin码
+				
+				// 如果当前车型对应的Vin记录不存在，则将当前的Vin关联该车型
+				if (tempVin != null && !"".equals(tempVin)) {
+					int oldVinLst = Integer.valueOf(tempVin.substring(11)); // vin后六位
+					int newVinLst = Integer.valueOf(vinCode.substring(11)); // cardata中vin后6位
+					
+					// 如果不连续
+					if (newVinLst != oldVinLst) {
+						entity.setContinue(false);
+						
+						break;
 					}
-					oldVinLst = Integer.valueOf(tempVin.substring(11));// vin后六位
 				}
-
-				// 通过Vin流水判断Vin是否连续
-				if (Integer.valueOf(vinCode.substring(11)) != oldVinLst) {
-					entity.setContinue(false);
-
-					break;
-				}
-				oldVinLst++;
+				hmVin.put(vinType, vinCode);
 			}
 			rs.last();
 			entity.setPartCount(rs.getRow());
@@ -348,7 +338,8 @@ public class ConfigOrderHandler {
 		ResultSet rs = null;
 
 		try {
-			stmt = conn.prepareStatement("SELECT ISNULL(MAX(iCarNo), 0) FROM print_Data WHERE cremark = ? AND iPrintGroupId = ?");
+			stmt = conn.prepareStatement(
+					"SELECT ISNULL(MAX(iCarNo), 0) FROM print_Data WHERE cremark = ? AND iPrintGroupId = ?");
 			stmt.setString(1, jspRq);
 			stmt.setString(2, entity.getPrintSetId());
 

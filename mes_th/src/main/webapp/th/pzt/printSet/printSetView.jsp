@@ -93,42 +93,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	<td width="50">删除</td>
      </tr>
  <%
- 	try
- 	{
+ 	try {
  		con = Conn.getConn();
      	stmt = con.createStatement();
-     	//sql="select cCarTypeDesc,ctfassname,ibigno,nperTimeCount,nTfassCount,iPrintGroupId from printset";
-     	sql="select distinct iPrintGroupId from printSet";
-     	rs=stmt.executeQuery(sql);
-		while (rs.next())
-		{
-			//groupid号；
-			groupId=rs.getString(1);
-			/*
-			//起始车号
-			System.out.println("bigno");
-			bigNo=rs.getInt(3);
-			if (bigNo==0)
-			{
-				bigNo++;
-			}
-			*/
-			//已接收车辆数
-			//sqlCarCount="select count(*)  from cardata a,cardata_d b where a.cCarNo=b.icarid and b.itfassnameid=4";
+     	rs = stmt.executeQuery("select distinct iPrintGroupId from printSet");
+     	
+		while (rs.next()) {
+			groupId=rs.getString("iPrintGroupId");
 		
-			try
-			{
-				
-				//stmtCarCount=con.createStatement();
-				//rsCarCount=stmtCarCount.executeQuery(sqlCarCount);
-				
-				strSql="select cDescrip,cCarTypeDesc,ctfassname,nPerTimeCount,nTFASSCount,id,cfactory,cCarType,cPrintRadio,cAuto,cseqno_a,npage,clastvin,icarno from printset where iPrintGroupid="+groupId+" order by id";
-				stmtIn=con.createStatement();
-				rsIn=stmtIn.executeQuery(strSql);
-				if(rsIn.next())
-				{
-					
-					//carCount=rs.getString(1);
+			try {
+				strSql = "select cDescrip,cCarTypeDesc,ctfassname,nPerTimeCount,nTFASSCount,id,cfactory,cCarType,cPrintRadio,cAuto,cseqno_a,npage,clastvin,icarno from printset where iPrintGroupid="+groupId+" order by id";
+				stmtIn = con.createStatement();
+				rsIn = stmtIn.executeQuery(strSql);
+				if(rsIn.next()) {
 					descript=rsIn.getString(1);
 					carTypeDesc=rsIn.getString(2);
 					tFassName=rsIn.getString(3);
@@ -138,6 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					factoryNo=rsIn.getString(7);
 					carType=rsIn.getString(8);
 					printRadio=rsIn.getString(9);
+					
 					if(printRadio==null ||printRadio.trim().equals(""))
 						printRadio="0";
 					auto=rsIn.getString(10);
@@ -151,18 +129,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					lastVin=lastVin.trim();
 					printJh=rsIn.getString(14);
 					printJh=printJh.trim();
-					
-					//System.out.println(printSetId);						
 				}
-
 			}
-			catch(Exception eGetCarCount)
-			{
+			catch(Exception eGetCarCount) {
 				System.out.print("eGetCarCount:"+eGetCarCount.toString());
 				throw eGetCarCount;
-			}
-			finally
-			{
+			} finally {
 				if(rsIn!=null)
 					rsIn.close();
 				if(stmtIn!=null)

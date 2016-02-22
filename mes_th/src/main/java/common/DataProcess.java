@@ -15,7 +15,6 @@ public class DataProcess {
 
 			for (int i = 0; i < v_sql.size(); i++) {
 				if (v_sql.elementAt(i) != null) {
-					System.out.println(v_sql.elementAt(i));
 					stmt.addBatch((String) v_sql.elementAt(i));
 				}
 			}
