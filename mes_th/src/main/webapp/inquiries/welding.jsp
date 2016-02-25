@@ -102,7 +102,11 @@
 	    	sql_temp3 = "where cx.dWBegin is not null and cx.dABegin is null and cx.dCp6Begin is null "; 
 		}
 	    sql_temp3 = sql_temp3 + " and substring(cx.cCarNo,6,1) in(" + ss.getCcarType() + ") ";
-		for(int i=0;i<list_part.size();i++){
+	    
+	    if(!"".equals(ss.getCfactory()))
+	    	   sql_temp3 = sql_temp3 + " and substring(cx.cSEQNo, 1, 2) in(" + ss.getCfactory() + ") ";
+		
+	    for(int i=0;i<list_part.size();i++){
 			sql_temp1 = sql_temp1 + "max(aa."+list_part.get(i).getName().trim()+") as '"+list_part.get(i).getName().trim()+"',";
 			sql_temp1 = sql_temp1 + "max(aa."+list_part.get(i).getName().trim()+"数量) as '"+list_part.get(i).getName().trim()+"数量'";
 			sql_temp2 = sql_temp2 + "case when itfassnameid="+list_part.get(i).getId()+" then cQadno else null end as '"+list_part.get(i).getName().trim()+"',";
