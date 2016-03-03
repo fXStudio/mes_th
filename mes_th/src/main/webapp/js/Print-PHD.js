@@ -78,5 +78,5 @@ function openApp(groupid, jPrintRadio, ch, pages, minPartCount, PerTimeRow, IsCo
 
 // 设置页面的自动刷新计时器(每三分钟刷新一次)
 setTimeout(function(){
-	window.location.href = "printPHD.jsp";
+	getPrtDate();
 }, 3 * 60 * 1000);
