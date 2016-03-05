@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.sql.*" contentType="text/html;charset=gb2312"%>
+<%@ page language="java" import="java.sql.*"
+	contentType="text/html;charset=gb2312"%>
 <%@page import="java.util.Date"%>
 <%@page import="th.tg.dao.*,th.tg.factory.*"%>
 <%@page import="th.tg.bean.*,mes.ra.util.*"%>
@@ -26,7 +27,7 @@
     Connection con = null;
     Statement stmt = null;
     ResultSet rs = null;  
-    List<th.tg.bean.Part> list_part = new ArrayList<th.tg.bean.Part>();//总成集合
+    List<Part> list_part = new ArrayList<Part>();//总成集合
     WeldingSearchFactory factory_ws = new WeldingSearchFactory();//焊装查询工厂
     List<Welding_Stat> list_ws = new ArrayList<Welding_Stat>();//焊装统计集合
     SearchSetFactory factory_ss = new SearchSetFactory();//查询设置工厂

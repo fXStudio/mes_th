@@ -17,7 +17,7 @@
 		Terminal ter = new Terminal();
 		String emp = (String) session.getAttribute("username");
 		if (flag.equals("1")) {
-			int cou = ter.getTSeqRows(con, cPageNo, partno);
+			int cou = ter.getTSeqRows(con, partno);
 			if (cou > 0) {
 				out.println("{success:false}");
 				return;

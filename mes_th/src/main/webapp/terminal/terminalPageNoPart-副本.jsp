@@ -1,0 +1,19 @@
+<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page import="common.Conn_MES"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="db.Terminal"%>
+ 
+<% 
+	Connection con = null;
+	con = new Conn_MES().getConn();
+	String cPageNo = request.getParameter("cPageNo");
+	String partname = request.getParameter("partname");
+	String partno = request.getParameter("partno");
+	String vin=request.getParameter("vin");
+	
+	Terminal ter = new Terminal();
+	String emp=(String)session.getAttribute("username");
+	boolean isSucess = ter.insertPageNo_Part(con, partname, partno, cPageNo, emp, vin);
+
+	out.println(!isSucess ?  "{}" : "{partName:\"" + partname + "\"}");
+%>
