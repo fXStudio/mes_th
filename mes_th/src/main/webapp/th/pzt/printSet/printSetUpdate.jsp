@@ -4,19 +4,18 @@
 <jsp:useBean id="Conn" scope="page" class="common.Conn_MES" />
 
 <% 
-Connection con=null;
-ResultSet rs=null;
-Statement stmt=null;
-String strSql="";
-Vector v_sql=new Vector();
-String groupId="";
-Boolean sign=true;
-%>
-<% 
+	Connection con=null;
+	ResultSet rs=null;
+	Statement stmt=null;
+	
+	String changed = request.getParameter("changed");
+	String strSql="";
+	Boolean sign=true;
+	Vector v_sql=new Vector();
+	String groupId="";
 	String groupCount="0";
 
-try
-{
+try {
 	strSql="select count(distinct iprintGroupid) from printSet";
 	con=Conn.getConn();
 	stmt=con.createStatement();
@@ -25,13 +24,10 @@ try
 	{
 		groupCount=rs.getString(1);		
 	}		
-}
-catch(Exception eGroupCount)
-{
+} catch(Exception eGroupCount) {
 	System.out.println(eGroupCount.toString());
 }
-finally
-{
+finally {
 	if(rs!=null)
 		rs.close();
 	if(stmt!=null)
@@ -40,8 +36,7 @@ finally
 		con.close();
 }
 
-try
-{
+try {
 	String auto[];
 	String printRadio[];
 	String seqNo[];
@@ -59,10 +54,10 @@ try
 	
 	
 	
-	strSql="select distinct iprintGroupid from printSet";
-	con=Conn.getConn();
-	stmt=con.createStatement();
-	rs=stmt.executeQuery(strSql);
+	strSql="select distinct iprintGroupid from printSet where iprintGroupid in (" + changed + ")";
+	con = Conn.getConn();
+	stmt = con.createStatement();
+	rs = stmt.executeQuery(strSql);
 	while(rs.next()) {
 		groupId=rs.getString(1);
 		tempRadio="printRadio"+groupId;
