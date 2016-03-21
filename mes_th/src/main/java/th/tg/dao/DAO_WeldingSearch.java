@@ -49,8 +49,8 @@ public class DAO_WeldingSearch {
 			"and cd.dWBegin<=convert(varchar(100),'" + endTime + "',20)";
 			if(searchsetid==3)
 				sql = sql + " and substring(ccarno,5,1)<>'7' ";
-		    sql = sql+" and substring(cd.cCarNo,6,1)=" + carType +
-			" group by ITFASSNameId";
+		    sql = sql+" and substring(cd.cCarNo,6,1) in (" + carType +
+			") group by ITFASSNameId";
 		return sql;
 	}
 	
@@ -65,8 +65,8 @@ public class DAO_WeldingSearch {
 			"where cd.dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
 			"and cd.dWBegin<=convert(varchar(100),'" + endTime + "',20)" +
 			" and substring(cSEQNo,1,2)='" + B8_Q5 +
-		    "' and substring(cd.cCarNo,6,1)=" + carType +
-			" group by ITFASSNameId";
+		    "' and substring(cd.cCarNo,6,1) in (" + carType +
+			") group by ITFASSNameId";
 		return sql;
 	}		
 	
@@ -79,7 +79,7 @@ public class DAO_WeldingSearch {
 		String sql = "select ITFASSNameId,max(cTFASSName) as name from cardata_d c " +
 			"right join  tfassname pn" +
 			" on pn.id = c.itfassnameid left join cardata cd on cd.cCarNo=c.iCarId " +
-			"where substring(cd.cCarNo,6,1)=" + carType ;
+			"where substring(cd.cCarNo,6,1) in (" + carType + ") ";
 			if(searchsetid==3)
 				sql = sql + " and substring(ccarno,5,1)<>'7' ";
 		    sql = sql+
@@ -97,8 +97,8 @@ public class DAO_WeldingSearch {
 		String sql = "select ITFASSNameId,max(cTFASSName) as name from cardata_d c " +
 			"right join  tfassname pn" +
 			" on pn.id = c.itfassnameid left join cardata cd on cd.cCarNo=c.iCarId " +
-			"where substring(cd.cCarNo,6,1)=" + carType +
-			" and substring(cseqno,1,2)='" + B8_Q5 + "'" +
+			"where substring(cd.cCarNo,6,1) in (" + carType +
+			") and substring(cseqno,1,2)='" + B8_Q5 + "'" +
 			" and dWBegin is not null and dABegin is null" +
 			" group by ITFASSNameId";
 		return sql;
@@ -114,7 +114,7 @@ public class DAO_WeldingSearch {
 		   " on pn.id = c.itfassnameid left join cardata cd on cd.cCarNo=c.iCarId " +
 			"where dwbegin>=(select max(dwbegin) from cardata where cseqno='" + startOrder + "') " +
 			"and dwbegin<=(select max(dwbegin) from cardata where cseqno='" + endOrder + "') " +
-		    " and substring(cd.cCarNo,6,1)=" + carType ;
+		    " and substring(cd.cCarNo,6,1) in (" + carType + ") ";
 			if(searchsetid==3)
 				sql = sql + " and substring(ccarno,5,1)<>'7' ";
 		    sql = sql+
@@ -132,8 +132,8 @@ public class DAO_WeldingSearch {
 		   " on pn.id = c.itfassnameid left join cardata cd on cd.cCarNo=c.iCarId " +
 			"where dwbegin>=(select max(dwbegin) from cardata where cseqno='" + startOrder + "') " +
 			"and dwbegin<=(select max(dwbegin) from cardata where cseqno='" + endOrder + "')" +
-		    " and substring(cd.cCarNo,6,1)=" + carType +
-		    " and substring(cseqno,1,2)='" + B8Q5 +
+		    " and substring(cd.cCarNo,6,1) in (" + carType +
+		    ") and substring(cseqno,1,2)='" + B8Q5 +
 		    "' and cseqno>='" + startOrder +
 		    "' and cseqno<='" +endOrder +
 			"' group by ITFASSNameId";
@@ -150,7 +150,7 @@ public class DAO_WeldingSearch {
 			"right join  tfassname pn" +
 			" on pn.id = c.itfassnameid left join cardata cd on cd.cCarNo=c.iCarId " +
 			"where cd.dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
-		    " and substring(cd.cCarNo,6,1)=" + carType ;
+		    " and substring(cd.cCarNo,6,1) in (" + carType + ") ";
 			if(searchsetid==3)
 				sql = sql + " and substring(ccarno,5,1)<>'7' ";
 		    sql = sql+
@@ -168,8 +168,8 @@ public class DAO_WeldingSearch {
 			"right join  tfassname pn" +
 			" on pn.id = c.itfassnameid left join cardata cd on cd.cCarNo=c.iCarId " +
 			"where cd.dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
-		    " and substring(cd.cCarNo,6,1)=" + carType +
-		    " and substring(cseqno,1,2)='" + B8_Q5 +
+		    " and substring(cd.cCarNo,6,1)in (" + carType +
+		    ") and substring(cseqno,1,2)='" + B8_Q5 +
 			"' group by ITFASSNameId";
 		return sql;
 	}
@@ -189,8 +189,8 @@ public class DAO_WeldingSearch {
 			"and c.dWBegin<=convert(varchar(100),'" + endTime + "',20)";
 			if(searchsetid==3)
 				sql = sql + " and substring(ccarno,5,1)<>'7' ";
-		    sql = sql+" and substring(c.cCarNo,6,1)=" + carType +
-			" group by cQADNo order by max_no";
+		    sql = sql+" and substring(c.cCarNo,6,1) in (" + carType +
+			") group by cQADNo order by max_no";
 		return sql;
 	}
 	
@@ -208,8 +208,8 @@ public class DAO_WeldingSearch {
 			"where c.dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
 			"and c.dWBegin<=convert(varchar(100),'" + endTime + "',20)" +
 			" and substring(cseqno,1,2)='" + B8_Q5 +
-		    "' and substring(c.cCarNo,6,1)=" + carType +
-			" group by cQADNo ";
+		    "' and substring(c.cCarNo,6,1) in (" + carType +
+			") group by cQADNo ";
 		return sql;
 	}
 
@@ -224,7 +224,7 @@ public class DAO_WeldingSearch {
 			"right join cardata c on c.cCarNo=d.iCarId " +
 			"where c.dWBegin is not null " +
 			"and c.dABegin is null" +
-		    " and substring(c.cCarNo,6,1)=" + carType ;
+		    " and substring(c.cCarNo,6,1) in (" + carType + ") ";
 			if(searchsetid==3)
 				sql = sql + " and substring(ccarno,5,1)<>'7' ";
 		    sql = sql+" group by cQADNo order by max_no";
@@ -243,8 +243,8 @@ public class DAO_WeldingSearch {
 			"where c.dWBegin is not null " +
 			"and c.dABegin is null" +
 			" and substring(cseqno,1,2)='" + B8_Q5 + "'" +
-		    " and substring(c.cCarNo,6,1)=" + carType +
-			" group by cQADNo ";
+		    " and substring(c.cCarNo,6,1) in (" + carType +
+			") group by cQADNo ";
 		return sql;
 	}
 	
@@ -262,7 +262,7 @@ public class DAO_WeldingSearch {
 			"where dwbegin>=(select max(dwbegin) from cardata where cseqno='" + startOrder + "') " +
 			"and dwbegin<=(select max(dwbegin) from cardata where cseqno='" + endOrder + "')" +
 			" and cseqno>='" + startOrder + "' and cseqno<='" + endOrder + "' " +
-		    " and substring(c.cCarNo,6,1)=" + carType ;
+		    " and substring(c.cCarNo,6,1) in (" + carType + ") ";
 			if(searchsetid==3)
 				sql = sql + " and substring(ccarno,5,1)<>'7' ";
 		    sql = sql+
@@ -283,8 +283,8 @@ public class DAO_WeldingSearch {
 			"right join cardata c on c.cCarNo=d.iCarId " +
 			"where dwbegin>=(select max(dwbegin) from cardata where cseqno='" + startOrder + "') " +
 			"and dwbegin<=(select max(dwbegin) from cardata where cseqno='" + endOrder + "') " +
-		    " and substring(c.cCarNo,6,1)=" + carType +
-		    " and substring(cseqno,1,2)='" + B8_Q5 +
+		    " and substring(c.cCarNo,6,1) in (" + carType +
+		    ") and substring(cseqno,1,2)='" + B8_Q5 +
 		    "' and cseqno>='" + startOrder +
 		    "' and cseqno<='" + endOrder +
 			"' group by cQADNo ";
@@ -300,16 +300,10 @@ public class DAO_WeldingSearch {
 	 * @return
 	 */
 	public String getStatByStartTimeNum(String startTime,String num,String carType,int searchsetid){
-		/*String sql = "select top " + num + " max(d.cQADNo) max_no,sum(d.iTFASSNum) sum_num from carData_d d " + 
-			"right join cardata c on c.cCarNo=d.iCarId " +
-			"where c.dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
-		    " and substring(c.cCarNo,6,1)=" + carType +
-			" group by cQADNo ";
-		*/
 		String sql = "select max(cqadno) max_no,sum(itfassnum) as sum_num from cardata_d " +
 				"where icarid in (select top " + num + " cCarno from cardata " +
 				"where dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
-				"and substring(cCarNo,6,1)=" + carType ;
+				"and substring(cCarNo,6,1) in (" + carType + ") ";
 				if(searchsetid==3)
 					sql = sql + " and substring(ccarno,5,1)<>'7' ";
 			    sql = sql+ " order by cseqno) group by cqadno order by max_no";
@@ -326,17 +320,11 @@ public class DAO_WeldingSearch {
 	 * @return
 	 */
 	public String getStatByStartTimeNum_B8Q5(String startTime,String num,String carType,String B8_Q5){
-		/*String sql = "select top " + num + " max(d.cQADNo) max_no,sum(d.iTFASSNum) sum_num from carData_d d " + 
-			"right join cardata c on c.cCarNo=d.iCarId " +
-			"where c.dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
-		    " and substring(c.cCarNo,6,1)=" + carType +
-			" group by cQADNo ";
-		*/
 		String sql = "select max(cqadno) max_no,sum(itfassnum) as sum_num from cardata_d " +
 				"where icarid in (select top " + num + " cCarno from cardata " +
 				"where dWBegin>=convert(varchar(100),'" + startTime + "',20) " +
 				" and substring(cseqno,1,2)='" + B8_Q5 +"' " +
-				"and substring(cCarNo,6,1)=" + carType + " order by cseqno) group by cqadno";
+				"and substring(cCarNo,6,1) in (" + carType + ") order by cseqno) group by cqadno";
 		
 		return sql;
 	}

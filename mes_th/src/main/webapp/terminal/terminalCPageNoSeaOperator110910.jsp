@@ -6,6 +6,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
  
 <% 
+		
         String output = "";
         String start = request.getParameter("start");
         
@@ -43,7 +44,7 @@
 		
 		System.out.println("groupByNumber:"+groupByNumber);
 		//String condition=" where 0=0 and datediff(hh,printdate,getdate())<=24 ";
-		String condition=" where 0=0 and datediff(hh,printdate,getdate())<=24 and outdate is null and outpnostate is null ";
+		String condition=" where 0=0 and datediff(hh,printdate,getdate())<=4 and outdate is null and outpnostate is null ";
 		
 		for(int i=0;i<groupByNumber;i++){
 		
@@ -149,10 +150,10 @@
         ResultSet rs = null;
         try {
             con= new Conn_MES().getConn();
-    		System.out.println("terminalCPageNoSeaOperator.jsp --- Open Connection");
+            
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-            String sql="select * from (SELECT distinct PD.CPAGENO,P.cdescrip,"
+            String sql="select * from (SELECT distinct PD.CPAGENO,P.ccartypedesc,"
             		   +" CASE p.CCODE WHEN '1' THEN 'B8/Q5方向盘/气囊'"
             		   +" ELSE P.CCARTYPEDESC END AS NAME,"
                        +" CONVERT(VARCHAR,DAY(PD.CREMARK))+'-'+CONVERT(VARCHAR,PD.ICARNO) AS CODE,"
@@ -165,7 +166,7 @@
                        +" left join car_state cs on cp.car=cs.car"
                        +" left join pageno_state pst on pd.cpageno=pst.pageno) t "
                        +condition
-                       +" order by CPAGENO DESC";
+                       +" order by ccartypedesc";
             
             System.out.println(sql);
             
@@ -191,7 +192,7 @@
                 	outdate=rs.getTimestamp("outdate")==null?"":format.format(rs.getTimestamp("outdate"));	
                 	pagenostate=rs.getString("pagenostate")==null?"":rs.getString("pagenostate");
 			car=rs.getString("car")==null?"":rs.getString("car");
-			cdescrip=rs.getString("cdescrip")==null?"":rs.getString("cdescrip");
+			cdescrip=rs.getString("ccartypedesc")==null?"":rs.getString("ccartypedesc");
                     output += "{cpageno:'" + rs.getString("cpageno")+ "',code:'" + rs.getString("code")+ "',car:'" +car+ "',cdescrip:'" +cdescrip+ "',printdate:'" + format.format(rs.getTimestamp("printdate")) + "',partdate:'"+partdate+"',cardate:'"+cardate+"',outdate:'"+outdate+"',name:'" + rs.getString("name")+ "',pagenostate:'"+pagenostate+"'}";
                     if (i != aa - 1) {
                         output += ",";
@@ -204,46 +205,18 @@
 				    pagenostate="";
                 }
             }
-if(output.endsWith(","))
-output=output.substring(0,output.length()-1);
-
             output += "]}";
             
             System.out.println(output);
+            
             response.getWriter().write(output);
 
         } catch (Exception e) {
             out.print(e);
         } finally {
-        
-		         if(rs != null){
-		        	 try{
-		        		 rs.close();
-		        	 }catch(Exception e){
-		        		 e.printStackTrace();
-		        	 }finally{
-		        		 rs = null;
-		        	 }
-		         }
-		         if(stmt != null){
-		        	 try{
-		        		 stmt.close();
-		        	 }catch(Exception e){
-		        		 e.printStackTrace();
-		        	 }finally{
-		        		 stmt = null;
-		        	 }
-		         }
-		         if(con != null){
-		        	 try{
-		        		 con.close();
-		        	 }catch(Exception e){
-		        		 e.printStackTrace();
-		        	 }finally{
-		        		 con = null;
-		        	 }
-		         }
 
-    		System.out.println("terminalCPageNoSeaOperator.jsp --- Close Connection");
+            rs.close();
+            stmt.close();
+            con.close();
         }
 %>

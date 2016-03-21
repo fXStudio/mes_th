@@ -80,159 +80,152 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       
       </div> 
       <form id="form1" name="form1"  action="printSetUpdate.jsp"  method="get">
-     <table width="950" border="1" align="center" height="97">
-     <tr>	
-    	 <td  width="50">groupid</td>
-		<td width="150">描述</td>
-     	<td width="100">打印标题</td>
-     	<td width="100">总成</td>
-     	<td width="250">已接收数据</td>
-     	<td width="150">底盘号</td>
-     	<td width="50">份数</td>
-		<td width="50">架号</td>
-     	<td width="50">删除</td>
-     </tr>
- <%
- 	try {
- 		con = Conn.getConn();
-     	stmt = con.createStatement();
-     	rs = stmt.executeQuery("select distinct iPrintGroupId from printSet");
-     	
-		while (rs.next()) {
-			groupId=rs.getString("iPrintGroupId");
-		
-			try {
-				strSql = "select cDescrip,cCarTypeDesc,ctfassname,nPerTimeCount,nTFASSCount,id,cfactory,cCarType,cPrintRadio,cAuto,cseqno_a,npage,clastvin,icarno from printset where iPrintGroupid="+groupId+" order by id";
-				stmtIn = con.createStatement();
-				rsIn = stmtIn.executeQuery(strSql);
-				if(rsIn.next()) {
-					descript=rsIn.getString(1);
-					carTypeDesc=rsIn.getString(2);
-					tFassName=rsIn.getString(3);
-					perTimeCount=rsIn.getInt(4); //打印总数
-					tFassCount=rsIn.getInt(5);	
-					printSetId=	rsIn.getString(6);
-					factoryNo=rsIn.getString(7);
-					carType=rsIn.getString(8);
-					printRadio=rsIn.getString(9);
+	     <table width="950" border="1" align="center" height="97">
+	     <tr>	
+	    	 <td  width="50">groupid</td>
+			<td width="150">描述</td>
+	     	<td width="100">打印标题</td>
+	     	<td width="100">总成</td>
+	     	<td width="250">已接收数据</td>
+	     	<td width="150">底盘号</td>
+	     	<td width="50">份数</td>
+			<td width="50">架号</td>
+	     	<td width="50">删除</td>
+	     </tr>
+		 <%
+		 	try {
+		 		con = Conn.getConn();
+		     	stmt = con.createStatement();
+		     	rs = stmt.executeQuery("select distinct iPrintGroupId from printSet");
+		     	
+				while (rs.next()) {
+					groupId=rs.getString("iPrintGroupId");
+				
+					try {
+						strSql = "select cDescrip,cCarTypeDesc,ctfassname,nPerTimeCount,nTFASSCount,id,cfactory,cCarType,cPrintRadio,cAuto,cseqno_a,npage,clastvin,icarno from printset where iPrintGroupid="+groupId+" order by id";
+						stmtIn = con.createStatement();
+						rsIn = stmtIn.executeQuery(strSql);
+						if(rsIn.next()) {
+							descript=rsIn.getString(1);
+							carTypeDesc=rsIn.getString(2);
+							tFassName=rsIn.getString(3);
+							perTimeCount=rsIn.getInt(4); //打印总数
+							tFassCount=rsIn.getInt(5);	
+							printSetId=	rsIn.getString(6);
+							factoryNo=rsIn.getString(7);
+							carType=rsIn.getString(8);
+							printRadio=rsIn.getString(9);
+							
+							if(printRadio==null ||printRadio.trim().equals(""))
+								printRadio="0";
+							auto=rsIn.getString(10);
+							if(auto==null||auto.trim().equals(""))
+							 auto="0";
+							seqno_A=rsIn.getString(11).trim();
+							if(seqno_A==null||seqno_A.equals(""))
+								seqno_A="0";
+							printPage=rsIn.getString(12);
+							lastVin=rsIn.getString(13);
+							lastVin=lastVin.trim();
+							printJh=rsIn.getString(14);
+							printJh=printJh.trim();
+						}
+					}
+					catch(Exception eGetCarCount) {
+						System.out.print("eGetCarCount:"+eGetCarCount.toString());
+						throw eGetCarCount;
+					} finally {
+						if(rsIn!=null)
+							rsIn.close();
+						if(stmtIn!=null)
+							stmtIn.close();				
+					}
+					out.write("<tr>");	
+					out.write("<td>"+groupId+"</td>");
+					out.write("<td>"+descript+"</td>");
+					out.write("<td>"+carTypeDesc+"</td>");
+					out.write("<td>"+tFassName+"</td>");		
 					
-					if(printRadio==null ||printRadio.trim().equals(""))
-						printRadio="0";
-					auto=rsIn.getString(10);
-					if(auto==null||auto.trim().equals(""))
-					 auto="0";
-					seqno_A=rsIn.getString(11).trim();
-					if(seqno_A==null||seqno_A.equals(""))
-						seqno_A="0";
-					printPage=rsIn.getString(12);
-					lastVin=rsIn.getString(13);
-					lastVin=lastVin.trim();
-					printJh=rsIn.getString(14);
-					printJh=printJh.trim();
-				}
-			}
-			catch(Exception eGetCarCount) {
-				System.out.print("eGetCarCount:"+eGetCarCount.toString());
-				throw eGetCarCount;
-			} finally {
-				if(rsIn!=null)
-					rsIn.close();
-				if(stmtIn!=null)
-					stmtIn.close();				
-			}
-			out.write("<tr>");	
-			out.write("<td>"+groupId+"</td>");
-			out.write("<td>"+descript+"</td>");
-			out.write("<td>"+carTypeDesc+"</td>");
-			out.write("<td>"+tFassName+"</td>");		
-			//System.out.println("aaaaaaaaaaaaaaaa"+ch);
-			
-			out.write("<td><label><input type='radio' name='printRadio"+groupId+"'  value='1' ");
-			if(printRadio.trim().equals("1"))
-				out.write("checked='checked'");
-			out.write(" onclick='setls(1)'  />"+tFassCount+"辆份");
-			
-			out.write("<input type='radio' name='printRadio"+groupId+"'  value='2'");
-			if(printRadio.trim().equals("2"))
-				out.write("checked='checked'");
-			out.write(" onclick='setls(2)' />"+tFassCount*2+"辆份");
-			
-			out.write("<input type='radio' name='printRadio"+groupId+"'  value='3' ");
-			if(printRadio.trim().equals("3"))
-				out.write("checked='checked'");
-			out.write("onclick='setls(4)'  />"+perTimeCount+"辆份");
-			out.write("<input type='checkbox' name='checkBox"+groupId+"'   id='checkBox"+groupId+"' ");
-			if(auto.trim().equals("1"))
-				out.println("checked='checked'");
-			out.write(" /> 自动打印");	
-			out.write("</label></td>");
-			out.write("<td><input type='text' name='seqText"+groupId+"' id='seqText"+groupId+"' value='"+lastVin+"' /></td>");			
-			out.write("<td><input type='text' name='printPage"+groupId+"' id='printPage"+groupId+"' value='"+printPage+"' size='2' maxlength='2'/></td>");
-			out.write("<td><input type='text' name='printJh"+groupId+"' id='printJh"+groupId+"' value='0' size='3' maxlength='3'/></td>");
-			out.write("<td><input type='button' name='printDel"+groupId+"' id='printDel"+groupId+"' value='删除' onclick='printDel("+groupId+")'/></td>");			
-			out.write("</tr>");
-		}//end while printid;
-    }
-    catch(Exception e2)
-    {
-    	e2.printStackTrace();
- 	}
-  	finally
-  	{ 
-  	 if(rs!=null)
-   		 rs.close();
-   	 if(stmt!=null)
-   	 	stmt.close();
-   	 if(con!=null) 
-  		con.close();
-  	}
-  %>
-  <tr>
-  	<td colspan="7" align="center">
-  		<input type="submit" value="提交"/>
-  	</td>
-  </tr>
-    </table>
-
-</form>
-</body>
+					out.write("<td><label><input type='radio' name='printRadio"+groupId+"'  value='1' ");
+					if(printRadio.trim().equals("1"))
+						out.write("checked='checked'");
+					out.write("/>" + tFassCount+"辆份");
+					
+					out.write("<input type='radio' name='printRadio"+groupId+"'  value='2'");
+					if(printRadio.trim().equals("2"))
+						out.write("checked='checked'");
+					out.write("/>" + tFassCount*2+"辆份");
+					
+					out.write("<input type='radio' name='printRadio"+groupId+"'  value='3' ");
+					if(printRadio.trim().equals("3"))
+						out.write("checked='checked'");
+					out.write("/>" + perTimeCount+"辆份");
+					out.write("<input type='checkbox' name='checkBox"+groupId+"' id='checkBox"+groupId+"' ");
+					if(auto.trim().equals("1"))
+						out.println("checked='checked'");
+					out.write(" /> 自动打印");	
+					out.write("</label></td>");
+					out.write("<td><input type='text' name='seqText"+groupId+"' id='seqText"+groupId+"' value='"+lastVin+"' /></td>");			
+					out.write("<td><input type='text' name='printPage"+groupId+"' id='printPage"+groupId+"' value='"+printPage+"' size='2' maxlength='2'/></td>");
+					out.write("<td><input type='text' name='printJh"+groupId+"' id='printJh"+groupId+"' value='0' size='3' maxlength='3'/></td>");
+					out.write("<td><input type='button' name='printDel"+groupId+"' id='printDel"+groupId+"' value='删除' onclick='printDel("+groupId+")'/></td>");			
+					out.write("</tr>");
+				}//end while printid;
+		    }
+		    catch(Exception e2) {
+		    	e2.printStackTrace();
+		 	} finally { 
+			  	 if(rs!=null)
+			   		 rs.close();
+			   	 if(stmt!=null)
+			   	 	stmt.close();
+			   	 if(con!=null) 
+			  		con.close();
+		  	}
+		  %>
+		  <tr>
+		  	<td colspan="7" align="center">
+		  		<input type="submit" value="提交"/>
+		  	</td>
+		  </tr>
+		    </table>
+		   <input type="hidden" name ="changed"/>
+		</form>
+        <script src="<%=basePath%>js/jquery-1.11.0.min.js"></script>
+    </body>
+	<script language="javascript"> 
+	    $(document).ready(function(){
+	    	// 记录用户修改了那些项目
+	    	$(':radio,:text,:checkbox').change(function(){
+	    		// 所选项目的ID
+	    		var groupId = $(this).attr("name").match(/\d+/);
+	    		// 获得隐藏域对象
+	    		var hidden = $('input[type=hidden]');
+	    		// 隐藏域的内容
+	    		var val = hidden.val();
+	    		
+	    		if(val.length > 0){
+	    			val = val + ",";
+	    		}
+	    		hidden.val(val = val + groupId);
+	    	});
+	    });
+        
+        // 删除打印配置
+        function printDel(groupId) {
+           if(window.confirm("确定要删除配置想吗？")) {
+               var carid = document.getElementById('printJh'+groupId).value;
+               var rq = document.getElementById('rq').value;
+               var vincode = document.getElementById('seqText'+groupId).value;
+               
+               if(isNaN(carid)) {
+                   alert("请输入数字");
+               } else if(carid <= 0) {
+                   alert("架号应该大于0");
+               } else {
+                   window.location="printDel.jsp?groupId="+groupId+"&carId="+carid+"&rq="+rq+"&vincode="+vincode;
+               }
+           }
+        }
+	</script>
 </html>
-<script language="javascript"> 
-var ls = 1;
-function setls(xx){
-	ls=xx;
-	//alert(ls);
-}
-function test(s){
-    var rq=document.getElementById("rq").value;
-    var ch=document.getElementById("ch").value;
-    document.app.pp(rq,ch,s);
-}
-
-function openApp(groupid) 
-{ 
-    //var ls=document.getElementById("ls").value; 
-    //alert(groupid);
-   //alert(ls);   
-}
-function printDel(groupId)
-{
-	var carid="";
-	var rq="";
-	var vincode="";
-	carid=document.getElementById('printJh'+groupId).value;
-	rq=document.getElementById('rq').value;
-	vincode=document.getElementById('seqText'+groupId).value;
-	if(isNaN(carid))	
-		alert("请输入数字");
-	else if(carid<=0)
-	{
-		alert("架号应该大于0");
-	}
-	else
-	{
-		window.location="printDel.jsp?groupId="+groupId+"&carId="+carid+"&rq="+rq+"&vincode="+vincode;
-	}
-}
-
-</script> 

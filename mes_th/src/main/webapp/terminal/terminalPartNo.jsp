@@ -10,7 +10,7 @@
 		String pageno = request.getParameter("cPageNo");
 		String partseq = request.getParameter("partseq");
 		Terminal ter = new Terminal();
-		int cou=ter.getSeqRows(con,pageno,partseq);
+		int cou=ter.getSeqRows(con,partseq);
 		if(cou>0){
 			response.getWriter().print("{success:false}");
 		}else{

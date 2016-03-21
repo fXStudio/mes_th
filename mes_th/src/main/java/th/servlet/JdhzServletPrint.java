@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -39,7 +41,10 @@ public class JdhzServletPrint extends HttpServlet {
 	/** 序列号 */
 	private static final long serialVersionUID = 1L;
 	/** 日期格式化工具 */
-	SimpleDateFormat date_fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	private SimpleDateFormat date_fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	/** 系统日志工具 */
+	private Logger logger = Logger.getLogger(JdhzServletPrint.class);
 
 	/**
 	 * 数据处理
@@ -365,6 +370,8 @@ public class JdhzServletPrint extends HttpServlet {
 						sqlWhere = sqlWhere + " and (subString(c.cVinCode,7,2) in(" + cvinRule + ")) ";
 					}
 					sqlWhere = sqlWhere + " ORDER BY c.dabegin, c.cSEQNo_A";
+					
+					logger.debug(sqlWhere);
 					
 					// 要打印的数据
 					try {

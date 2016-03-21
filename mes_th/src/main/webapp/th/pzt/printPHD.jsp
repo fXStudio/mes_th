@@ -42,9 +42,8 @@
             <label> 
                 <mes:calendar id="rq" name="rq" reSourceURL="JarResource/" 
       			   showDescripbe="false" haveTime="false" 
-      			   value="<%=jspRq%>"/>
+      			   value="<%=jspRq%>" onchange="getPrtDate()"/>
             </label> 
-            <input type="button" value="确定" onclick="getPrtDate()"/> 
         </div>
 		
         <!-- 配置单打印表单 -->

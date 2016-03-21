@@ -1,4 +1,4 @@
-﻿<%@ page language="java" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" pageEncoding="utf-8"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
@@ -66,6 +66,7 @@
 		}
 		var entrycode = 13;
 		if (entrycode == event.keyCode) {
+
 			var intxt = document.getElementById("inptxt");
 			var sh = document.getElementById("showtxt");
 			var requestConfig = {
@@ -151,13 +152,15 @@
 		
 		var entrycode = 13;
 		if (entrycode == event.keyCode) {
-		
+			document.getElementById("inrtxt").blur();	
 					if (!regexp.test(inrtxt_temp.value)) {
 						alert('序列号错误');
+document.getElementById("inrtxt").focus();
 						inrtxt_temp.value = "";
+
 						return;
 					}
-			inrtxt_temp.readOnly=true;
+		
 			var requestConfig = {
 				url : "terminalPartNo.jsp",//请求的服务器地址
 				params : {
@@ -173,6 +176,7 @@
 					}else{
 						alert('序列号重复');
 						document.getElementById("inrtxt").value = "";
+						document.getElementById("inrtxt").focus();
 						return;
 					}
 					var intxt = document.getElementById("inptxt");
@@ -328,6 +332,7 @@
 		var inrtxt = document.getElementById("inrtxt");
 
 		if (enterkey == e.keyCode) {
+document.getElementById("inptxt").blur();
 			intxt["sel"] = coreFunc();
 			inrtxt.readOnly=false;
 		}
@@ -350,13 +355,14 @@
 		var vin = vins[intxt["index"]];
 
 		var curscan = intxt["value"];
-		var isLetter = /[a-zA-Z]{2}/;
+		var isLetter = /^.{7}[a-zA-Z0-9]{2}.*$/g;
 		var val = "";
-		if (isLetter.test((val = curscan.substring(7, 9)))) {
-			
+		if (isLetter.test(curscan)) {
+			val = curscan.substring(7, 9)
 			if ((destination.trim() == "") && (curscan.trim() != "")) {
 				soundManager.play('failed');
 				alert('零件号错误');
+document.getElementById("inptxt").focus();
 				return false;
 			}
 			var temp = curscan;
@@ -390,12 +396,14 @@
 								if(jsonObj["success"]==false){
 									alert('序列号重复');
 									document.getElementById("inptxt").value = "";
+									document.getElementById("inptxt").focus();
 									return;
 								}
 								var partName = jsonObj["partName"];
 
-								if(partName){
+								if(partName || (!partName && partName == curscan.trim())){
 									soundManager.play('success');
+									document.getElementById("inptxt").focus();
 									intxt["index"] = intxt["index"] + 1;
 									if (intxt["index"] <= arr.length - 1) {
 										sh.value = arr[intxt["index"]];
@@ -432,6 +440,7 @@
 					sh.value = arr[intxt["index"]];
 					soundManager.play('failed');
 					alert('零件号错误');
+					document.getElementById("inptxt").focus();
 					intxt.value = "";
 					turn();
 					return false;
@@ -442,6 +451,7 @@
 			if ((destination.trim() == "") && (curscan.trim() != "")) {
 				soundManager.play('failed');
 				alert('零件号错误');
+document.getElementById("inptxt").focus();
 				return false;
 			}
 			var count = curscan.length;
@@ -459,7 +469,7 @@
 						var jsonObj = eval( "(" + response.responseText + ")");
 						var partName = jsonObj["partName"];
 
-						if(partName){
+						if(partName || (!partName && partName == curscan.trim())){
 							soundManager.play('success');
 							document.getElementById("inrtxt").focus();
 
@@ -487,6 +497,7 @@
 			sh.value = arr[intxt["index"]];
 			soundManager.play('failed');
 			alert('零件号错误');
+document.getElementById("inptxt").focus();
 			intxt.value = "";
 			turn();
 			return false;
@@ -601,3 +612,5 @@
 	</body>
 
 </html>
+
+

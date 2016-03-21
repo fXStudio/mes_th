@@ -8,8 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import common.Conn_MES;
+import org.apache.log4j.Logger;
 
+import common.Conn_MES;
 import th.fx.bean.COrderEntity;
 
 /**
@@ -26,6 +27,10 @@ public class ConfigOrderHandler {
 
 	/** 最小打印零件数量 */
 	private int minPartCount = 9999;
+	
+
+	/** 系统日志工具 */
+	private Logger logger = Logger.getLogger(ConfigOrderHandler.class);
 
 	/**
 	 * 构造函数
@@ -286,8 +291,8 @@ public class ConfigOrderHandler {
 					int oldVinLst = Integer.valueOf(tempVin.substring(11)); // vin后六位
 					int newVinLst = Integer.valueOf(vinCode.substring(11)); // cardata中vin后6位
 					
-					// 如果不连续
-					if (newVinLst != oldVinLst) {
+					// 如果是连续的序列号，那么其做差的结果应该等于1
+					if ((newVinLst - oldVinLst) != 1) {
 						entity.setContinue(false);
 						
 						break;

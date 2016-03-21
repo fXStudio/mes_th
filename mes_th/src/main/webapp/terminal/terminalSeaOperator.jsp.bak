@@ -1,4 +1,4 @@
-﻿<%@ page language="java" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="db.Terminal"%>
 <%@ page import="common.Conn_MES"%>
@@ -6,6 +6,7 @@
 <%@page import="java.text.SimpleDateFormat"%>
  
 <% 
+		
         String output = "";
         String start = request.getParameter("start");
         
@@ -42,8 +43,8 @@
 		}
 		
 		System.out.println("groupByNumber:"+groupByNumber);
-		//String condition=" where 0=0 and datediff(hh,printdate,getdate())<=24 ";
-		String condition=" where 0=0 and datediff(hh,printdate,getdate())<=24 and outdate is null and outpnostate is null ";
+		
+		String condition=" where 0=0 ";
 		
 		for(int i=0;i<groupByNumber;i++){
 		
@@ -70,7 +71,7 @@
 			
 			if(filtertype[0].equals("string")){
 			
-				condition+=" and "+filterfield[0]+" like '%"+filtervalue[0]+"%'";
+				condition+=" and "+"ps."+filterfield[0]+" like '%"+filtervalue[0]+"%'";
 			}
 			if(filtertype[0].equals("numeric")){
 			
@@ -142,35 +143,31 @@
 		
         System.out.println(condition);
         
-        int rows=new Terminal().getFilterCPageNoSeaCount(condition);
+        int rows=new Terminal().getFilterCount(condition);
 	   	int total=rows;
 	   	Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
         try {
             con= new Conn_MES().getConn();
-    		System.out.println("terminalCPageNoSeaOperator.jsp --- Open Connection");
+            System.out.println("terminalSaveCarPage.jsp --- Open Connection");
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-            String sql="select * from (SELECT distinct PD.CPAGENO,P.cdescrip,"
-            		   +" CASE p.CCODE WHEN '1' THEN 'B8/Q5方向盘/气囊'"
-            		   +" ELSE P.CCARTYPEDESC END AS NAME,"
-                       +" CONVERT(VARCHAR,DAY(PD.CREMARK))+'-'+CONVERT(VARCHAR,PD.ICARNO) AS CODE,"
-                       +" CP.CAR,PD.dPrintTime as printdate,CP.outpnostate,"
-                       +" ps.recorddate as partdate,cs.recorddate as cardate,"
-                       +" cs.outrecorddate as outdate,pst.pagenostate"
-                       +" FROM PRINTSET P INNER JOIN PRINT_DATA PD ON P.ID=PD.IPRINTGROUPID"
-                       +" left JOIN pageno_state ps on pd.cpageno=ps.pageno"
-                       +" left JOIN CAR_PAGENO CP ON PD.CPAGENO=CP.PAGENO"
-                       +" left join car_state cs on cp.car=cs.car"
-                       +" left join pageno_state pst on pd.cpageno=pst.pageno) t "
-                       +condition
-                       +" order by CPAGENO DESC";
+            String sql="select ps.pageno,ps.recorddate as psdate,ps.emp as psemp,"
+                       +"cp.recorddate as cpdate,cp.emp as cpemp,"
+                       +"cs.car as cscar,"
+                       +"cs.recorddate as csdate,cs.emp as csemp,"
+                       +"cs.outrecorddate as csoutrecorddate,cs.outemp as csoutemp "
+                       +"from pageno_state ps "
+                       +"inner join car_pageno cp "
+                       +"on ps.pageno=cp.pageno "+
+                       "inner join car_state cs "
+                       +"on cp.car=cs.car "+condition;
             
             System.out.println(sql);
             
             rs = stmt.executeQuery(sql);
-            
+       
             output = "{total:"+total+",data:[";
             int aa = ((pageSize + index > total) ? total : (pageSize + index));
 
@@ -178,72 +175,29 @@
                 rs.absolute(index);
             }
 			SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			String partdate="";
-			String cardate="";
-			String outdate="";
-			String car="";
-			String cdescrip="";
-			String pagenostate="";
             for (int i=index; i < aa; i++) {
                 if(rs.next()) {
-                	partdate=rs.getTimestamp("partdate")==null?"":format.format(rs.getTimestamp("partdate"));
-                	cardate=rs.getTimestamp("cardate")==null?"":format.format(rs.getTimestamp("cardate"));		
-                	outdate=rs.getTimestamp("outdate")==null?"":format.format(rs.getTimestamp("outdate"));	
-                	pagenostate=rs.getString("pagenostate")==null?"":rs.getString("pagenostate");
-			car=rs.getString("car")==null?"":rs.getString("car");
-			cdescrip=rs.getString("cdescrip")==null?"":rs.getString("cdescrip");
-                    output += "{cpageno:'" + rs.getString("cpageno")+ "',code:'" + rs.getString("code")+ "',car:'" +car+ "',cdescrip:'" +cdescrip+ "',printdate:'" + format.format(rs.getTimestamp("printdate")) + "',partdate:'"+partdate+"',cardate:'"+cardate+"',outdate:'"+outdate+"',name:'" + rs.getString("name")+ "',pagenostate:'"+pagenostate+"'}";
+					
+                    output += "{pageno:'" + rs.getString("pageno")+ "',partdate:'" + format.format(rs.getTimestamp("psdate")) + "',partemp:'"+rs.getString("psemp")+"',carpagenodate:'"+format.format(rs.getTimestamp("cpdate"))+"',carpagenoemp:'"+rs.getString("cpemp")+"',car:'"+rs.getString("cscar")+"',cardate:'"+format.format(rs.getTimestamp("csdate"))+"',caremp:'"+rs.getString("csemp")+"',outrecorddate:'"+format.format(rs.getTimestamp("csoutrecorddate"))+"',outemp:'"+rs.getString("csoutemp")+"'}";
+
                     if (i != aa - 1) {
                         output += ",";
                     }
-                    partdate="";
-                    cardate="";
-				    outdate="";
-			        car="";
-				    cdescrip="";
-				    pagenostate="";
+
                 }
             }
-if(output.endsWith(","))
-output=output.substring(0,output.length()-1);
-
             output += "]}";
             
             System.out.println(output);
+            
             response.getWriter().write(output);
 
         } catch (Exception e) {
             out.print(e);
         } finally {
-        
-		         if(rs != null){
-		        	 try{
-		        		 rs.close();
-		        	 }catch(Exception e){
-		        		 e.printStackTrace();
-		        	 }finally{
-		        		 rs = null;
-		        	 }
-		         }
-		         if(stmt != null){
-		        	 try{
-		        		 stmt.close();
-		        	 }catch(Exception e){
-		        		 e.printStackTrace();
-		        	 }finally{
-		        		 stmt = null;
-		        	 }
-		         }
-		         if(con != null){
-		        	 try{
-		        		 con.close();
-		        	 }catch(Exception e){
-		        		 e.printStackTrace();
-		        	 }finally{
-		        		 con = null;
-		        	 }
-		         }
 
-    		System.out.println("terminalCPageNoSeaOperator.jsp --- Close Connection");
+            rs.close();
+            stmt.close();
+            con.close();
         }
 %>
