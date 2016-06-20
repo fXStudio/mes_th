@@ -814,7 +814,7 @@ public class JdhzServletPrint extends HttpServlet {
 				List<JConfigure> fxpqnList = new ArrayList<JConfigure>();
 				// 组织数据集合
 				for (int iitFassCount = 0; iitFassCount < tFassCount; iitFassCount++) {
-					for (int iifxp = 0; iifxp <= iiPrintId; iifxp++) {
+					for (int iifxp = 0; iifxp <= iiPrintId && superlist.get(iifxp).size() > iitFassCount; iifxp++) {
 						fxpqnList.add(superlist.get(iifxp).get(iitFassCount));
 					}
 				}
