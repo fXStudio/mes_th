@@ -5,10 +5,10 @@ public class JConfigure {
 	private String cVinCode; // vin码
 	private String cQADNo; // 天合总成号
 	private String cCarType; // 车型
-	private int index;
-	String cCarNo;
-	private int tfassId;
+	private String cCarNo;
 	private String tfass;
+	private int index;
+	private int tfassId;
 	private int printSetId;
 
 	public String getCSEQNo_A() {
