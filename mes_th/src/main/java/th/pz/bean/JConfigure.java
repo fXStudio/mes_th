@@ -1,7 +1,11 @@
 package th.pz.bean;
 
-public class JConfigure {
-	private String cSEQNo_A; // 总装顺序号
+import java.io.Serializable;
+
+public class JConfigure implements Serializable{
+	/** */
+    private static final long serialVersionUID = 1L;
+    private String cSEQNo_A; // 总装顺序号
 	private String cVinCode; // vin码
 	private String cQADNo; // 天合总成号
 	private String cCarType; // 车型

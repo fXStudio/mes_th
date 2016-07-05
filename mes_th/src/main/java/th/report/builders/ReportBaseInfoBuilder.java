@@ -33,7 +33,7 @@ public class ReportBaseInfoBuilder implements IReportBaseInfoBuilder {
 		this.printSet = printSet;
 		this.requestParam = requestParam;
 
-		reportBaseInfo = new ReportBaseInfo();
+		this.reportBaseInfo = new ReportBaseInfo();
 	}
 
 	/**

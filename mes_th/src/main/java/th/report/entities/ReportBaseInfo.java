@@ -3,12 +3,12 @@ package th.report.entities;
 import java.util.HashMap;
 
 public class ReportBaseInfo {
-	private String dabegin;
-	private String daseqa;
-	private Integer carno = 1;
-	private String tfassId;
-	private Integer pageNo;
-	private String chassisNumber;
+	private String dabegin = "";
+	private String daseqa = "";
+	private int carno = 1;
+	private String tfassId = "";
+	private int pageNo;
+	private String chassisNumber = "";
 	private HashMap<String, String> hmVin = new HashMap<String, String>();
 
 	public String getVinByCarType(String key) {

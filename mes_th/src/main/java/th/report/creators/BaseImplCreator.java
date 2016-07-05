@@ -4,8 +4,16 @@ import java.sql.ResultSet;
 
 import th.pz.bean.PrintSet;
 import th.report.api.IJasperPrintCreator;
+import th.report.api.IReportBaseInfoFacade;
+import th.report.api.IReportDataSetFacade;
+import th.report.facades.ReportBaseInfoFacade;
+import th.report.facades.ReportDataSetFacade;
 
-abstract class SimpleCreator implements IJasperPrintCreator {
+abstract class BaseImplCreator implements IJasperPrintCreator {
+    protected IReportBaseInfoFacade reportBaseInfoFacade = new ReportBaseInfoFacade();
+    protected IReportDataSetFacade reportDataSetFacade = new ReportDataSetFacade();
+    
+    
 	/**
 	 * 创建打印对象
 	 * 
@@ -18,9 +26,9 @@ abstract class SimpleCreator implements IJasperPrintCreator {
 		printSet.setId(rs.getInt("id"));
 		printSet.setIPrintGroupId(rs.getInt("iprintGroupId"));
 		printSet.setCCode(rs.getString("cCode"));
-		printSet.setCTFASSName(rs.getString("tfassName"));
+		printSet.setCTFASSName(rs.getString("cTfassName"));
 		printSet.setCCarType(rs.getString("cCarType"));
-		printSet.setNTFASSCount(rs.getInt("tFassCount"));
+		printSet.setNTFASSCount(rs.getInt("nTFassCount"));
 		printSet.setIMESseq(rs.getInt("iMesSeq"));
 		printSet.setCFactory(rs.getString("cFactory"));
 		printSet.setCPrintMD(rs.getString("cPrintMd"));

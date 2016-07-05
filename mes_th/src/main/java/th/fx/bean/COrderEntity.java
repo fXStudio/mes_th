@@ -7,42 +7,40 @@ package th.fx.bean;
  */
 public class COrderEntity {
 	/** 组编号 */
-	private String groupId;
+	private String groupId = "";
 	/** 描述 */
-	private String descript;
+	private String descript = "";
 	/** 打印次数 */
-	private Integer perTimeCount;
+	private int perTimeCount;
 	/** 零件数量 */
-	private Integer tFassCount;
+	private int tFassCount;
 	/** 打印记录编号 */
-	private String printSetId;
+	private String printSetId = "";
 	/** 工厂编号 */
-	private String factoryNo;
+	private String factoryNo = "";
 	/** 车型 */
-	private String carType;
+	private String carType = "";
 	/** 打印组 */
 	private int printRadio;
 	/** 自动打印标志 */
-	private String auto;
+	private String auto = "";
 	/** 页码 */
-	private Integer pages;
+	private int pages;
 	/** 最后一个VIN号 */
-	private String lastVin;
+	private String lastVin = "";
 	/** 总装上线时间 */
-	private String dabegin;
+	private String dabegin = "";
 	/** 序列号 */
-	private String seq_a;
+	private String seq_a = "";
 
 	private boolean isContinue = true;
 
 	private int partCount;
 	private int perTimeRow;
-	private String maxCarno;
-
-	private String openApp;
-	private String cvinrule;
-
 	private int minPartCount;
+	private String maxCarno = "";
+	private String openApp = "";
+	private String cvinrule = "";
 
 	public int getMinPartCount() {
 		return minPartCount;

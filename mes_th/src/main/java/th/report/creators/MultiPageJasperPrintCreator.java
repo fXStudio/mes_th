@@ -11,7 +11,7 @@ import th.report.entities.RequestParam;
  * 
  * @author Ajaxfan
  */
-public class MultiPageJasperPrintCreator  extends SimpleCreator {
+public class MultiPageJasperPrintCreator  extends BaseImplCreator {
 
 	public List<JasperPrint> createJasperPrints(Connection conn, RequestParam requestParam) {
 		return null;

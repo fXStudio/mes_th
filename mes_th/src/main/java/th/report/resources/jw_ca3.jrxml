@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jw" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="782" leftMargin="20" rightMargin="20" topMargin="10" bottomMargin="0" uuid="cf14b59a-ec15-415a-9214-9c82b934f68a">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<import value="java.util.*"/>
+	<parameter name="rq" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+	</parameter>
+	<parameter name="js" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="zrq" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="ch" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="mc1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="mc2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="mc3" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="mc4" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="mc5" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="id1" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="id2" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="id3" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="id4" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="id5" class="java.lang.Integer" isForPrompting="false"/>
+	<parameter name="datasource1" class="net.sf.jasperreports.engine.JRDataSource" isForPrompting="false"/>
+	<parameter name="datasource2" class="net.sf.jasperreports.engine.JRDataSource" isForPrompting="false"/>
+	<parameter name="datasource3" class="net.sf.jasperreports.engine.JRDataSource" isForPrompting="false"/>
+	<parameter name="datasource4" class="net.sf.jasperreports.engine.JRDataSource" isForPrompting="false"/>
+	<parameter name="datasource5" class="net.sf.jasperreports.engine.JRDataSource" isForPrompting="false"/>
+	<parameter name="datasource6" class="net.sf.jasperreports.engine.JRDataSource" isForPrompting="false"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["E:\\ireport教程\\workplace\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tm3" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="tm1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="tm2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="tm4" class="java.lang.String" isForPrompting="false"/>
+	<field name="CCarType" class="java.lang.String">
+		<fieldDescription><![CDATA[CCarType]]></fieldDescription>
+	</field>
+	<field name="CQADNo" class="java.lang.String">
+		<fieldDescription><![CDATA[CQADNo]]></fieldDescription>
+	</field>
+	<field name="CSEQNo_A" class="java.lang.String">
+		<fieldDescription><![CDATA[CSEQNo_A]]></fieldDescription>
+	</field>
+	<field name="CVinCode" class="java.lang.String">
+		<fieldDescription><![CDATA[CVinCode]]></fieldDescription>
+	</field>
+	<field name="index" class="java.lang.Integer">
+		<fieldDescription><![CDATA[index]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="111" splitType="Stretch">
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="18f9eb4f-1643-4789-8866-7fbc307eb955" key="textField-1" x="37" y="53" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mc1}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="yyyy-MM-dd HH:mm:ss" isBlankWhenNull="false">
+				<reportElement uuid="3bbaa832-5488-47c3-8a62-57456cc7824c" key="textField-2" x="39" y="27" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rq}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9c89742a-b727-46f9-8d3a-6964363ccf50" key="staticText-1" x="45" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[天合富奥   配货单]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="cdfb9fd4-87e3-4bc0-a4c0-2451581168b1" key="line-1" x="200" y="0" width="1" height="110"/>
+			</line>
+			<line>
+				<reportElement uuid="d663d1fc-f227-4239-887f-0474d599ef4f" key="line-2" x="400" y="0" width="1" height="110"/>
+			</line>
+			<staticText>
+				<reportElement uuid="b522f647-3373-407e-97ef-de902d93bcd6" key="staticText-2" x="245" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[天合富奥   配货单]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="yyyy-MM-dd HH:mm:ss" isBlankWhenNull="false">
+				<reportElement uuid="8960c2d0-3552-4d38-8b39-524c08ea0b16" key="textField-3" x="237" y="27" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rq}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="c9d56dea-9465-45d7-a136-be02a89f22ff" key="textField-4" x="237" y="53" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mc2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="00c079d5-a8bb-4661-8f3c-e628e20b03e2" key="staticText-3" x="445" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[天合富奥   配货单]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="yyyy-MM-dd HH:mm:ss" isBlankWhenNull="false">
+				<reportElement uuid="bd052918-fc8b-452f-a316-a37ae64a97a4" key="textField-5" x="440" y="27" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rq}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="403ce276-29d1-4fff-a1c8-9511959f2fc5" key="textField-6" x="440" y="53" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mc3}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="f689ea22-1ecb-47f7-beed-e2301a178cfd" key="line-3" x="600" y="0" width="1" height="110"/>
+			</line>
+			<staticText>
+				<reportElement uuid="e7194c30-23f4-4eaa-9ed3-ad99a0bad4ab" key="staticText-4" x="645" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[天合富奥   配货单]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="yyyy-MM-dd HH:mm:ss" isBlankWhenNull="false">
+				<reportElement uuid="a92957ae-87e9-4311-8454-bd5cdc19483f" key="textField-7" x="641" y="27" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rq}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="fb49bc6f-aa28-4d21-aeed-1253120258ec" key="textField-8" x="641" y="53" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mc4}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement uuid="0d5779e9-de98-4b02-a214-1a771fbf957a" key="barcode-1" mode="Opaque" x="27" y="77" width="150" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$P{tm1},false,false,null,0,0)]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement uuid="81675b94-b774-41a8-bc84-63904e105213" key="barcode-2" mode="Opaque" x="220" y="77" width="150" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$P{tm2},false,false,null,0,0)]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement uuid="46043f6b-38b9-44b0-89ed-597b4329ec4d" key="barcode-3" mode="Opaque" x="430" y="77" width="150" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$P{tm3},false,false,null,0,0)]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement uuid="7de48c59-73b2-415f-80c8-c36c28763997" key="barcode-4" mode="Opaque" x="628" y="77" width="150" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<graphicElement fill="Solid"/>
+				<imageExpression><![CDATA[it.businesslogic.ireport.barcode.BcImage.getBarcodeImage(5,$P{tm4},false,false,null,0,0)]]></imageExpression>
+			</image>
+			<line direction="BottomUp">
+				<reportElement uuid="3b31d9d4-4338-4c6e-a618-b4fab5efd989" key="line-8" x="0" y="110" width="200" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="9529a90d-3eba-4c7f-806e-313a3cb8e803" key="line-9" x="200" y="110" width="200" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="36e2cdf6-8525-43b3-af94-88af4c8577d4" key="line-10" x="400" y="110" width="200" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="9ba20ffe-f6fb-472e-9f3a-edfa44b2a768" key="line-11" x="600" y="110" width="200" height="1"/>
+			</line>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="5fd4ed21-f9f1-4ae3-92b6-bb481b011efb" key="textField-13" x="38" y="93" width="120" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tm1}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="8189e973-32e7-4cce-9ceb-74acaf1ee6d5" key="textField-14" x="229" y="93" width="120" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tm2}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="607a317d-df4e-4884-a67d-54dac59a8f44" key="textField-15" x="442" y="93" width="120" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tm3}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="78041643-7f63-4ad9-a1ac-0744816c6863" key="textField-16" x="641" y="93" width="120" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tm4}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement uuid="2ea140b7-c330-4713-ac87-3c75e822cc28" key="subreport-19" x="600" y="-1" width="200" height="50"/>
+				<dataSourceExpression><![CDATA[$P{datasource4}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "jwyz.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="true">
+				<reportElement uuid="b28e7586-1a3a-4f5f-ad4b-7d001b78694f" key="subreport-20" x="0" y="0" width="200" height="50"/>
+				<dataSourceExpression><![CDATA[$P{datasource1}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "jwzh.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="true">
+				<reportElement uuid="483abee0-7947-479e-b295-1b5acd4f0cd3" key="subreport-21" x="200" y="-1" width="200" height="50"/>
+				<dataSourceExpression><![CDATA[$P{datasource2}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "jwyh.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport isUsingCache="true">
+				<reportElement uuid="d9cd820a-6d94-463c-a798-26efdf516fb2" key="subreport-22" x="400" y="-1" width="200" height="50"/>
+				<dataSourceExpression><![CDATA[$P{datasource3}]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "jwzz.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="60" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="88b63497-31d5-41dd-9f89-87877c78d1bf" key="textField-9" x="14" y="0" width="180" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="黑体" size="48" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{zrq}.substring(8,10)+"-"+$P{js}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="1c088fe0-01f6-4772-885a-ead8e546de70" key="textField-10" x="209" y="0" width="180" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="黑体" size="48" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{zrq}.substring(8,10)+"-"+$P{js}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="bb0ba33a-f197-471f-a7e5-5f03f05146f1" key="textField-11" x="413" y="0" width="180" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="黑体" size="48" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{zrq}.substring(8,10)+"-"+$P{js}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="c6423bff-5ef0-4957-a4ab-07a7b9579fa9" key="textField-12" x="612" y="0" width="180" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="黑体" size="48" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{zrq}.substring(8,10)+"-"+$P{js}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="7a23f013-8b64-43c4-a564-706e4b29282c" key="rectangle-1" x="8" y="26" width="788" height="6" backcolor="#000000"/>
+			</rectangle>
+		</band>
+	</summary>
+</jasperReport>

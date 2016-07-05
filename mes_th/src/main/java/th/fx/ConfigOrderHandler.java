@@ -28,10 +28,6 @@ public class ConfigOrderHandler {
 	/** 最小打印零件数量 */
 	private int minPartCount = 9999;
 	
-
-	/** 系统日志工具 */
-	private Logger logger = Logger.getLogger(ConfigOrderHandler.class);
-
 	/**
 	 * 构造函数
 	 * 
