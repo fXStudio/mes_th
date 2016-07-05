@@ -68,7 +68,7 @@
         <!-- 加载Applet对象，用户配置单的打印 -->
         <div id="d">
             <APPLET ID="JrPrt" name = "app" codebase="th/pzt" CODE = "JdApplet"  
-          	               ARCHIVE = "jasperreports-5.0.1.jar,jcommon-1.0.15.jar"
+          	               ARCHIVE = "jasperreports-5.0.1.jar,jcommon-1.0.15.jar,jasperreports-applet-5.0.0.jar"
           	               WIDTH = "0" HEIGHT = "0" MAYSCRIPT>
                 <PARAM NAME = "type" VALUE="application/x-java-applet;version=1.2.2"/>
                 <PARAM NAME = "scriptable" VALUE="true"/>
