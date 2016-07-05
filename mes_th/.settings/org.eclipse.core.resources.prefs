@@ -1,4 +1,14 @@
 eclipse.preferences.version=1
 encoding//src/main/java=GBK
+encoding//src/main/java/th/report/api/IJasperPrintCreator.java=gbk
+encoding//src/main/java/th/report/api/IJasperPrintFacade.java=gbk
+encoding//src/main/java/th/report/api/IReportBaseInfoBuilder.java=gbk
+encoding//src/main/java/th/report/api/IReportBaseInfoFacade.java=gbk
+encoding//src/main/java/th/report/api/IReportDataSetBuilder.java=gbk
+encoding//src/main/java/th/report/api/IReportDataSetFacade.java=gbk
+encoding//src/main/java/th/report/builders/ReportBaseInfoBuilder.java=gbk
+encoding//src/main/java/th/report/creators/MultiColumnJasperPrintCreator.java=gbk
 encoding//src/main/webapp/js/Print-PHD.js=gbk
 encoding//src/test/java=GBK
+encoding/<project>=GBK
+separateDerivedEncodings=true
