@@ -8,8 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import common.Conn_MES;
 import th.fx.bean.COrderEntity;
 
@@ -281,7 +279,7 @@ public class ConfigOrderHandler {
 				String vinCode = rs.getString("cVinCode");// Vin码
 				String vinType = vinCode.substring(6, 8);// Vin车型
 				String tempVin = hmVin.get(vinType);// 通过Vin车型标志，关联出最后打印的Vin码
-				
+
 				// 如果当前车型对应的Vin记录不存在，则将当前的Vin关联该车型
 				if (tempVin != null && !"".equals(tempVin)) {
 					int oldVinLst = Integer.valueOf(tempVin.substring(11)); // vin后六位

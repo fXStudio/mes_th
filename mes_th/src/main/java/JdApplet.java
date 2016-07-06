@@ -16,9 +16,9 @@ import net.sf.jasperreports.engine.util.JRLoader;
  */
 public class JdApplet extends Applet {
     /***/
-	private static final long serialVersionUID = 3007717280460840364L;
+    private static final long serialVersionUID = 3007717280460840364L;
 
-	// 重复打印，按日期，架号打印print_data中的数据，
+    // 重复打印，按日期，架号打印print_data中的数据，
     // 入口参数：rq 日期，ch：车号，js：架号，ls：打印次数（打印页数）groupid 组合id
     public void ppr(String rq, String ch, String js, String path, String groupid) {
         String urlbase = path + "/rePrint?";
@@ -88,6 +88,10 @@ public class JdApplet extends Applet {
             // 打印多份，这样可以减少和数据库的交互
             for (int j = 0; j < Integer.valueOf(pages); j++) {
                 for (JasperPrint jasper : jaspers) {
+                    // 追溯报表不重复打印
+                    if (j > 0 && "false".equals(jasper.getProperty("repeat"))) {
+                        continue;
+                    }
                     printAction(jasper);
                 }
             }

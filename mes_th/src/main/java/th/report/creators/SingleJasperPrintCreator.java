@@ -89,15 +89,14 @@ public class SingleJasperPrintCreator extends BaseImplCreator {
 
         // ∂®“Âdatasource;
         parameters.put("REPORT_CONNECTION", conn);
-        parameters.put("js", reportBaseInfo.getCarno());
+        parameters.put("js", String.valueOf(reportBaseInfo.getCarno()));
         parameters.put("zrq", requestParam.getRequestDate());
         parameters.put("ch", reportBaseInfo.getCarno());
         parameters.put("tm", reportBaseInfo.getChassisNumber());
-        parameters.put("mc", printSet.getCDescrip());
+        parameters.put("mc", printSet.getCCarTypeDesc());
         parameters.put("id", printSet.getId());
 
-        JasperReport jasperReport = (JasperReport) JRLoader
-                .loadObject(JasperTemplateLoader.load(printSet.getCPrintMD()));
+        JasperReport jasperReport = (JasperReport) JRLoader.loadObject(JasperTemplateLoader.load(printSet.getCPrintMD()));
 
         return JasperFillManager.fillReport(jasperReport, parameters, new JRBeanCollectionDataSource(dataset));
     }

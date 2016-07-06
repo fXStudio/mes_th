@@ -13,7 +13,6 @@ abstract class BaseImplCreator implements IJasperPrintCreator {
     protected IReportBaseInfoFacade reportBaseInfoFacade = new ReportBaseInfoFacade();
     protected IReportDataSetFacade reportDataSetFacade = new ReportDataSetFacade();
     
-    
 	/**
 	 * 创建打印对象
 	 * 

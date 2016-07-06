@@ -83,9 +83,9 @@ public class JasperPrintFacade implements IJasperPrintFacade {
      */
     private List<JasperPrint> createJasperPrintByType(Connection conn, String code, RequestParam requestParam) {
         if ("0".equals(code)) {
-            new SingleJasperPrintCreator().createJasperPrints(conn, requestParam);
-        } else if ("1".equals(code)) {
-            new MultiPageJasperPrintCreator().createJasperPrints(conn, requestParam);
+            return new SingleJasperPrintCreator().createJasperPrints(conn, requestParam);
+        } else if ("1".equals(code) || "2".equals(code)) {
+            return new MultiPageJasperPrintCreator().createJasperPrints(conn, requestParam);
         }
         return new MultiColumnJasperPrintCreator().createJasperPrints(conn, requestParam);
     }

@@ -48,7 +48,7 @@ public class MultiColumnJasperPrintCreator extends BaseImplCreator {
                 parameters.put(rs.getString("cCode"), dataset);
                 parameters.put("mc" + i, printSet.getCCarTypeDesc());
                 parameters.put("id" + i, printSet.getId());
-                parameters.put("tm" + i, printSet.getCRemark());
+                parameters.put("tm" + i, reportBaseInfo.getChassisNumber());
 
                 if (jasperReport == null) {
                     parameters.put("js", String.valueOf(reportBaseInfo.getCarno()));
