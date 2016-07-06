@@ -68,11 +68,10 @@
         <!-- 加载Applet对象，用户配置单的打印 -->
         <div id="d">
             <APPLET ID="JrPrt" name = "app" codebase="th/pzt" CODE = "JdApplet"  
-          	               ARCHIVE = "jasperreports-5.0.1.jar,jcommon-1.0.15.jar,jasperreports-applet-5.0.0.jar"
-          	               WIDTH = "0" HEIGHT = "0" MAYSCRIPT>
+        	        ARCHIVE = "jasperreports-5.0.1.jar,commons-logging-1.0.4.jar,log4j-1.2.14.jar,barbecue-1.5-beta1.jar,commons-collections-3.2.1.jar,commons-digester-2.1.jar"
+        	        WIDTH = "0" HEIGHT = "0" MAYSCRIPT>
                 <PARAM NAME = "type" VALUE="application/x-java-applet;version=1.2.2"/>
                 <PARAM NAME = "scriptable" VALUE="true"/>
-                <PARAM NAME = "REPORT_URL" VALUE =""/>
             </APPLET>
         </div>
 

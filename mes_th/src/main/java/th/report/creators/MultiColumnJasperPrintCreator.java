@@ -45,8 +45,7 @@ public class MultiColumnJasperPrintCreator extends BaseImplCreator {
                 ReportBaseInfo reportBaseInfo = reportBaseInfoFacade.obtainBaseInfo(conn, requestParam, printSet);
                 List<JConfigure> dataset = reportDataSetFacade.createDataSet(conn, printSet, reportBaseInfo);
                 
-                System.out.println(dataset.size());
-                parameters.put("datasource" + i, dataset);
+                parameters.put(rs.getString("cCode"), dataset);
                 parameters.put("mc" + i, printSet.getCCarTypeDesc());
                 parameters.put("id" + i, printSet.getId());
                 parameters.put("tm" + i, printSet.getCRemark());

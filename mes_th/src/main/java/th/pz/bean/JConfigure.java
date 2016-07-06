@@ -15,6 +15,13 @@ public class JConfigure implements Serializable{
 	private int tfassId;
 	private int printSetId;
 
+	public JConfigure() {
+	}
+
+	public JConfigure(int index) {
+		this.index = index;
+	}
+
 	public String getCSEQNo_A() {
 		return cSEQNo_A;
 	}
