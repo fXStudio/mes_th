@@ -2,96 +2,114 @@ package th.pz.bean;
 
 import java.io.Serializable;
 
-public class JConfigure implements Serializable{
-	/** */
+public class JConfigure implements Serializable {
+    /** */
     private static final long serialVersionUID = 1L;
     private String cSEQNo_A; // 总装顺序号
-	private String cVinCode; // vin码
-	private String cQADNo; // 天合总成号
-	private String cCarType; // 车型
-	private String cCarNo;
-	private String tfass;
-	private int index;
-	private int tfassId;
-	private int printSetId;
+    private String cVinCode; // vin码
+    private String cQADNo; // 天合总成号
+    private String cCarType; // 车型
+    private String cCarNo;
+    private String tfass;
+    private int index;
+    private int tfassId;
+    private int printSetId;
+    private String chassisNumber;
+    private int js;
 
-	public JConfigure() {
-	}
+    public int getJs() {
+        return js;
+    }
 
-	public JConfigure(int index) {
-		this.index = index;
-	}
+    public void setJs(int js) {
+        this.js = js;
+    }
 
-	public String getCSEQNo_A() {
-		return cSEQNo_A;
-	}
+    public String getChassisNumber() {
+        return chassisNumber;
+    }
 
-	public void setCSEQNo_A(String no_A) {
-		cSEQNo_A = no_A;
-	}
+    public void setChassisNumber(String chassisNumber) {
+        this.chassisNumber = chassisNumber;
+    }
 
-	public String getCVinCode() {
-		return cVinCode;
-	}
+    public JConfigure() {
+    }
 
-	public void setCVinCode(String vinCode) {
-		cVinCode = vinCode;
-	}
+    public JConfigure(int index) {
+        this.index = index;
+    }
 
-	public String getCQADNo() {
-		return cQADNo;
-	}
+    public String getCSEQNo_A() {
+        return cSEQNo_A;
+    }
 
-	public void setCQADNo(String no) {
-		cQADNo = no;
-	}
+    public void setCSEQNo_A(String no_A) {
+        cSEQNo_A = no_A;
+    }
 
-	public int getIndex() {
-		return index;
-	}
+    public String getCVinCode() {
+        return cVinCode;
+    }
 
-	public void setIndex(int index) {
-		this.index = index;
-	}
+    public void setCVinCode(String vinCode) {
+        cVinCode = vinCode;
+    }
 
-	public String getCCarType() {
-		return cCarType;
-	}
+    public String getCQADNo() {
+        return cQADNo;
+    }
 
-	public void setCCarType(String carType) {
-		cCarType = carType;
-	}
+    public void setCQADNo(String no) {
+        cQADNo = no;
+    }
 
-	public String getCCarNo() {
-		return cCarNo;
-	}
+    public int getIndex() {
+        return index;
+    }
 
-	public void setCCarNo(String carNo) {
-		cCarNo = carNo;
-	}
+    public void setIndex(int index) {
+        this.index = index;
+    }
 
-	public int getTfassId() {
-		return tfassId;
-	}
+    public String getCCarType() {
+        return cCarType;
+    }
 
-	public void setTfassId(int tfassId) {
-		this.tfassId = tfassId;
-	}
+    public void setCCarType(String carType) {
+        cCarType = carType;
+    }
 
-	public String getTfass() {
-		return tfass;
-	}
+    public String getCCarNo() {
+        return cCarNo;
+    }
 
-	public void setTfass(String tfass) {
-		this.tfass = tfass;
-	}
+    public void setCCarNo(String carNo) {
+        cCarNo = carNo;
+    }
 
-	public int getPrintSetId() {
-		return printSetId;
-	}
+    public int getTfassId() {
+        return tfassId;
+    }
 
-	public void setPrintSetId(int printSetId) {
-		this.printSetId = printSetId;
-	}
+    public void setTfassId(int tfassId) {
+        this.tfassId = tfassId;
+    }
+
+    public String getTfass() {
+        return tfass;
+    }
+
+    public void setTfass(String tfass) {
+        this.tfass = tfass;
+    }
+
+    public int getPrintSetId() {
+        return printSetId;
+    }
+
+    public void setPrintSetId(int printSetId) {
+        this.printSetId = printSetId;
+    }
 
 }

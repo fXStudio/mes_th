@@ -38,6 +38,7 @@ public class MultiColumnJasperPrintCreator extends BaseImplCreator {
             rs = stmt.executeQuery();
 
             Map<String, Object> parameters = new HashMap<String, Object>();
+            List<JConfigure> records = new ArrayList<JConfigure>();
             JasperReport jasperReport = null;
 
             for (int i = 1; rs.next(); i++) {// 遍历要打印的组下包含的所有打印项目
@@ -58,7 +59,11 @@ public class MultiColumnJasperPrintCreator extends BaseImplCreator {
                     
                     jasperReport = (JasperReport) JRLoader.loadObject(JasperTemplateLoader.load(printSet.getCPrintMD()));
                 }
+                records.addAll(dataset);
             }
+            // 保存打印数据
+            printDataSaver.save(conn, requestParam, records);
+            
             list.add(JasperFillManager.fillReport(jasperReport, parameters, conn));
         } catch (Exception e) {
             e.printStackTrace();

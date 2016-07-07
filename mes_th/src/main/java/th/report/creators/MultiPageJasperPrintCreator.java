@@ -37,6 +37,7 @@ public class MultiPageJasperPrintCreator extends BaseImplCreator {
             stmt.setString(1, requestParam.getGroupId());
             rs = stmt.executeQuery();
 
+            List<JConfigure> records = new ArrayList<JConfigure>();
             while (rs.next()) {// 遍历要打印的组下包含的所有打印项目
                 PrintSet printSet = createPrintSet(rs);
                 ReportBaseInfo reportBaseInfo = reportBaseInfoFacade.obtainBaseInfo(conn, requestParam, printSet);
@@ -62,7 +63,11 @@ public class MultiPageJasperPrintCreator extends BaseImplCreator {
                 if ("1".equals(rs.getString("cCode"))) {
                     list.addAll(createTraceJasperPrints(reportBaseInfo, printSet, requestParam, dataset));
                 }
+                // 记录打印的数据集
+                records.addAll(dataset);
             }
+            // 保存打印数据
+            printDataSaver.save(conn, requestParam, records);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

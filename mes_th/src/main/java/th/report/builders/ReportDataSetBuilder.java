@@ -107,6 +107,10 @@ public class ReportDataSetBuilder implements IReportDataSetBuilder {
                     obj.setCVinCode(rs.getString("cVinCode"));// VINÂë
                     obj.setCCarNo(rs.getString("cCarNo"));// kinºÅ
                     obj.setCCarType(rs.getString("ccode"));// ³µÐÍ
+                    obj.setChassisNumber(reportBaseInfo.getChassisNumber());
+                    obj.setTfassId(rs.getInt("ITFASSNameId"));
+                    obj.setJs(reportBaseInfo.getCarno());
+                    obj.setPrintSetId(printSet.getIPrintGroupId());
                 }
                 list.add(obj);
             }

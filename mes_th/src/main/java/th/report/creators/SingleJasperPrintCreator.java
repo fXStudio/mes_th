@@ -43,13 +43,19 @@ public class SingleJasperPrintCreator extends BaseImplCreator {
             stmt.setString(1, requestParam.getGroupId());
             rs = stmt.executeQuery();
 
+
+            List<JConfigure> records = new ArrayList<JConfigure>();
             while (rs.next()) {// 遍历要打印的组下包含的所有打印项目
                 PrintSet printSet = createPrintSet(rs);
                 ReportBaseInfo reportBaseInfo = new ReportBaseInfoFacade().obtainBaseInfo(conn, requestParam, printSet);
                 List<JConfigure> dataset = new ReportDataSetFacade().createDataSet(conn, printSet, reportBaseInfo);
 
                 list.add(createJasperPrints(conn, printSet, reportBaseInfo, dataset, requestParam));
+                // 记录打印的数据集
+                records.addAll(dataset);
             }
+            // 保存打印数据
+            printDataSaver.save(conn, requestParam, records);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -96,7 +102,8 @@ public class SingleJasperPrintCreator extends BaseImplCreator {
         parameters.put("mc", printSet.getCCarTypeDesc());
         parameters.put("id", printSet.getId());
 
-        JasperReport jasperReport = (JasperReport) JRLoader.loadObject(JasperTemplateLoader.load(printSet.getCPrintMD()));
+        JasperReport jasperReport = (JasperReport) JRLoader
+                .loadObject(JasperTemplateLoader.load(printSet.getCPrintMD()));
 
         return JasperFillManager.fillReport(jasperReport, parameters, new JRBeanCollectionDataSource(dataset));
     }

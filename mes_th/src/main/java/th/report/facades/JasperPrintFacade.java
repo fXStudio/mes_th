@@ -32,6 +32,7 @@ public class JasperPrintFacade implements IJasperPrintFacade {
 
         try {
             conn = new Conn_MES().getConn();
+            conn.setAutoCommit(false);
             stmt = conn.prepareStatement("SELECT cCode FROM printSet WHERE iPrintGroupId = ?");
             stmt.setString(1, requestParam.getGroupId());
             rs = stmt.executeQuery();
@@ -39,6 +40,7 @@ public class JasperPrintFacade implements IJasperPrintFacade {
             if (rs.next()) {// 遍历要打印的组下包含的所有打印项目
                 list.addAll(createJasperPrintByType(conn, rs.getString("cCode"), requestParam));
             }
+            conn.commit();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
