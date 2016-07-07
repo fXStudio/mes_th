@@ -5,7 +5,7 @@ import java.util.HashMap;
 public class ReportBaseInfo {
 	private String dabegin = "";
 	private String daseqa = "";
-	private int carno = 0;
+	private int carno;
 	private String tfassId = "";
 	private int pageNo;
 	private String chassisNumber = "";
