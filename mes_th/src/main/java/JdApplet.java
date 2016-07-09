@@ -26,7 +26,14 @@ public class JdApplet extends Applet {
         try {
             URL url = new URL(getCodeBase(), urlbase + "rq=" + rq + "&ch=" + ch + "&js=" + js + "&groupid=" + groupid);
 
-            printAction((JasperPrint) JRLoader.loadObject(url));
+            List<JasperPrint> jaspers = new ArrayList<JasperPrint>();
+            
+            // 报表对象
+            jaspers.addAll((List<JasperPrint>) JRLoader.loadObject(url));
+
+            for (JasperPrint jasper : jaspers) {
+                printAction(jasper);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "打印执行失败，更多信息请查看运行日志");
             e.printStackTrace();
@@ -41,7 +48,14 @@ public class JdApplet extends Applet {
         try {
             URL url = new URL(getCodeBase(), urlbase + "rq=" + rq + "&ch=" + ch + "&js=" + js + "&groupid=" + groupid);
 
-            printAction((JasperPrint) JRLoader.loadObject(url));
+            List<JasperPrint> jaspers = new ArrayList<JasperPrint>();
+
+            // 报表对象
+            jaspers.addAll((List<JasperPrint>) JRLoader.loadObject(url));
+
+            for (JasperPrint jasper : jaspers) {
+                printAction(jasper);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "打印执行失败，更多信息请查看运行日志");
             e.printStackTrace();
@@ -59,7 +73,14 @@ public class JdApplet extends Applet {
                 URL url = new URL(getCodeBase(),
                         urlbase + "rq=" + rq + "&ch=" + ch + "&js=" + temp + "&groupid=" + groupid);
 
-                printAction((JasperPrint) JRLoader.loadObject(url));
+                List<JasperPrint> jaspers = new ArrayList<JasperPrint>();
+
+                // 报表对象
+                jaspers.addAll((List<JasperPrint>) JRLoader.loadObject(url));
+
+                for (JasperPrint jasper : jaspers) {
+                    printAction(jasper);
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "打印执行失败，更多信息请查看运行日志");

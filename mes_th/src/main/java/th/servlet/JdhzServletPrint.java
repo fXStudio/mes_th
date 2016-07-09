@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import th.report.entities.RequestParam;
-import th.report.facades.JasperPrintFacade;
+import com.qm.mes.th.assembly.entities.RequestParam;
+import com.qm.mes.th.assembly.newprint.AssemblyNewPrintFacade;
 
 /**
  * @author Administrator
@@ -30,7 +30,7 @@ public class JdhzServletPrint extends HttpServlet {
         requestParam.setGroupId(request.getParameter("groupid"));// 打印组号
 
         // 数据写出到客户端
-        write2Client(response, new JasperPrintFacade().createReports(requestParam));
+        write2Client(response, new AssemblyNewPrintFacade().assemblyPrint(requestParam));
     }
 
     /**

@@ -121,9 +121,9 @@
 		<servlet-name>RepeatPrint</servlet-name>
 		<url-pattern>/servlets/rePrint</url-pattern>
 	</servlet-mapping>
-	<listener>
+	<!-- <listener>
 		<listener-class>th.listener.InitialListener</listener-class>
-	</listener>
+	</listener> -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
