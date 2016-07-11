@@ -45,7 +45,7 @@ class BaseInfoBuilder implements IReportBaseInfoBuilder {
         ResultSet rs = null;
 
         try {
-            stmt = conn.prepareStatement("SELECT dabegin, cseqno_a FROM cardata WHERE cvincode = ?");
+            stmt = conn.prepareStatement("SELECT dabegin, cseqno_a FROM cardata WHERE cvincode = ?  AND dabegin is not null");
             stmt.setString(1, printSet.getCLastVin());
 
             rs = stmt.executeQuery();

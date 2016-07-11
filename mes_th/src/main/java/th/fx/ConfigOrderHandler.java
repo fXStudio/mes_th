@@ -128,7 +128,7 @@ public class ConfigOrderHandler {
 		ResultSet rs = null;
 
 		try {
-			stmt = conn.prepareStatement("SELECT dabegin, cseqno_a FROM cardata WHERE cvincode = ?");
+			stmt = conn.prepareStatement("SELECT dabegin, cseqno_a FROM cardata WHERE cvincode = ? AND dabegin is not null");
 			stmt.setString(1, entity.getLastVin());
 
 			rs = stmt.executeQuery();
