@@ -42,7 +42,7 @@ class DataSetBuilder implements IReportDataSetBuilder {
      * 查询表达式
      */
     public void buildQueryExpression() {
-        queryExpression = "SELECT * FROM print_data WHERE iCarNo = ? AND cRemark = ? AND iPrintGroupId = ?";
+        queryExpression = "SELECT * FROM print_data WHERE iCarNo = ? AND cRemark = ? AND iPrintGroupId = ? ORDER BY inum";
     }
 
     /**
