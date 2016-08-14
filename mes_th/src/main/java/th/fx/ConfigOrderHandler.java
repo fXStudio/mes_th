@@ -48,7 +48,8 @@ public class ConfigOrderHandler {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT MAX(id) id, iPrintGroupId, cDescrip, nPerTimeCount,");
-		sb.append(" nTFASSCount, cfactory, cCarType, cPrintRadio, cAuto, npage, cLastVin, cvinrule");
+		sb.append(" nTFASSCount, cfactory, cCarType, ceiling(CAST(nPerTimeCount as float)/nTFASSCount) cPrintRadio,");
+		sb.append(" cAuto, npage, cLastVin, cvinrule");
 		sb.append(" FROM printset");
 		sb.append(" GROUP BY iPrintGroupId, cDescrip,nPerTimeCount,");
 		sb.append(" nTFASSCount, cfactory, cCarType, cPrintRadio, cAuto, npage, cLastVin, cvinrule");
@@ -218,10 +219,8 @@ public class ConfigOrderHandler {
 	 * @throws Exception
 	 */
 	private void handleVinSeries(Connection conn, COrderEntity entity, Map<String, String> hmVin) throws Exception {
-		// 取得打印次数
-		int printCount = entity.getPrintRadio();
 		// Vin不连续检测
-		int perTimeRow = (printCount == 3 ? 4 : printCount) * entity.getTFassCount();
+		int perTimeRow = entity.getPerTimeCount();
 
 		// 设置参数
 		entity.setPerTimeRow(perTimeRow);

@@ -54,7 +54,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      String sqlWhere="";
      String factoryNo="";
      String seq_A="";
-     String printRadio="";
      String auto="";
      String seqno_A=""; 
 	 String printPage="0";
@@ -82,11 +81,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <form id="form1" name="form1"  action="printSetUpdate.jsp"  method="get">
 	     <table width="950" border="1" align="center" height="97">
 	     <tr>	
-	    	 <td  width="50">groupid</td>
+	    	<td  width="50">groupid</td>
 			<td width="150">描述</td>
 	     	<td width="100">打印标题</td>
 	     	<td width="100">总成</td>
-	     	<td width="250">已接收数据</td>
+	     	<td width="100">打印辆份设定</td>
+	     	<td width="50">自动打印</td>
 	     	<td width="150">底盘号</td>
 	     	<td width="50">份数</td>
 			<td width="50">架号</td>
@@ -109,15 +109,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							descript=rsIn.getString(1);
 							carTypeDesc=rsIn.getString(2);
 							tFassName=rsIn.getString(3);
-							perTimeCount=rsIn.getInt(4); //打印总数
+							perTimeCount=rsIn.getInt(4);
 							tFassCount=rsIn.getInt(5);	
 							printSetId=	rsIn.getString(6);
 							factoryNo=rsIn.getString(7);
 							carType=rsIn.getString(8);
-							printRadio=rsIn.getString(9);
-							
-							if(printRadio==null ||printRadio.trim().equals(""))
-								printRadio="0";
 							auto=rsIn.getString(10);
 							if(auto==null||auto.trim().equals(""))
 							 auto="0";
@@ -144,27 +140,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					out.write("<td>"+groupId+"</td>");
 					out.write("<td>"+descript+"</td>");
 					out.write("<td>"+carTypeDesc+"</td>");
-					out.write("<td>"+tFassName+"</td>");		
+					out.write("<td>"+tFassName+"</td>");
+					out.write("<td><label><input name='printRadio"+groupId+"' style='width:70px;' value='");
+					out.write(perTimeCount+ "'/>" + "辆份");
+					out.write("</label></td>");
 					
-					out.write("<td><label><input type='radio' name='printRadio"+groupId+"'  value='1' ");
-					if(printRadio.trim().equals("1"))
-						out.write("checked='checked'");
-					out.write("/>" + tFassCount+"辆份");
-					
-					out.write("<input type='radio' name='printRadio"+groupId+"'  value='2'");
-					if(printRadio.trim().equals("2"))
-						out.write("checked='checked'");
-					out.write("/>" + tFassCount*2+"辆份");
-					
-					out.write("<input type='radio' name='printRadio"+groupId+"'  value='3' ");
-					if(printRadio.trim().equals("3"))
-						out.write("checked='checked'");
-					out.write("/>" + perTimeCount+"辆份");
-					out.write("<input type='checkbox' name='checkBox"+groupId+"' id='checkBox"+groupId+"' ");
+					out.write("<td align='center'><input type='checkbox' name='checkBox"+groupId+"' id='checkBox"+groupId+"' ");
 					if(auto.trim().equals("1"))
 						out.println("checked='checked'");
-					out.write(" /> 自动打印");	
+					out.write(" />");	
 					out.write("</label></td>");
+					
 					out.write("<td><input type='text' name='seqText"+groupId+"' id='seqText"+groupId+"' value='"+lastVin+"' /></td>");			
 					out.write("<td><input type='text' name='printPage"+groupId+"' id='printPage"+groupId+"' value='"+printPage+"' size='2' maxlength='2'/></td>");
 					out.write("<td><input type='text' name='printJh"+groupId+"' id='printJh"+groupId+"' value='0' size='3' maxlength='3'/></td>");

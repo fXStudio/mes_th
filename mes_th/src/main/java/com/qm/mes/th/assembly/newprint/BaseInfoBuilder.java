@@ -172,8 +172,8 @@ class BaseInfoBuilder implements IReportBaseInfoBuilder {
             if (rs.next()) {
                 String pageNo = rs.getString(1);
 
-                if (pageNo != null && pageNo.trim().length() > 12) {
-                    reportBaseInfo.setPageNo(Integer.valueOf(pageNo.substring(10)));
+                if (pageNo != null && pageNo.trim().length() >= 12) {
+                    reportBaseInfo.setPageNo(Integer.valueOf(pageNo.substring(8)));
                 }
             }
         } catch (Exception e) {
@@ -205,7 +205,7 @@ class BaseInfoBuilder implements IReportBaseInfoBuilder {
      */
     public void buildChassisNumber() {
         StringBuilder chassisNumber = new StringBuilder();
-        chassisNumber.append(requestParam.getRequestDate().replaceAll("-", ""));
+        chassisNumber.append(requestParam.getRequestDate().replaceAll("-", "").substring(2));
         chassisNumber.append(new DecimalFormat("00").format(printSet.getId()));
         chassisNumber.append(new DecimalFormat("0000").format(reportBaseInfo.getPageNo() + 1));
 

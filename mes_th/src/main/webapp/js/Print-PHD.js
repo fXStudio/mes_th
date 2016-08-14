@@ -52,16 +52,10 @@ function innerPrint(methodExp, groupId) {
 function openApp(groupid, jPrintRadio, ch, pages, minPartCount, PerTimeRow, IsContinu) {
     var rq = document.getElementById("rq").value;// 当前的查询时期
     var printPath;// 打印文件路径
-    var ls = 1;// 打印辆份的倍数
+    var ls = jPrintRadio;// 打印辆份的倍数
 
     // 打印服务的请求路径
     printPath = document.getElementById("basepath").value + "servlets";
-
-    // 设置打印次数
-    switch(parseInt(jPrintRadio)) {
-    	case 2: ls = 2; break;
-    	case 3: ls = 4; break;
-    }
 
 	// 如果Vin不连续，则需要让用户确认打印操作
 	if(IsContinu === 0 && !window.confirm("vin不连续，是否打印")) { return; }

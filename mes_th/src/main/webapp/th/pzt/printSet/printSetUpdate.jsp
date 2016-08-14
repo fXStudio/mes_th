@@ -73,7 +73,7 @@ try {
 		} else {
 			auto[ii]="1";
 		}
-		strSql="update printSet set cPrintRadio='"+printRadio[ii]+"',cAuto='"+auto[ii]+"',cLastVin='"+seqNo[ii]+"' ,npage='"+printPage[ii]+"' where iPrintGroupId='"+groupId+"'";
+		strSql="update printSet set nPerTimeCount='"+printRadio[ii]+"',cAuto='"+auto[ii]+"',cLastVin='"+seqNo[ii]+"' ,npage='"+printPage[ii]+"' where iPrintGroupId='"+groupId+"'";
 		
 		//System.out.println(strSql);
 		v_sql.addElement(strSql);

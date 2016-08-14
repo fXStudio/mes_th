@@ -27,15 +27,7 @@
 				out.write("<label ><strong><font color='#ff0000' size='3' face='黑体'>" + entity.getMinPartCount() + "</strong></label>");
 			out.write("</td>");
 			out.write("<td>");
-				if(entity.getPrintRadio() == 1){
-					out.write(entity.getTFassCount() + "辆份");
-				}
-				if(entity.getPrintRadio() == 2){
-					out.write(entity.getTFassCount() * 2 + "辆份");	
-				}
-				if(entity.getPrintRadio() == 3){
 					out.write(entity.getPerTimeCount() + "辆份");	
-				}
 			out.write("</td>");
 			out.write("<td><input type='checkbox' name='checkBox" + entity.getGroupId() + "'   id='checkBox" + entity.getGroupId() + "'  disabled='true'");
 			

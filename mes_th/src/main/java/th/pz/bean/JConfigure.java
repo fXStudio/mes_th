@@ -5,16 +5,16 @@ import java.io.Serializable;
 public class JConfigure implements Serializable {
     /** */
     private static final long serialVersionUID = 1L;
-    private String cSEQNo_A; // 总装顺序号
-    private String cVinCode; // vin码
-    private String cQADNo; // 天合总成号
-    private String cCarType; // 车型
-    private String cCarNo;
-    private String tfass;
+    private String cSEQNo_A = ""; // 总装顺序号
+    private String cVinCode = ""; // vin码
+    private String cQADNo = ""; // 天合总成号
+    private String cCarType = ""; // 车型
+    private String cCarNo = "";
+    private String tfass = "";
+    private String chassisNumber = "";
     private int index;
     private int tfassId;
     private int printSetId;
-    private String chassisNumber;
     private int js;
 
     public int getJs() {
