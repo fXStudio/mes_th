@@ -130,6 +130,7 @@ class ReportOrderCreator implements IReportOrderCreator {
         printSet.setCTFASSName(rs.getString("cTfassName"));
         printSet.setCCarType(rs.getString("cCarType"));
         printSet.setNTFASSCount(rs.getInt("nTFassCount"));
+        printSet.setNPerTimeCount(rs.getInt("nPerTimeCount"));
         printSet.setIMESseq(rs.getInt("iMesSeq"));
         printSet.setCFactory(rs.getString("cFactory"));
         printSet.setCPrintMD(rs.getString("cPrintMd"));

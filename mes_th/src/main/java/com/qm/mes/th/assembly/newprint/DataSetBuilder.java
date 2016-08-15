@@ -49,7 +49,7 @@ class DataSetBuilder implements IReportDataSetBuilder {
 	public void buildQueryExpression() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT top ");
-		sb.append(printSet.getNTFASSCount());
+		sb.append(Math.min(printSet.getNTFASSCount(), printSet.getNPerTimeCount()));
 		sb.append(" c.cSEQNo_A, c.cVinCode, c.cCarType, cQADNo, sc.ITFASSNameId, sc.iTFASSNum, c.cCarNo, ks.ccode");
 		sb.append(" FROM carData c LEFT JOIN carData_D sc");
 		sb.append(" ON c.ccarno = sc.icarid AND itfassnameid = ");
@@ -99,26 +99,20 @@ class DataSetBuilder implements IReportDataSetBuilder {
 			rs = stmt.executeQuery();
 
 			// 填充数据集合
-			for (int i = 1; list.size() < printSet.getNTFASSCount() && rs.next(); i++) {
+			for (int i = 1; i <= Math.min(printSet.getNTFASSCount(), printSet.getNPerTimeCount()); i++) {
 				JConfigure obj = new JConfigure(i);
 				obj.setChassisNumber(reportBaseInfo.getChassisNumber());
-				obj.setJs(reportBaseInfo.getCarno());
-				obj.setCQADNo(rs.getString("cQADNo"));// 天合零件号
-				obj.setCSEQNo_A(rs.getString("cSEQNo_A"));// 总装顺序号
-				obj.setCVinCode(rs.getString("cVinCode"));// VIN码
-				obj.setCCarNo(rs.getString("cCarNo"));// kin号
-				obj.setCCarType(rs.getString("ccode"));// 车型
-				obj.setTfassId(rs.getInt("ITFASSNameId"));
 				obj.setPrintSetId(printSet.getIPrintGroupId());
+				obj.setJs(reportBaseInfo.getCarno());
 
-				list.add(obj);
-			}
-			if (list.size() == 0) {
-				JConfigure obj = new JConfigure(1);
-				obj.setChassisNumber(reportBaseInfo.getChassisNumber());
-				obj.setJs(reportBaseInfo.getCarno());
-				obj.setPrintSetId(printSet.getIPrintGroupId());
-				
+				if (rs.next()) {
+					obj.setCQADNo(rs.getString("cQADNo"));// 天合零件号
+					obj.setCSEQNo_A(rs.getString("cSEQNo_A"));// 总装顺序号
+					obj.setCVinCode(rs.getString("cVinCode"));// VIN码
+					obj.setCCarNo(rs.getString("cCarNo"));// kin号
+					obj.setCCarType(rs.getString("ccode"));// 车型
+					obj.setTfassId(rs.getInt("ITFASSNameId"));
+				}
 				list.add(obj);
 			}
 		} catch (Exception e) {
