@@ -89,9 +89,9 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 			parameters.put("mc", order.getPrintSet().getCTFASSName());
 			parameters.put("SUBREPORT_DIR", JasperTemplateLoader.BASE_PATH);
 
-			for (int i = 0; i < 2; i++) {// 追溯单每种零件一共两张单子
+			for (int i = 0, n = 0; i < 2; i++) {// 追溯单每种零件一共两张单子
 				for (int j = 1; j <= 2; j++) {// 每个单子打印两组数据
-					parameters.put("dataSource" + j, getSubList(order.getDatas(), i * 6, (i + 1) * 6));
+					parameters.put("dataSource" + j, getSubList(order.getDatas(), n * 6, (++n) * 6));
 				}
 				// 因为追溯单是一种类型两件，分开两张单子打印，所有需要做数据拆分，而后生成打印报表
 				JasperPrint print = createJasperPrints("new_qnfxpzs.jasper", parameters);
