@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.qm.mes.th.assembly.IReportDataSetBuilder;
 import com.qm.mes.th.assembly.entities.ReportBaseInfo;
+import com.qm.mes.th.assembly.entities.RequestParam;
 
 import th.pz.bean.JConfigure;
 import th.pz.bean.PrintSet;
@@ -25,6 +26,7 @@ class DataSetBuilder implements IReportDataSetBuilder {
 	private ReportBaseInfo reportBaseInfo;
 	private List<JConfigure> list;
 	private String queryExpression;
+	private RequestParam requestParam;
 
 	/** 系统日志工具 */
 	private Logger logger = Logger.getLogger(DataSetBuilder.class);
@@ -35,10 +37,11 @@ class DataSetBuilder implements IReportDataSetBuilder {
 	 * @param printSet
 	 * @param reportBaseInfo
 	 */
-	public DataSetBuilder(Connection conn, PrintSet printSet, ReportBaseInfo reportBaseInfo) {
+	public DataSetBuilder(Connection conn, PrintSet printSet, ReportBaseInfo reportBaseInfo, RequestParam requestParam) {
 		this.conn = conn;
 		this.printSet = printSet;
 		this.reportBaseInfo = reportBaseInfo;
+		this.requestParam = requestParam;
 
 		list = new ArrayList<JConfigure>();
 	}
@@ -49,7 +52,7 @@ class DataSetBuilder implements IReportDataSetBuilder {
 	public void buildQueryExpression() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT top ");
-		sb.append(Math.min(printSet.getNTFASSCount(), printSet.getNPerTimeCount()));
+		sb.append(printSet.getNTFASSCount());
 		sb.append(" c.cSEQNo_A, c.cVinCode, c.cCarType, cQADNo, sc.ITFASSNameId, sc.iTFASSNum, c.cCarNo, ks.ccode");
 		sb.append(" FROM carData c LEFT JOIN carData_D sc");
 		sb.append(" ON c.ccarno = sc.icarid AND itfassnameid = ");
@@ -97,9 +100,15 @@ class DataSetBuilder implements IReportDataSetBuilder {
 		try {
 			stmt = conn.prepareStatement(queryExpression);
 			rs = stmt.executeQuery();
-
+			
+			// 当前打印的页数
+			int pageNumber = Integer.valueOf(requestParam.getJs());
+			// 没打印一份数量都应该递减
+			int count = printSet.getNPerTimeCount() - (--pageNumber) * printSet.getNTFASSCount();
+			    count = Math.min(count, printSet.getNTFASSCount());
+			
 			// 填充数据集合
-			for (int i = 1; i <= Math.min(printSet.getNTFASSCount(), printSet.getNPerTimeCount()); i++) {
+			for (int i = 1; i <= count; i++) {
 				JConfigure obj = new JConfigure(i);
 				obj.setChassisNumber(reportBaseInfo.getChassisNumber());
 				obj.setPrintSetId(printSet.getIPrintGroupId());

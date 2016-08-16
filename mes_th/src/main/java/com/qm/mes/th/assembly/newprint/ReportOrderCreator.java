@@ -49,7 +49,7 @@ class ReportOrderCreator implements IReportOrderCreator {
                 ReportOrder reportOrder = new ReportOrder();
                 PrintSet printSet = createPrintSet(rs);// 报表配置信息
                 ReportBaseInfo reportBaseInfo = obtainBaseInfo(conn, requestParam, printSet);
-                List<JConfigure> dataset = obtainDataSet(conn, printSet, reportBaseInfo);
+                List<JConfigure> dataset = obtainDataSet(conn, printSet, reportBaseInfo, requestParam);
                 
                 // 设置报表订单参数
                 reportOrder.setPrintSet(printSet);
@@ -107,8 +107,8 @@ class ReportOrderCreator implements IReportOrderCreator {
      * @param reportBaseInfo
      * @return
      */
-    public List<JConfigure> obtainDataSet(Connection conn, PrintSet printSet, ReportBaseInfo reportBaseInfo) {
-        IReportDataSetBuilder builder = new DataSetBuilder(conn, printSet, reportBaseInfo);
+    public List<JConfigure> obtainDataSet(Connection conn, PrintSet printSet, ReportBaseInfo reportBaseInfo, RequestParam requestParam) {
+        IReportDataSetBuilder builder = new DataSetBuilder(conn, printSet, reportBaseInfo, requestParam);
         builder.buildQueryExpression();
         builder.buildBusinessDataSet();
 

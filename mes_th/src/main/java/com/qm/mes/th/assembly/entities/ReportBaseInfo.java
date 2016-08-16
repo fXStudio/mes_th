@@ -5,75 +5,76 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReportBaseInfo {
-    private String dabegin = "";
-    private String daseqa = "";
-    private int carno;
-    private String tfassId = "";
-    private int pageNo;
-    private String chassisNumber = "";
-    private HashMap<String, String> hmVin = new HashMap<String, String>();
+	private String dabegin = "";
+	private String daseqa = "";
+	private int carno;
+	private String tfassId = "";
+	private int pageNo;
+	private String chassisNumber = "";
 
-    public String getVinByCarType(String key) {
-        return hmVin.get(key);
-    }
+	private HashMap<String, String> hmVin = new HashMap<String, String>();
 
-    public Map<String, String> getHmVin() {
-        return (Map<String, String>)Collections.unmodifiableMap(hmVin);
-    }
+	public String getVinByCarType(String key) {
+		return hmVin.get(key);
+	}
 
-    public void setHmVin(HashMap<String, String> hmVin) {
-        this.hmVin = hmVin;
-    }
+	public Map<String, String> getHmVin() {
+		return (Map<String, String>) Collections.unmodifiableMap(hmVin);
+	}
 
-    public void putVinMap2CarType(String key, String value) {
-        hmVin.put(key, value);
-    }
+	public void setHmVin(HashMap<String, String> hmVin) {
+		this.hmVin = hmVin;
+	}
 
-    public String getChassisNumber() {
-        return chassisNumber;
-    }
+	public void putVinMap2CarType(String key, String value) {
+		hmVin.put(key, value);
+	}
 
-    public void setChassisNumber(String chassisNumber) {
-        this.chassisNumber = chassisNumber;
-    }
+	public String getChassisNumber() {
+		return chassisNumber;
+	}
 
-    public Integer getPageNo() {
-        return pageNo;
-    }
+	public void setChassisNumber(String chassisNumber) {
+		this.chassisNumber = chassisNumber;
+	}
 
-    public void setPageNo(Integer pageNo) {
-        this.pageNo = pageNo;
-    }
+	public Integer getPageNo() {
+		return pageNo;
+	}
 
-    public String getTfassId() {
-        return tfassId;
-    }
+	public void setPageNo(Integer pageNo) {
+		this.pageNo = pageNo;
+	}
 
-    public void setTfassId(String tfassId) {
-        this.tfassId = tfassId;
-    }
+	public String getTfassId() {
+		return tfassId;
+	}
 
-    public Integer getCarno() {
-        return carno;
-    }
+	public void setTfassId(String tfassId) {
+		this.tfassId = tfassId;
+	}
 
-    public void setCarno(Integer carno) {
-        this.carno = carno;
-    }
+	public Integer getCarno() {
+		return carno;
+	}
 
-    public String getDabegin() {
-        return dabegin;
-    }
+	public void setCarno(Integer carno) {
+		this.carno = carno;
+	}
 
-    public void setDabegin(String dabegin) {
-        this.dabegin = dabegin;
-    }
+	public String getDabegin() {
+		return dabegin;
+	}
 
-    public String getDaseqa() {
-        return daseqa;
-    }
+	public void setDabegin(String dabegin) {
+		this.dabegin = dabegin;
+	}
 
-    public void setDaseqa(String daseqa) {
-        this.daseqa = daseqa;
-    }
+	public String getDaseqa() {
+		return daseqa;
+	}
+
+	public void setDaseqa(String daseqa) {
+		this.daseqa = daseqa;
+	}
 }

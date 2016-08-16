@@ -28,6 +28,7 @@ public class JdhzServletPrint extends HttpServlet {
         requestParam.setRequestDate(request.getParameter("rq"));// 请求日期
         requestParam.setChassisNumber(request.getParameter("ch"));// 底盘号
         requestParam.setGroupId(request.getParameter("groupid"));// 打印组号
+        requestParam.setJs(request.getParameter("js"));// 打印批次号
 
         // 数据写出到客户端
         write2Client(response, new AssemblyNewPrintFacade().assemblyPrint(requestParam));
