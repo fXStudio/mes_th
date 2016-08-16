@@ -175,8 +175,6 @@ class BaseInfoBuilder implements IReportBaseInfoBuilder {
 
 				if (pageNo != null && pageNo.trim().length() <= 12) {
 					reportBaseInfo.setPageNo(Integer.valueOf(pageNo.substring(8)));
-				} else if (pageNo != null && pageNo.trim().length() > 12) {
-					reportBaseInfo.setPageNo(Integer.valueOf(pageNo.substring(10)));
 				}
 			}
 		} catch (Exception e) {
