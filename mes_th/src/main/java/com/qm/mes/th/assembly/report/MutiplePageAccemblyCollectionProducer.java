@@ -93,8 +93,12 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 				for (int j = 1; j <= 2; j++) {// 每个单子打印两组数据
 					parameters.put("dataSource" + j, getSubList(order.getDatas(), n * 6, (++n) * 6));
 				}
-				// 因为追溯单是一种类型两件，分开两张单子打印，所有需要做数据拆分，而后生成打印报表
-				JasperPrint print = createJasperPrints("new_qnfxpzs.jasper", parameters);
+				JasperPrint print = null;
+				if (order.getPrintSet().getCPrintMD().contains("ca3")) {
+					 print = createJasperPrints("new_qnfxpzs_ca3.jasper", parameters);
+				} else {// 因为追溯单是一种类型两件，分开两张单子打印，所有需要做数据拆分，而后生成打印报表
+					 print = createJasperPrints("new_qnfxpzs.jasper", parameters);
+				}
 				// 追溯单不能重复打印
 				print.setProperty("repeat", "false");
 
@@ -134,6 +138,6 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 	 */
 	private JasperPrint createJasperPrints(String printMd, Map<String, Object> parameters) throws Exception {
 		return JasperFillManager.fillReport((JasperReport) JRLoader.loadObject(JasperTemplateLoader.load(printMd)),
-				parameters, new JREmptyDataSource());
+		        parameters, new JREmptyDataSource());
 	}
 }
