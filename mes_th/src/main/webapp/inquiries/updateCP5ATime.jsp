@@ -26,14 +26,18 @@
     String condition_One = "n";//条件一
 	String sql_temp1 = "";
 	String time = "";
+	String seqno = "";
+	
 	try{
 	    //获取连接
 	    con=Conn.getConn();
 		String sql=null;
 		DAO_WeldingSearch dao = new DAO_WeldingSearch();
 		time = request.getParameter("d11")==null?"":request.getParameter("d11");
-	    	condition_One = request.getParameter("vin")==null||request.getParameter("vin")==""?"n":request.getParameter("vin");
-	    	sql_temp1 = "cvincode='"+ condition_One +"' ";
+		seqno = request.getParameter("seqno")==null?"":request.getParameter("seqno");
+		
+	    condition_One = request.getParameter("vin")==null||request.getParameter("vin")==""?"n":request.getParameter("vin");
+	    sql_temp1 = "cvincode='"+ condition_One +"' ";
 
 		list_ws = factory_ws.getcar(sql_temp1,con);
 		condition_One = condition_One.equals("n")?"":condition_One;
@@ -71,8 +75,16 @@
 	    <td>
 	  	修改时间：<input id="d11" name="d11" type="text" value="<%=time==null?"":time%>" />
 		<img onclick="WdatePicker({el:'d11',dateFmt:'yyyy-MM-dd HH:mm:ss'})" src="../My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">
-		<mes:button id="s2" reSourceURL="../JarResource/" onclick="update()" value="更新" />
-	  </td></tr>
+	  </td>
+	  </tr>
+	  <tr>
+	    <td>
+	  	&nbsp;&nbsp;顺序号：<input name="seqno" size="20" maxlength="20" value="<%=seqno==null?"":seqno%>">
+	    </td>
+	  </tr>
+	  <tr>
+	  	<td align="center"><mes:button id="s2" reSourceURL="../JarResource/" onclick="update()" value="更新" /></td>
+	  </tr>
   	</table>
   </form>
   	</div>
@@ -135,12 +147,14 @@ function checkinput(thisform){
 }
 function update(){
 	var vin = document.getElementsByName("vin")[0].value;
+	var seqno = document.getElementsByName("seqno")[0].value;
 	var time = document.getElementsByName("d11")[0].value;
+	
 	if(time==""){
 		alert("请输入时间");
 		return;
 	}
-	window.location.href="updateCP5ATimeing.jsp?vin="+vin+"&time="+time;
+	window.location.href="updateCP5ATimeing.jsp?vin="+vin+"&time="+time+"&seqno="+seqno;
 }
 </script>
 <!-- InstanceEndEditable -->

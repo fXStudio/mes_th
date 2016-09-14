@@ -17,9 +17,9 @@
 		
 	String time = request.getParameter("time");
 	String vin = request.getParameter("vin");
+	String seqno = request.getParameter("seqno");
 	int count = 0;
 	//sql语句
-	String sql="";
 	String sql_check="";
 	log.debug("vin:" + vin);
 	log.debug("要更新的总装时间：" + time);
@@ -29,6 +29,7 @@
 	    con = Conn.getConn();
 		ResultSet rs = null;
 		ResultSet rs_part = null;
+		
 		if(vin!=null){
 			sql_check = "select count(*) from cardata where cVinCode='" + vin + "'";
 			rs = con.createStatement().executeQuery(sql_check);
@@ -46,9 +47,21 @@
 <%
 				return;
 			}
-			sql = "update cardata set dABegin='" + time + "' where cVinCode='" + vin + "'";
-			con.createStatement().execute(sql);
+			StringBuilder sb = new StringBuilder();
+			sb.append("update cardata set dABegin='");
+			sb.append(time);
+			sb.append("'");
 			
+			if(seqno != null && !"".equals(seqno.trim())){
+				sb.append(", cseqno_a = '");
+				sb.append(seqno);
+				sb.append("'");
+			}
+			sb.append(" where cVinCode='");
+			sb.append(vin);
+			sb.append("'");
+			
+			con.createStatement().execute(sb.toString());
 		}
 	} catch (Exception e){
 		e.printStackTrace();
@@ -61,7 +74,7 @@
 <!--
 function back(){
 	alert("更新成功！");
-	window.location.href='updateCP5ATime.jsp?d11=<%=time%>&vin=<%=vin%>';
+	window.location.href='updateCP5ATime.jsp?d11=<%=time%>&vin=<%=vin%>&seqno=<%=seqno%>';
 }back();
 //-->
 </script>
