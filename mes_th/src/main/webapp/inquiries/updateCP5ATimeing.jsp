@@ -17,6 +17,7 @@
 		
 	String time = request.getParameter("time");
 	String vin = request.getParameter("vin");
+	String kin = request.getParameter("kin");
 	String seqno = request.getParameter("seqno");
 	int count = 0;
 	//sql语句
@@ -31,7 +32,7 @@
 		ResultSet rs_part = null;
 		
 		if(vin!=null){
-			sql_check = "select count(*) from cardata where cVinCode='" + vin + "'";
+			sql_check = "select count(*) from cardata where ccarno='" + kin + "'";
 			rs = con.createStatement().executeQuery(sql_check);
 			if(rs.next()){
 				count = rs.getInt(1);
@@ -48,17 +49,20 @@
 				return;
 			}
 			StringBuilder sb = new StringBuilder();
-			sb.append("update cardata set dABegin='");
-			sb.append(time);
-			sb.append("'");
-			
+			sb.append("update cardata set dABegin=");
+			sb.append(time == null || time.trim().length() == 0 ? null : "'" + time + "'");
+			if(vin != null && !"".equals(vin.trim())){
+				sb.append(", cvincode = '");
+				sb.append(vin);
+				sb.append("'");
+			}
 			if(seqno != null && !"".equals(seqno.trim())){
 				sb.append(", cseqno_a = '");
 				sb.append(seqno);
 				sb.append("'");
 			}
-			sb.append(" where cVinCode='");
-			sb.append(vin);
+			sb.append(" where ccarno='");
+			sb.append(kin);
 			sb.append("'");
 			
 			con.createStatement().execute(sb.toString());
@@ -74,7 +78,7 @@
 <!--
 function back(){
 	alert("更新成功！");
-	window.location.href='updateCP5ATime.jsp?d11=<%=time%>&vin=<%=vin%>&seqno=<%=seqno%>';
+	window.location.href='updateCP5ATime.jsp?d11=<%=time%>&vin=<%=vin%>&seqno=<%=seqno%>&kin=<%=kin%>';
 }back();
 //-->
 </script>

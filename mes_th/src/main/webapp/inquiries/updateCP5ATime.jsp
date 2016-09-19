@@ -27,6 +27,7 @@
 	String sql_temp1 = "";
 	String time = "";
 	String seqno = "";
+	String vin = "";
 	
 	try{
 	    //获取连接
@@ -35,9 +36,10 @@
 		DAO_WeldingSearch dao = new DAO_WeldingSearch();
 		time = request.getParameter("d11")==null?"":request.getParameter("d11");
 		seqno = request.getParameter("seqno")==null?"":request.getParameter("seqno");
+		vin = request.getParameter("vin")==null?"":request.getParameter("vin");
 		
-	    condition_One = request.getParameter("vin")==null||request.getParameter("vin")==""?"n":request.getParameter("vin");
-	    sql_temp1 = "cvincode='"+ condition_One +"' ";
+	    condition_One = request.getParameter("kin")==null||request.getParameter("kin")==""?"n":request.getParameter("kin");
+	    sql_temp1 = "ccarno='"+ condition_One +"' ";
 
 		list_ws = factory_ws.getcar(sql_temp1,con);
 		condition_One = condition_One.equals("n")?"":condition_One;
@@ -67,7 +69,7 @@
 	  <form action="updateCP5ATime.jsp">
 	  <table>
   	  <tr><td>
-	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIN：<input name="vin" size="17" maxlength="17" value="<%=condition_One%>">
+	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KIN：<input name="kin" size="17" maxlength="17" value="<%=condition_One%>">
 	  	<mes:button id="s1" reSourceURL="../JarResource/" submit="true" value="查询" />
 	    </td>
 	  </tr>
@@ -80,6 +82,11 @@
 	  <tr>
 	    <td>
 	  	&nbsp;&nbsp;顺序号：<input name="seqno" size="20" maxlength="20" value="<%=seqno==null?"":seqno%>">
+	    </td>
+	  </tr>
+	  <tr>
+	    <td>
+	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIN：<input name="vin" size="20" maxlength="20" value="<%=vin==null?"":vin%>">
 	    </td>
 	  </tr>
 	  <tr>
@@ -146,15 +153,12 @@ function checkinput(thisform){
 		
 }
 function update(){
-	var vin = document.getElementsByName("vin")[0].value;
+	var kin = document.getElementsByName("kin")[0].value;
 	var seqno = document.getElementsByName("seqno")[0].value;
 	var time = document.getElementsByName("d11")[0].value;
+	var vin = document.getElementsByName("vin")[0].value;
 	
-	if(time==""){
-		alert("请输入时间");
-		return;
-	}
-	window.location.href="updateCP5ATimeing.jsp?vin="+vin+"&time="+time+"&seqno="+seqno;
+	window.location.href="updateCP5ATimeing.jsp?kin="+kin+"&time="+time+"&seqno="+seqno+"&vin="+vin;
 }
 </script>
 <!-- InstanceEndEditable -->
