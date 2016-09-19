@@ -37,7 +37,8 @@ class DataSetBuilder implements IReportDataSetBuilder {
 	 * @param printSet
 	 * @param reportBaseInfo
 	 */
-	public DataSetBuilder(Connection conn, PrintSet printSet, ReportBaseInfo reportBaseInfo, RequestParam requestParam) {
+	public DataSetBuilder(Connection conn, PrintSet printSet, ReportBaseInfo reportBaseInfo,
+	        RequestParam requestParam) {
 		this.conn = conn;
 		this.printSet = printSet;
 		this.reportBaseInfo = reportBaseInfo;
@@ -100,13 +101,13 @@ class DataSetBuilder implements IReportDataSetBuilder {
 		try {
 			stmt = conn.prepareStatement(queryExpression);
 			rs = stmt.executeQuery();
-			
+
 			// 当前打印的页数
 			int pageNumber = Integer.valueOf(requestParam.getJs());
 			// 没打印一份数量都应该递减
 			int count = printSet.getNPerTimeCount() - (--pageNumber) * printSet.getNTFASSCount();
-			    count = Math.min(count, printSet.getNTFASSCount());
-			
+			count = Math.min(count, printSet.getNTFASSCount());
+
 			// 填充数据集合
 			for (int i = 1; i <= count; i++) {
 				JConfigure obj = new JConfigure(i);
@@ -117,7 +118,7 @@ class DataSetBuilder implements IReportDataSetBuilder {
 				if (rs.next()) {
 					obj.setCQADNo(rs.getString("cQADNo"));// 天合零件号
 					obj.setCSEQNo_A(rs.getString("cSEQNo_A"));// 总装顺序号
-					obj.setCVinCode(rs.getString("cVinCode"));// VIN码
+					obj.setCVinCode(setLastVin(rs.getString("cVinCode")));// VIN码
 					obj.setCCarNo(rs.getString("cCarNo"));// kin号
 					obj.setCCarType(rs.getString("ccode"));// 车型
 					obj.setTfassId(rs.getInt("ITFASSNameId"));
@@ -154,60 +155,23 @@ class DataSetBuilder implements IReportDataSetBuilder {
 	 * @param obj
 	 * @return
 	 */
-	private String getLastVin(String curVin) {
+	private String setLastVin(String curVin) {
 		// 辆份不足的时候，VIN可能为空
 		if (curVin == null || curVin.trim().length() == 0) {
 			return null;
 		}
-
-		// 截取车型信息
-		String cartype = curVin.substring(6, 8);
-		// 获得上次打印的Vin码
-		String lastVin = reportBaseInfo.getVinByCarType(cartype);
-		// 保存最新的VIN码
-		reportBaseInfo.putVinMap2CarType(cartype, curVin);
+		// 按VIN7,8位进行分类，存储对应的VIN信息
+		reportBaseInfo.putVinMap2CarType(curVin.substring(6, 8), curVin);
 		// 最后答应的VIN码
 		printSet.setCLastVin(curVin);
 
-		return lastVin;
-	}
-
-	/**
-	 * 判断Vin是否连续
-	 * 
-	 * @param list2
-	 * 
-	 * @param objs
-	 * @return
-	 */
-	private List<JConfigure> autoAdjust(List<JConfigure> configures) {
-		for (int i = 0; i < configures.size(); i++) {// 检查数据是否连续，重新组织数据集合
-			JConfigure configure = configures.get(i);
-			String lastVin = getLastVin(configure.getCVinCode());
-
-			if (lastVin != null && lastVin.trim().length() > 11) {// 确认数据
-				int lastSerial = Integer.valueOf(lastVin.substring(11));// 上一次打印数据的流水号
-				int curSerial = Integer.valueOf(configure.getCVinCode().substring(11));// 本次打印的流水号
-
-				if (curSerial - lastSerial != 1) {// 如果不连续，则需要在数据前面插入空白
-					JConfigure obj = new JConfigure(i);
-					obj.setChassisNumber(reportBaseInfo.getChassisNumber());
-					obj.setJs(reportBaseInfo.getCarno());
-
-					// 如果不连续，在中间需要插入空白行
-					configures.add(configure.getIndex() - 1, obj);
-					configure.setIndex(configure.getIndex() + 1);// 如果不连续，则当前元素的索引自动加1
-					configures.remove(configures.size() - 1);
-				}
-			}
-		}
-		return configures;
+		return curVin;
 	}
 
 	/*
 	 * 数据集合
 	 */
 	public List<JConfigure> getDataSet() {
-		return autoAdjust(list);
+		return list;
 	}
 }
