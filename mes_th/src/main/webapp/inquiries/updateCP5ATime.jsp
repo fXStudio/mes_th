@@ -34,9 +34,6 @@
 	    con=Conn.getConn();
 		String sql=null;
 		DAO_WeldingSearch dao = new DAO_WeldingSearch();
-		time = request.getParameter("d11")==null?"":request.getParameter("d11");
-		seqno = request.getParameter("seqno")==null?"":request.getParameter("seqno");
-		vin = request.getParameter("vin")==null?"":request.getParameter("vin");
 		
 	    condition_One = request.getParameter("kin")==null||request.getParameter("kin")==""?"n":request.getParameter("kin");
 	    sql_temp1 = "ccarno='"+ condition_One +"' ";
@@ -75,22 +72,23 @@
 	  </tr>
 	  <tr>
 	    <td>
-	  	修改时间：<input id="d11" name="d11" type="text" value="<%=time==null?"":time%>" />
+	  	修改时间：<input id="d11" name="d11" type="text" readonly="readonly"/>
 		<img onclick="WdatePicker({el:'d11',dateFmt:'yyyy-MM-dd HH:mm:ss'})" src="../My97DatePicker/skin/datePicker.gif" width="16" height="22" align="absmiddle">
+		<img id="dateClean" src="../My97DatePicker/skin/clean.png" width="16" height="16" align="absmiddle">
 	  </td>
 	  </tr>
 	  <tr>
 	    <td>
-	  	&nbsp;&nbsp;顺序号：<input name="seqno" size="20" maxlength="20" value="<%=seqno==null?"":seqno%>">
+	  	&nbsp;&nbsp;顺序号：<input name="seqno" size="20" maxlength="20">
 	    </td>
 	  </tr>
 	  <tr>
 	    <td>
-	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIN：<input name="vin" size="20" maxlength="20" value="<%=vin==null?"":vin%>">
+	  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIN：<input name="vin" size="20" maxlength="20">
 	    </td>
 	  </tr>
 	  <tr>
-	  	<td align="center"><mes:button id="s2" reSourceURL="../JarResource/" onclick="update()" value="更新" /></td>
+	  	<td align="center"><mes:button id="s2" reSourceURL="../JarResource/" value="更新" /></td>
 	  </tr>
   	</table>
   </form>
@@ -118,11 +116,11 @@
   	<%for(int i=0;i<list_ws.size();i++){%>
   	  <tr>
   	    <td align="center"><%=list_ws.get(i).getSeq_W()==null?"-":list_ws.get(i).getSeq_W()%></td>
-  	  	<td align="center"><%=list_ws.get(i).getSeq()==null?"-":list_ws.get(i).getSeq()%></td>
-  	  	<td align="center"><%=list_ws.get(i).getVin()==null?"-":list_ws.get(i).getVin()%></td>
+  	  	<td align="center"><%=(seqno=list_ws.get(i).getSeq())==null?"-":list_ws.get(i).getSeq()%></td>
+  	  	<td align="center"><%=(vin=list_ws.get(i).getVin())==null?"-":list_ws.get(i).getVin()%></td>
   	    <td align="center"><%=list_ws.get(i).getKin()==null?"-":list_ws.get(i).getKin()%></td>
   	    <td align="center"><%=list_ws.get(i).getDWBegin()==null?"-":sdf.format(sdf.parse(list_ws.get(i).getDWBegin()))%></td>
-  	    <td align="center"><%=list_ws.get(i).getDABegin()==null?"-":sdf.format(sdf.parse(list_ws.get(i).getDABegin()))%></td>
+  	    <td align="center"><%=list_ws.get(i).getDABegin()==null?"-":(time=sdf.format(sdf.parse(list_ws.get(i).getDABegin())))%></td>
   	    <td align="center"><%=list_ws.get(i).getDCp6Begin()==null?"-":sdf.format(sdf.parse(list_ws.get(i).getDCp6Begin()))%></td>
   	    <td align="center"><%=list_ws.get(i).getCfilename_w()==null?"-":list_ws.get(i).getCfilename_w()%></td>
   	    <td align="center"><%=list_ws.get(i).getCfilename_a()==null?"-":list_ws.get(i).getCfilename_a()%></td>
@@ -130,6 +128,8 @@
     <%} %>
   </table>
   </div>
+  
+  <script src="../js/jquery-1.11.0.min.js" type="text/javascript"></script>
 </body>
 
 <%
@@ -145,21 +145,24 @@
 	%>	
 <!-- InstanceBeginEditable name="script" -->
 <script type="text/javascript">
-function checkinput(thisform){
-        var re =  /^[0-9]+$/;
-		var i=0;
-		var qm;
-		var mm = document.getElementsByName("method");
+	$(document).ready(function(){
+		$('#dateClean').click(function() {
+			$('#d11').val('');
+		});
 		
-}
-function update(){
-	var kin = document.getElementsByName("kin")[0].value;
-	var seqno = document.getElementsByName("seqno")[0].value;
-	var time = document.getElementsByName("d11")[0].value;
-	var vin = document.getElementsByName("vin")[0].value;
-	
-	window.location.href="updateCP5ATimeing.jsp?kin="+kin+"&time="+time+"&seqno="+seqno+"&vin="+vin;
-}
+		$('#s2').click(function (){
+			var kin = document.getElementsByName("kin")[0].value;
+			var seqno = document.getElementsByName("seqno")[0].value;
+			var time = document.getElementsByName("d11")[0].value;
+			var vin = document.getElementsByName("vin")[0].value;
+			
+			window.location.href = "updateCP5ATimeing.jsp?kin="+kin+"&time="+time+"&seqno="+seqno+"&vin="+vin;
+		});
+
+		$(':text[name="seqno"]').val('<%=seqno == null ? "" : seqno%>');
+		$(':text[name="d11"]').val('<%=time == null ? "" : time%>');
+		$(':text[name="vin"]').val('<%=vin == null ? "" : vin%>');
+	});
 </script>
 <!-- InstanceEndEditable -->
 <!-- InstanceEnd --></html>

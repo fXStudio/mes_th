@@ -78,7 +78,7 @@
 <!--
 function back(){
 	alert("更新成功！");
-	window.location.href='updateCP5ATime.jsp?d11=<%=time%>&vin=<%=vin%>&seqno=<%=seqno%>&kin=<%=kin%>';
+	window.location.href='updateCP5ATime.jsp?kin=<%=kin%>';
 }back();
 //-->
 </script>
