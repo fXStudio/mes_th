@@ -54,7 +54,7 @@ class DataSetBuilder implements IReportDataSetBuilder {
 		StringBuilder sb = new StringBuilder();
 		sb.append(" SELECT top ");
 		sb.append(printSet.getNTFASSCount());
-		sb.append(" c.cSEQNo_A, c.cVinCode, c.cCarType, cQADNo, sc.ITFASSNameId, sc.iTFASSNum, c.cCarNo, ks.ccode");
+		sb.append(" c.cSEQNo_A, c.cVinCode, c.cCarType, ISNULL(cQADNo, '') cQADNo, sc.ITFASSNameId, sc.iTFASSNum, c.cCarNo, ks.ccode");
 		sb.append(" FROM carData c LEFT JOIN carData_D sc");
 		sb.append(" ON c.ccarno = sc.icarid AND itfassnameid = ");
 		sb.append(reportBaseInfo.getTfassId());
