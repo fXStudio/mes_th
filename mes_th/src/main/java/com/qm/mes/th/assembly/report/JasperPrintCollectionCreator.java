@@ -26,7 +26,7 @@ public class JasperPrintCollectionCreator implements IReportCollectionCreator {
     public List<JasperPrint> getJasperPrintCollection(String code, List<IReportOrder> orderList) {
         if ("0".equals(code)) {// 简单报表（即所有数据只打在一个页内）
             return new SimpleAccemblyCollectionProducer().product(orderList);
-        } else if ("1".equals(code) || "2".equals(orderList)) {// 多页报表（即打印分为配置单和追溯单）
+        } else if ("1".equals(code) || "2".equals(code)) {// 多页报表（即打印分为配置单和追溯单）
             return new MutiplePageAccemblyCollectionProducer().product(orderList);
         }
         // 多列报表（即一个单子上有多个零件信息）
