@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.LazyDynaBean;
@@ -76,7 +77,7 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 	 * @return
 	 */
 	private Object createTotalDataList(List<JConfigure> datas) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		Map<String, Integer> map = new TreeMap<String, Integer>();
 
 		// 数据分类汇总
 		for (JConfigure obj : datas) {
