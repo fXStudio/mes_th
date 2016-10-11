@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.beanutils.DynaBean;
+import org.apache.commons.beanutils.LazyDynaBean;
+
 import com.qm.mes.th.assembly.IReportCollectionProducer;
 import com.qm.mes.th.assembly.IReportOrder;
 import com.qm.mes.th.assembly.helper.JasperTemplateLoader;
@@ -61,8 +64,41 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 		parameters.put("dataSource", getSubList(order.getDatas(), 0, 8));
 		parameters.put("dataSource1", getSubList(order.getDatas(), 8, 16));
 		parameters.put("dataSource2", getSubList(order.getDatas(), 16, 24));
+		parameters.put("totalDatasource", createTotalDataList(order.getDatas()));
 
 		return createJasperPrints(order.getPrintSet().getCPrintMD(), parameters);
+	}
+
+	/**
+	 * 生成数据汇总
+	 * 
+	 * @param datas
+	 * @return
+	 */
+	private Object createTotalDataList(List<JConfigure> datas) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+
+		// 数据分类汇总
+		for (JConfigure obj : datas) {
+			// 记录的数量
+			int count = 0;
+
+			// 如果分类信息存在，则记录数量递增
+			if (map.containsKey(obj.getCQADNo())) {
+				count = map.get(obj.getCQADNo());
+			}
+			map.put(obj.getCQADNo(), ++count);
+		}
+		// 统计信息列表
+		List<DynaBean> list = new ArrayList<DynaBean>();
+
+		for (String key : map.keySet()) {
+			DynaBean bean = new LazyDynaBean();
+			bean.set("itemTotal", key + ":  " + map.get(key));
+
+			list.add(bean);
+		}
+		return list;
 	}
 
 	/**
@@ -95,9 +131,9 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 				}
 				JasperPrint print = null;
 				if (order.getPrintSet().getCPrintMD().contains("ca3")) {
-					 print = createJasperPrints("new_qnfxpzs_ca3.jasper", parameters);
+					print = createJasperPrints("new_qnfxpzs_ca3.jasper", parameters);
 				} else {// 因为追溯单是一种类型两件，分开两张单子打印，所有需要做数据拆分，而后生成打印报表
-					 print = createJasperPrints("new_qnfxpzs.jasper", parameters);
+					print = createJasperPrints("new_qnfxpzs.jasper", parameters);
 				}
 				// 追溯单不能重复打印
 				print.setProperty("repeat", "false");
