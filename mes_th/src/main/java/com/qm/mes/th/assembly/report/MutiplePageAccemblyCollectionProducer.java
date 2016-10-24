@@ -77,29 +77,38 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 	 * @return
 	 */
 	private Object createTotalDataList(List<JConfigure> datas) {
-		Map<String, Integer> map = new TreeMap<String, Integer>();
+		Map<String, List<Integer>> map = new TreeMap<String, List<Integer>>();
 
+		// 统计信息列表
+		List<DynaBean> colects = new ArrayList<DynaBean>();
+		// 数据索引集合
+		List<Integer> list = null;
+
+		// 数据索引
+		int index = 1;
+		
 		// 数据分类汇总
 		for (JConfigure obj : datas) {
-			// 记录的数量
-			int count = 0;
-
-			// 如果分类信息存在，则记录数量递增
-			if (map.containsKey(obj.getCQADNo())) {
-				count = map.get(obj.getCQADNo());
+			if (map.containsKey(obj.getCQADNo())) {// 获取已存在的记录列表
+				list = map.get(obj.getCQADNo());
+			} else {// 创建新的记录列表
+				list = new ArrayList<Integer>();
 			}
-			map.put(obj.getCQADNo(), ++count);
+			// 记录数据的索引位置
+			list.add(index++);
+			// 按数据类型汇总
+			map.put(obj.getCQADNo(), list);
 		}
-		// 统计信息列表
-		List<DynaBean> list = new ArrayList<DynaBean>();
-
+		
+		// 要写入报表的数据汇总
 		for (String key : map.keySet()) {
 			DynaBean bean = new LazyDynaBean();
-			bean.set("itemTotal", key + ":  " + map.get(key));
+			bean.set("itemTotal", key + ":  " + map.get(key).size());
+			bean.set("itemPosition", map.get(key).toString().replaceAll("[^\\d, ]", ""));
 
-			list.add(bean);
+			colects.add(bean);
 		}
-		return list;
+		return colects;
 	}
 
 	/**
@@ -175,6 +184,6 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 	 */
 	private JasperPrint createJasperPrints(String printMd, Map<String, Object> parameters) throws Exception {
 		return JasperFillManager.fillReport((JasperReport) JRLoader.loadObject(JasperTemplateLoader.load(printMd)),
-		        parameters, new JREmptyDataSource());
+				parameters, new JREmptyDataSource());
 	}
 }
