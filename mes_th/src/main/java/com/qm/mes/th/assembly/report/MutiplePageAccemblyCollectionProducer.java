@@ -86,9 +86,13 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 
 		// 数据索引
 		int index = 1;
-		
+
 		// 数据分类汇总
 		for (JConfigure obj : datas) {
+			// 空值不记录
+			if (obj.getCQADNo() == null || obj.getCQADNo().trim().length() == 0) {
+				break;
+			}
 			if (map.containsKey(obj.getCQADNo())) {// 获取已存在的记录列表
 				list = map.get(obj.getCQADNo());
 			} else {// 创建新的记录列表
@@ -99,7 +103,7 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 			// 按数据类型汇总
 			map.put(obj.getCQADNo(), list);
 		}
-		
+
 		// 要写入报表的数据汇总
 		for (String key : map.keySet()) {
 			DynaBean bean = new LazyDynaBean();
@@ -184,6 +188,6 @@ class MutiplePageAccemblyCollectionProducer implements IReportCollectionProducer
 	 */
 	private JasperPrint createJasperPrints(String printMd, Map<String, Object> parameters) throws Exception {
 		return JasperFillManager.fillReport((JasperReport) JRLoader.loadObject(JasperTemplateLoader.load(printMd)),
-				parameters, new JREmptyDataSource());
+		        parameters, new JREmptyDataSource());
 	}
 }
