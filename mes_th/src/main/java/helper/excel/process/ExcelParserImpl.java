@@ -66,7 +66,7 @@ public class ExcelParserImpl extends BaseExcelParser {
 		// 处理数据集合
 		for (String key : stores.keySet()) {
 			Sheet sheet = workbook.getSheet(key);
-			
+
 			// 检验表格格式
 			if (sheet != null && checkExcelHeader(sheet)) {
 				List<FATHBean> list = new ArrayList<FATHBean>();
@@ -92,17 +92,25 @@ public class ExcelParserImpl extends BaseExcelParser {
 	 * @return
 	 */
 	private boolean checkExcelHeader(Sheet sheet) {
+		// CA3需要特殊处理一下
+		if ("BORA".equals(sheet.getSheetName())) {
+			sheet.setColumnHidden(7, true);
+		}
+
 		// 文件的标题行
 		Row row = sheet.getRow(sheet.getFirstRowNum());
-		
+
 		// 表格第一行不能为空
 		if (row == null) {
 			return false;
 		}
-
 		// 和定义的模板格式进行对比，只有符合模板要求的文档才能被正确解析
-		for (int i = 0; i < TEMPLATE_HEADERS.length; i++) {
-			if (!TEMPLATE_HEADERS[i].equals(getCellValue(row.getCell(i)))) {
+		for (int i = 0, j = 0; i < TEMPLATE_HEADERS.length; i++, j++) {
+			// 如果column被隐藏，则需要忽略
+			if (sheet.isColumnHidden(j)) {
+				j++;
+			}
+			if (!TEMPLATE_HEADERS[i].equals(getCellValue(row.getCell(j)))) {
 				return false;
 			}
 		}
@@ -119,18 +127,25 @@ public class ExcelParserImpl extends BaseExcelParser {
 		// 创建数据对象
 		FATHBean p = new FATHBean();
 
+		int i = 0;
+
 		// 填充数据对象
-		p.setId(getCellValue(row.getCell(0)));
-		p.setStatus(getCellValue(row.getCell(1)));
-		p.setSeq(getCellValue(row.getCell(2)));
-		p.setCp5adate(org.apache.poi.ss.usermodel.DateUtil.getJavaDate(row.getCell(3).getNumericCellValue()));
-		p.setCp5atime(org.apache.poi.ss.usermodel.DateUtil.getJavaDate(row.getCell(4).getNumericCellValue()));
-		p.setModel(getCellValue(row.getCell(5)));
-		p.setKnr(getCellValue(row.getCell(6)));
-		p.setColor(getCellValue(row.getCell(7)));
-		p.setColorDesc(getCellValue(row.getCell(8)));
-		p.setType(getCellValue(row.getCell(9)));
-		p.setChassi(getCellValue(row.getCell(10)));
+		p.setId(getCellValue(row.getCell(i++)));
+		p.setStatus(getCellValue(row.getCell(i++)));
+		p.setSeq(getCellValue(row.getCell(i++)));
+		p.setCp5adate(org.apache.poi.ss.usermodel.DateUtil.getJavaDate(row.getCell(i++).getNumericCellValue()));
+		p.setCp5atime(org.apache.poi.ss.usermodel.DateUtil.getJavaDate(row.getCell(i++).getNumericCellValue()));
+		p.setModel(getCellValue(row.getCell(i++)));
+		p.setKnr(getCellValue(row.getCell(i++)));
+		
+		if (row.getSheet().isColumnHidden(i)) {
+			i++;
+		}
+		
+		p.setColor(getCellValue(row.getCell(i++)));
+		p.setColorDesc(getCellValue(row.getCell(i++)));
+		p.setType(getCellValue(row.getCell(i++)));
+		p.setChassi(getCellValue(row.getCell(i++)));
 
 		return p;
 	}
