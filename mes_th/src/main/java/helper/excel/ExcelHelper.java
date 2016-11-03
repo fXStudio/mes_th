@@ -3,10 +3,8 @@ package helper.excel;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 
-import helper.excel.impl.DataPersistenceServcie;
-import helper.excel.impl.ExcelParserImpl;
-import helper.excel.inters.IDataPersistenceService;
 import helper.excel.inters.IExcelParser;
+import helper.excel.process.ExcelParserImpl;
 
 /**
  * Excel 解析工具类
@@ -15,7 +13,6 @@ import helper.excel.inters.IExcelParser;
  */
 public final class ExcelHelper {
 	private static IExcelParser excelParser = new ExcelParserImpl();
-	private static IDataPersistenceService dataStore = new DataPersistenceServcie();
 
 	/**
 	 * 工具类是不可被实例化的
@@ -29,7 +26,7 @@ public final class ExcelHelper {
 	 * @param in
 	 * @return
 	 */
-	public static int parse(InputStream in) throws Exception {
-		return dataStore.storeData(excelParser.parseExcel(new BufferedInputStream(in)));
+	public static String parse(InputStream in) throws Exception {
+		return excelParser.parseExcel(new BufferedInputStream(in));
 	}
 }
