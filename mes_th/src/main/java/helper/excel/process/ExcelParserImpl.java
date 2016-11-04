@@ -30,8 +30,8 @@ public class ExcelParserImpl extends BaseExcelParser {
 	 *
 	 * 标题格式: 批次顺序, 计划编号, 计划批次号, 生产单元, 订单号, 物料号, 物料流水起始, 物料流水结束, 班组, 班次, 数量, 备注
 	 */
-	private String[] TEMPLATE_HEADERS = { "id", "Status", "Seq", "CP5A Date", "CP5A Time", "Model", "KNR", "Color",
-			"ColorDesc", "Type", "Chassi" };
+	private String[] TEMPLATE_HEADERS = { "-", "Status", "Seq", "CP5A Date", "CP5A Time", "Model", "KNR", "Color",
+			"\u989c\u8272", "Type", "Chassi" };
 
 	/**
 	 * 数据处理映射表
