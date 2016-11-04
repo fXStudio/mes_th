@@ -19,7 +19,7 @@ abstract class AbstractPersistence {
 		StringBuilder sb = new StringBuilder();
 		sb.append(getPrefix());
 
-		for (int i = seq.length(); i <= 4; i++) {
+		for (int i = seq.length(); i < 4; i++) {
 			sb.append("0");
 		}
 		sb.append(seq);
