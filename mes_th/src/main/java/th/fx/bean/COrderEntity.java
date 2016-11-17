@@ -32,6 +32,16 @@ public class COrderEntity {
 	private String dabegin = "";
 	/** –Ú¡–∫≈ */
 	private String seq_a = "";
+	
+	private String lasttime;
+
+	public String getLasttime() {
+		return lasttime;
+	}
+
+	public void setLasttime(String lasttime) {
+		this.lasttime = lasttime;
+	}
 
 	private boolean isContinue = true;
 

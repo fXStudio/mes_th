@@ -140,6 +140,7 @@ public class ConfigOrderHandler {
 			if (rs.next()) {
 				entity.setDabegin(rs.getString("dabegin"));// 总装上线时间
 				entity.setSeq_a(rs.getString("cseqno_a"));// 总装顺序号
+				entity.setLasttime(timeDiff(rs.getTimestamp("dabegin")));// 最后发送间隔时间
 			}
 		} finally {
 			if (rs != null) {
@@ -301,7 +302,7 @@ public class ConfigOrderHandler {
 
 			if (rs.getRow() > 0) {
 				rs.absolute(rs.getRow() - 1);
-				entity.setDabegin(timeDiff(rs.getTimestamp("dabegin")));
+				entity.setLasttime(timeDiff(rs.getTimestamp("dabegin")));
 			}
 		} finally {
 			if (rs != null) {
