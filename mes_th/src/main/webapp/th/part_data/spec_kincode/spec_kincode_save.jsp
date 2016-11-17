@@ -12,7 +12,7 @@
        /** KIN号 */
        String ccarno = request.getParameter("ccarno");
        /** 焊装上线时间 */
-       String dwbegin = request.getParameter("dwbegin");
+       String cenabled = request.getParameter("cenabled");
        /** 焊装顺序号 */
        String remark = request.getParameter("remark");
        
@@ -21,12 +21,12 @@
 
        try{
            // 插入一条新数据
-           String strSql = "INSERT INTO SPECIALKIN (CCARNO, DTODATE, CREMARK) VALUES (?, ?, ?)";
+           String strSql = "INSERT INTO SPECIALKIN (CCARNO, cenabled, CREMARK) VALUES (?, ?, ?)";
            // 数据库连接
            conn = new Conn_MES().getConn();
            stmt = conn.prepareStatement(strSql);
            stmt.setString(1, ccarno);
-           stmt.setTimestamp(2, new Timestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dwbegin).getTime()));
+           stmt.setString(2, cenabled == null ? "0" : "1");
            stmt.setString(3, remark);
            
            stmt.execute();

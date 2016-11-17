@@ -47,7 +47,7 @@ public class SpecialKinWarning extends HttpServlet {
 		StringBuilder strSql  = new StringBuilder();
 		strSql.append(" SELECT MAX(A.DABEGIN) AS ID");
 		strSql.append(" FROM CARDATA A INNER JOIN SPECIALKIN B ");
-		strSql.append(" ON A.CCARNO LIKE B.CCARNO + '%' AND DATEDIFF(DAY, B.DTODATE, GETDATE()) < 0");
+		strSql.append(" ON A.CCARNO LIKE B.CCARNO + '%' AND cenabled = '1'");
 		strSql.append(" HAVING MAX(A.DABEGIN) IS NOT NULL");
 		
 		Connection conn = null;

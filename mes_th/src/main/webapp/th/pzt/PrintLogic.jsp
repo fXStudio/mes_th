@@ -26,6 +26,11 @@
 			out.write("<td >");
 				out.write("<label ><strong><font color='#ff0000' size='3' face='ºÚÌå'>" + entity.getMinPartCount() + "</strong></label>");
 			out.write("</td>");
+			
+			out.write("<td>");
+			out.write(entity.getDabegin());
+			out.write("</td>");
+			
 			out.write("<td>");
 					out.write(entity.getPerTimeCount() + "Á¾·Ý");	
 			out.write("</td>");

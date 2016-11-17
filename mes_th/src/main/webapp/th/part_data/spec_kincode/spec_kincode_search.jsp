@@ -34,19 +34,21 @@
       try{
           // 基础查询语句
     	  StringBuilder strSql = new StringBuilder();
-    	  strSql.append(" SELECT B.ID, B.CCARNO, A.CSEQNO, CONVERT(CHAR, A.DWBEGIN, 120) AS DWBEGIN,")
+    	  /* strSql.append(" SELECT B.ID, B.CCARNO, A.CSEQNO, CONVERT(CHAR, A.DWBEGIN, 120) AS DWBEGIN,")
                 .append(" CONVERT(CHAR, A.DABEGIN, 120) AS DABEGIN, B.CREMARK, B.DTODATE")
     	        .append(" FROM CARDATA A RIGHT JOIN SPECIALKIN B")
     	        .append("      ON A.CCARNO LIKE B.CCARNO + '%'")
-    	        .append(" WHERE DATEDIFF(DAY, B.DTODATE, GETDATE()) < 0");
+    	        .append(" WHERE DATEDIFF(DAY, B.DTODATE, GETDATE()) < 0"); */
+    	        
+    	  strSql.append("SELECT id, ccarno, cenabled, cremark FROM specialkin");
 
           // 创建数据库连接
           conn = new Conn_MES().getConn();
           // 按条件模糊查询
           if(!info.equals("")){
               ArrayList<String> colist = new ArrayList<String>(5);
-              colist.add("CCARNO".toLowerCase());
-              colist.add("CSEQNO".toLowerCase());
+              colist.add("ccarno");
+              colist.add("cremark");
               
               info = info.trim();
               LinkQuery link = new LinkQuery();
@@ -64,13 +66,10 @@
           
           while(rs.next()){
                  CarData cd = new CarData(); 
-                 cd.setId(rs.getInt("ID"));// 主键
-                 cd.setCcarno(rs.getString("CCARNO"));// KIN号
-                 cd.setCseqno(rs.getString("CSEQNO"));// 焊装顺序号
-                 cd.setDwbegin(rs.getString("DWBEGIN"));// 焊装上线时间
-                 cd.setCremark(rs.getString("CREMARK"));// 备注
-                 cd.setDtodate(rs.getString("DTODATE"));// 有效时间
-                 cd.setDabegin(rs.getString("DABEGIN"));// 总装上线时间
+                 cd.setId(rs.getInt("id"));// 主键
+                 cd.setCcarno(rs.getString("ccarno"));// KIN号
+                 cd.setCenabled(rs.getString("cenabled"));// 是否监控
+                 cd.setCremark(rs.getString("cremark"));// 备注
                  
                  list.add(cd);
           }
@@ -123,10 +122,7 @@
                     <mes:tr>
                         <mes:td width="30">序号</mes:td>
                         <mes:td width="120">KIN</mes:td>
-                        <mes:td width="90">焊装顺序号</mes:td>
-                        <mes:td width="160">焊装上线时间</mes:td>
-                        <mes:td width="160">总装上线时间</mes:td>
-                        <mes:td width="160">有效时间</mes:td>
+                        <mes:td width="160">是否监控</mes:td>
                         <mes:td width="120">备注</mes:td>
                         <mes:td width="30">更改</mes:td>
                         <mes:td width="30">删除</mes:td>
@@ -136,10 +132,7 @@
                     <mes:tr id = "tr${cd.id}">
                         <mes:td><%=serialNumber++%></mes:td>
                         <mes:td>${cd.ccarno}</mes:td>
-                        <mes:td>${cd.cseqno}</mes:td>
-                        <mes:td>${cd.dwbegin}</mes:td>
-                        <mes:td>${cd.dabegin}</mes:td>
-                        <mes:td>${cd.dtodate}</mes:td>
+                        <mes:td>${cd.cenabled == "1" ? "是" : "-----"}</mes:td>
                         <mes:td>${cd.cremark}</mes:td>
                         <mes:td>
                             <a href="javascript:window.location.href='spec_kincode_modify.jsp?intId=${cd.id}'">更改</a>

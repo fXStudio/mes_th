@@ -46,12 +46,22 @@ public class CarData {
 	/** 总装上线次数 */
 	private Integer auptime;
 
+	private String cenabled;
+
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getCenabled() {
+		return cenabled;
+	}
+
+	public void setCenabled(String cenabled) {
+		this.cenabled = cenabled;
 	}
 
 	public String getCseqno() {

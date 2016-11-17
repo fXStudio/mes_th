@@ -55,6 +55,7 @@
                     <td width="24%">基础数据维护</td>
                     <td width="7%">当前架号</td>
                     <td width="7%"><strong class="accepted">已接收</strong></td>
+                    <td width="7%">间隔时间</td>
                     <td width="7%">打印标准</td>
                     <td width="10%">自动打印 </td>
                     <td width="15%">提交</td>

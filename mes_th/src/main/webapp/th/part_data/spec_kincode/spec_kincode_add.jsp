@@ -84,9 +84,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>有效日期</td>
+                        <td>是否监控</td>
                         <td>
-                            <mes:calendar id="dwbegin" name="dwbegin" reSourceURL="../../../JarResource" haveTime="true"/>
+                        	<input type="checkbox" id="cenabled" name="cenabled"/>
                         </td>
                         <td width=50 align="right">备注</td>
                         <td>
@@ -112,10 +112,7 @@
                  *  @param fobj 表单对象
                  */
                 function checkForm(fobj){
-                    if(checkEmpty(fobj)){
-                        return checkNum(fobj) && checkDate(fobj);
-                    }
-                    return false;
+                    return checkEmpty(fobj) && checkNum(fobj);
                 }
                 
                 /**
@@ -158,24 +155,6 @@
                         }
                     }
                     return true;
-                }
-                
-                /**
-                 * 检查日期输入格式
-                 */
-                function checkDate(f){
-                    /** 合理的日期格式 */
-                    var regexp = /(^((19){1}|(20){1}))\d{2}-(([0-1]{1}[0-9]{1}))-([0-3]{1}[0-9]{1}) (([0-2]{1}[0-9]{1}):([0-5]{1}[0-9]{1}):([0-5]{1}[0-9]{1})$)/;
-                    /** 日期控件 */
-                    var in_date = f["dwbegin"];
-                    /** 是否符合规则 */
-                    var isLegal = regexp.test(in_date.value);
-                    
-                    if(!isLegal){
-                        alert("上线日期格式不正确!");
-                        in_date.focus();
-                    }
-                    return isLegal;
                 }
                 
                 /**

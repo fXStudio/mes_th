@@ -3,7 +3,9 @@ package th.fx;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,7 +27,7 @@ public class ConfigOrderHandler {
 
 	/** 最小打印零件数量 */
 	private int minPartCount = 9999;
-	
+
 	/**
 	 * 构造函数
 	 * 
@@ -129,7 +131,8 @@ public class ConfigOrderHandler {
 		ResultSet rs = null;
 
 		try {
-			stmt = conn.prepareStatement("SELECT dabegin, cseqno_a FROM cardata WHERE cvincode = ? AND dabegin is not null");
+			stmt = conn.prepareStatement(
+					"SELECT dabegin, cseqno_a FROM cardata WHERE cvincode = ? AND dabegin is not null");
 			stmt.setString(1, entity.getLastVin());
 
 			rs = stmt.executeQuery();
@@ -227,7 +230,7 @@ public class ConfigOrderHandler {
 
 		// 查询语句
 		StringBuilder sql = new StringBuilder();
-		sql.append(" SELECT").append(" c.cVinCode");
+		sql.append(" SELECT").append(" c.cVinCode, c.dabegin");
 		sql.append(" FROM carData c");
 		sql.append(" WHERE ((dabegin = ? AND c.cSEQNo_A > ?)").append(" OR (dabegin > ?))");
 
@@ -283,11 +286,11 @@ public class ConfigOrderHandler {
 				if (tempVin != null && !"".equals(tempVin)) {
 					int oldVinLst = Integer.valueOf(tempVin.substring(11)); // vin后六位
 					int newVinLst = Integer.valueOf(vinCode.substring(11)); // cardata中vin后6位
-					
+
 					// 如果是连续的序列号，那么其做差的结果应该等于1
 					if ((newVinLst - oldVinLst) != 1) {
 						entity.setContinue(false);
-						
+
 						break;
 					}
 				}
@@ -295,6 +298,11 @@ public class ConfigOrderHandler {
 			}
 			rs.last();
 			entity.setPartCount(rs.getRow());
+
+			if (rs.getRow() > 0) {
+				rs.absolute(rs.getRow() - 1);
+				entity.setDabegin(timeDiff(rs.getTimestamp("dabegin")));
+			}
 		} finally {
 			if (rs != null) {
 				try {
@@ -392,5 +400,35 @@ public class ConfigOrderHandler {
 			// 设置自动打印的调取串
 			entity.setOpenApp(openApp.toString());
 		}
+	}
+
+	private String timeDiff(Timestamp lasttime) {
+		Calendar cal = java.util.GregorianCalendar.getInstance();
+		long diff = cal.getTimeInMillis() - lasttime.getTime();
+
+		Integer ss = 1000;
+		Integer mi = ss * 60;
+		Integer hh = mi * 60;
+		Integer dd = hh * 24;
+
+		Long day = diff / dd;
+		Long hour = (diff - day * dd) / hh;
+		Long minute = (diff - day * dd - hour * hh) / mi;
+		Long second = (diff - day * dd - hour * hh - minute * mi) / ss;
+
+		StringBuffer sb = new StringBuffer();
+		if (day > 0) {
+			sb.append(day + "天");
+		}
+		if (hour > 0) {
+			sb.append(hour + "小时");
+		}
+		if (minute > 0) {
+			sb.append(minute + "分");
+		}
+		if (second > 0) {
+			sb.append(second + "秒");
+		}
+		return sb.toString();
 	}
 }
