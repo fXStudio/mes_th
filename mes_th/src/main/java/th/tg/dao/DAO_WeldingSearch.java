@@ -392,11 +392,17 @@ public class DAO_WeldingSearch {
 	 * @return
 	 */
 	public String getpart(String sql_temp1){
-		String sql = "select max(cqadno) cqadno,max(ctfassname) ctfassname,sum(itfassnum) itfassnum " +
-			"from cardata_d d inner join cardata c on c.ccarno=d.icarid " +
-			"inner join tfassname t on t.id=d.itfassnameid " +
-			"where " + sql_temp1 + " group by ctfassname";
-		return sql;
+		StringBuilder sb = new StringBuilder();
+		sb.append(" select cqadno,  ctfassname, p.pageno,");
+		sb.append(" p.dpcode + ' ' + p.dpdate +  ' ' + p.dpseqnum traceone,");
+		sb.append(" p.partseq tracetwo, CONVERT(varchar(20),p.recorddate, 120) recorddate");
+		sb.append(" from v_cardata_d d inner join v_cardata c on c.ccarno = d.icarid");
+		sb.append(" inner join tfassname t on t.id = d.itfassnameid");
+		sb.append(" left join v_pageno_part p on c.cVinCode = p.vin");
+		sb.append(" where ");
+		sb.append(sql_temp1);
+		
+		return sb.toString();
 	}
 	
 	/**

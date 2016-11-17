@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -673,13 +674,19 @@ public class WeldingSearchFactory {
 		Statement stmt = con.createStatement();
 		log.debug("通过条件查询零件SQL:"+dao.getpart(sql_temp1));
 		ResultSet rs = stmt.executeQuery(dao.getpart(sql_temp1));
+		
 		while(rs.next()){
 			Part part = new Part();
 			part.setCode(rs.getString("cqadno"));
 			part.setName(rs.getString("ctfassname"));
-			part.setNum(rs.getInt("itfassnum"));
+			part.setPageno(rs.getString("pageno"));
+			part.setTraceone(rs.getString("traceone"));
+			part.setTracetwo(rs.getString("tracetwo"));
+			part.setProddate(rs.getString("recorddate"));
+			
 			list.add(part);
 		}
+		
 		if(stmt != null){
 			stmt.close();
 			stmt = null;

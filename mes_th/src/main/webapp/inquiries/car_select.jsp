@@ -21,7 +21,7 @@
 	response.setHeader("Cache-Control","no-cache");
     Connection con = null;
     WeldingSearchFactory factory_ws = new WeldingSearchFactory();//查询工厂
-    List<Part> list_as = new ArrayList<Part>();//查询集合
+    List<th.tg.bean.Part> list_as = new ArrayList<th.tg.bean.Part>();//查询集合
     List<AssemblySearch> list_ws = new ArrayList<AssemblySearch>();//车辆信息
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     String condition_One = null;//条件一
@@ -119,17 +119,23 @@
   	  </tr>
     <%} %>
   </table>
-  <table border="0" cellspacing="0" cellpadding="0" width="390">
+  <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-top:30px;">
   	<tr>
-  	<td align="center" width="130">总成号</td>
+  	<td align="center" width="160">总成号</td>
   	<td align="center" width="180">总成名称</td>
-  	<td align="center" width="80">总成数量</td>
+  	<td align="center" width="120">所在配货单号</td>
+  	<td align="center" width="200">追溯条码1</td>
+  	<td align="center" width="120">追溯条码2</td>
+  	<td align="center" width="120">扫描时间</td>
   	</tr>
   	<%for(int i=0;i<list_as.size();i++){%>
   	  <tr>
   	  	<td align="center"><%=list_as.get(i).getCode()==null?"-":list_as.get(i).getCode()%></td>
   	  	<td align="center"><%=list_as.get(i).getName()==null?"-":list_as.get(i).getName()%></td>
-  	    <td align="center"><%=list_as.get(i).getNum()%></td>
+  	  	<td align="center"><%=list_as.get(i).getPageno()==null?"-":list_as.get(i).getPageno()%></td>
+  	  	<td align="center"><%=list_as.get(i).getTraceone()==null?"-":list_as.get(i).getTraceone()%></td>
+  	  	<td align="center"><%=list_as.get(i).getTracetwo()==null?"-":list_as.get(i).getTracetwo()%></td>
+  	  	<td align="center"><%=list_as.get(i).getProddate()==null?"-":list_as.get(i).getProddate()%></td>
   	  </tr>
     <%} %>
   </table>
