@@ -301,7 +301,7 @@ public class ConfigOrderHandler {
 			entity.setPartCount(rs.getRow());
 
 			if (rs.getRow() > 0) {
-				rs.absolute(rs.getRow() - 1);
+				rs.absolute(rs.getRow());
 				entity.setLasttime(timeDiff(rs.getTimestamp("dabegin")));
 			}
 		} finally {
@@ -415,7 +415,6 @@ public class ConfigOrderHandler {
 		Long day = diff / dd;
 		Long hour = (diff - day * dd) / hh;
 		Long minute = (diff - day * dd - hour * hh) / mi;
-		Long second = (diff - day * dd - hour * hh - minute * mi) / ss;
 
 		StringBuffer sb = new StringBuffer();
 		if (day > 0) {
@@ -426,9 +425,6 @@ public class ConfigOrderHandler {
 		}
 		if (minute > 0) {
 			sb.append(minute + "·Ö");
-		}
-		if (second > 0) {
-			sb.append(second + "Ãë");
 		}
 		return sb.toString();
 	}

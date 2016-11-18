@@ -398,7 +398,7 @@ public class DAO_WeldingSearch {
 		sb.append(" p.partseq tracetwo, CONVERT(varchar(20),p.recorddate, 120) recorddate");
 		sb.append(" from v_cardata_d d inner join v_cardata c on c.ccarno = d.icarid");
 		sb.append(" inner join tfassname t on t.id = d.itfassnameid");
-		sb.append(" left join v_pageno_part p on c.cVinCode = p.vin");
+		sb.append(" left join v_pageno_part p on d.cqadno = p.partname and c.cvincode = p.vin");
 		sb.append(" where ");
 		sb.append(sql_temp1);
 		
