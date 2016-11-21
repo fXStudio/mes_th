@@ -42,7 +42,6 @@
 	<link rel="stylesheet" type="text/css" href="cssfile/<%=cssFile%>.css">
 	<script language="javascript" type="text/javascript" src="popwin.js"></script>
 	<script>
-		<!--
 			/** AJAX¶ÔÏó */
 			var XHR;
 			 
@@ -148,7 +147,6 @@
 			        }();
 				}
 			}
-		-->
 	</script>
 </head>
 <frameset rows="0,*,20" cols="*" id="main" border="0" >

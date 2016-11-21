@@ -30,7 +30,7 @@
 		strSql.append(" SELECT A.ID, A.CVINCODE, A.CCARNO,");
 		strSql.append(" CONVERT(char, A.DWBEGIN, 120) AS DWBEGIN, CONVERT(char, A.DABEGIN, 120) AS DABEGIN");
 		strSql.append(" FROM CARDATA A INNER JOIN SPECIALKIN B ");
-		strSql.append(" ON A.CCARNO LIKE B.CCARNO + '%' AND DATEDIFF(DAY, B.DTODATE, GETDATE()) < 0");
+		strSql.append(" ON A.CCARNO LIKE B.CCARNO + '%' AND cenabled='1'");
 		
 		conn = new Conn_MES().getConn();
 		stmt = conn.prepareStatement(strSql.toString());

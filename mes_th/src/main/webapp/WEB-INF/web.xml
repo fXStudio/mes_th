@@ -63,6 +63,16 @@
 		<servlet-name>NewCarDataServlet</servlet-name>
 		<servlet-class>th.pd.servlet.NewCarDataServlet</servlet-class>
 	</servlet>
+
+	<servlet>
+		<servlet-name>SpecialKinWarning</servlet-name>
+		<servlet-class>th.util.servlet.SpecialKinWarning</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SpecialKinWarning</servlet-name>
+		<url-pattern>/SpecialKinWarning/*</url-pattern>
+	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>NewCarDataServlet</servlet-name>
 		<url-pattern>/NewCarDataServlet/*</url-pattern>
@@ -121,9 +131,8 @@
 		<servlet-name>RepeatPrint</servlet-name>
 		<url-pattern>/servlets/rePrint</url-pattern>
 	</servlet-mapping>
-	<!-- <listener>
-		<listener-class>th.listener.InitialListener</listener-class>
-	</listener> -->
+	<!-- <listener> <listener-class>th.listener.InitialListener</listener-class> 
+		</listener> -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
