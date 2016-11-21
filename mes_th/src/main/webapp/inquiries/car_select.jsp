@@ -50,7 +50,6 @@
 		list_ws = factory_ws.getcar(sql_temp1,con);
 	%>				
 <head>
-<link rel="stylesheet" type="text/css" href="../cssfile/style.css">
 <!-- InstanceBeginEditable name="标题" -->
 		<title>单车查询</title>
 <!-- InstanceEndEditable -->
@@ -63,7 +62,7 @@
 <!-- InstanceEndEditable -->
 </head>
 
-<body background="../images/background.jpg">
+<body background="../images/background.jpg" style="overflow:scroll;">
 <!-- 引用通用脚本 -->
 <script type="text/javascript" src="../JarResource/META-INF/tag/taglib_common.js"></script>
 
@@ -119,14 +118,14 @@
   	  </tr>
     <%} %>
   </table>
-  <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-top:30px;">
+  <table border="0" cellspacing="0" cellpadding="0" width="1090" style="margin-top:30px;">
   	<tr>
-  	<td align="center" width="160">总成号</td>
-  	<td align="center" width="180">总成名称</td>
-  	<td align="center" width="120">所在配货单号</td>
-  	<td align="center" width="200">追溯条码1</td>
-  	<td align="center" width="120">追溯条码2</td>
-  	<td align="center" width="120">扫描时间</td>
+	  	<td width="160px" align="center">总成号</td>
+	  	<td width="100px" align="center">总成名称</td>
+	  	<td width="100px" align="center">所在配货单号</td>
+	  	<td width="180px" align="center">追溯条码1</td>
+	  	<td width="200px"   align="center">追溯条码2</td>
+	  	<td width="160px" align="center">扫描时间</td>
   	</tr>
   	<%for(int i=0;i<list_as.size();i++){%>
   	  <tr>

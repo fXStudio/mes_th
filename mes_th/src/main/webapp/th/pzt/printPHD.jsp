@@ -50,15 +50,15 @@
         <form id="form1" name="form1" method="post" action="">
             <table width="1000" border="1" align="center" height="97">
                 <tr>	
-                    <td>序号</td>
-                    <td width="40%">描述</td>
+                    <td width="3%">序号</td>
+                    <td width="24%">描述</td>
                     <td width="24%">基础数据维护</td>
-                    <td width="7%">当前架号</td>
-                    <td width="7%"><strong class="accepted">已接收</strong></td>
-                    <td width="7%">间隔时间</td>
+                    <td width="6%">当前架号</td>
+                    <td width="6%"><strong class="accepted">已接收</strong></td>
+                    <td width="10%">间隔时间</td>
                     <td width="7%">打印标准</td>
                     <td width="10%">自动打印 </td>
-                    <td width="15%">提交</td>
+                    <td width="6%" align="center">提交</td>
                 </tr>
             
                 <!-- 导入业务逻辑处理，和数据的交互 -->

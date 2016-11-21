@@ -40,7 +40,7 @@
 				out.write("checked");
 			}
 			out.println("/> 自动打印</td>");
-			out.write("<td><input type='button' name='button" + entity.getGroupId() + "' id='button" + entity.getGroupId() + "' value='提交' onclick='openApp(" + entity.getGroupId() + "," + entity.getPrintRadio() + "," + 1 + "," + entity.getPages() + "," + entity.getMinPartCount() + "," + entity.getPerTimeRow() + "," + (entity.isContinue() ? 1 : 0) + ")'/></label></td>");
+			out.write("<td align='center'><input type='button' name='button" + entity.getGroupId() + "' id='button" + entity.getGroupId() + "' value='提交' onclick='openApp(" + entity.getGroupId() + "," + entity.getPrintRadio() + "," + 1 + "," + entity.getPages() + "," + entity.getMinPartCount() + "," + entity.getPerTimeRow() + "," + (entity.isContinue() ? 1 : 0) + ")'/></label></td>");
 		out.write("</tr>");
 		
 		// 输出自动打印脚本

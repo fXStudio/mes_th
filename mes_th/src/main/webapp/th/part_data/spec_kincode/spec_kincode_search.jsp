@@ -34,13 +34,10 @@
       try{
           // 基础查询语句
     	  StringBuilder strSql = new StringBuilder();
-    	  /* strSql.append(" SELECT B.ID, B.CCARNO, A.CSEQNO, CONVERT(CHAR, A.DWBEGIN, 120) AS DWBEGIN,")
-                .append(" CONVERT(CHAR, A.DABEGIN, 120) AS DABEGIN, B.CREMARK, B.DTODATE")
-    	        .append(" FROM CARDATA A RIGHT JOIN SPECIALKIN B")
-    	        .append("      ON A.CCARNO LIKE B.CCARNO + '%'")
-    	        .append(" WHERE DATEDIFF(DAY, B.DTODATE, GETDATE()) < 0"); */
-    	        
-    	  strSql.append("SELECT id, ccarno, cenabled, cremark FROM specialkin");
+    	  strSql.append("SELECT b.id, b.ccarno, b.cenabled, b.cremark,");
+    	  strSql.append("            CONVERT(CHAR, A.DWBEGIN, 120) AS DWBEGIN,");
+    	  strSql.append("            CONVERT(CHAR, A.DABEGIN, 120) AS DABEGIN");
+    	  strSql.append(" FROM specialkin b LEFT JOIN cardata a ON a.ccarno like b.ccarno + '%'");
 
           // 创建数据库连接
           conn = new Conn_MES().getConn();
@@ -61,6 +58,8 @@
               		.append(") A WHERE ")
               		.append(condition);
           }
+    	  strSql.append(" ORDER BY cenabled desc");
+    	  
           stmt = conn.prepareStatement(strSql.toString(), ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
           rs = stmt.executeQuery();
           
@@ -68,6 +67,8 @@
                  CarData cd = new CarData(); 
                  cd.setId(rs.getInt("id"));// 主键
                  cd.setCcarno(rs.getString("ccarno"));// KIN号
+                 cd.setDwbegin(rs.getString("dwbegin"));// 焊装上线时间
+                 cd.setDabegin(rs.getString("dabegin"));// 总装上线时间
                  cd.setCenabled(rs.getString("cenabled"));// 是否监控
                  cd.setCremark(rs.getString("cremark"));// 备注
                  
@@ -121,8 +122,10 @@
                 <mes:thead>
                     <mes:tr>
                         <mes:td width="30">序号</mes:td>
-                        <mes:td width="120">KIN</mes:td>
-                        <mes:td width="160">是否监控</mes:td>
+                        <mes:td width="90">KIN</mes:td>
+                        <mes:td width="160">焊装上线时间</mes:td>
+                        <mes:td width="160">总装上线时间</mes:td>
+                        <mes:td width="60">是否监控</mes:td>
                         <mes:td width="120">备注</mes:td>
                         <mes:td width="30">更改</mes:td>
                         <mes:td width="30">删除</mes:td>
@@ -132,7 +135,9 @@
                     <mes:tr id = "tr${cd.id}">
                         <mes:td><%=serialNumber++%></mes:td>
                         <mes:td>${cd.ccarno}</mes:td>
-                        <mes:td>${cd.cenabled == "1" ? "是" : "-----"}</mes:td>
+                        <mes:td>${cd.dwbegin}</mes:td>
+                        <mes:td>${cd.dabegin}</mes:td>
+                        <mes:td align="center">${cd.cenabled == "1" ? "<span style='color:green;'>是</span>" : "<span style='color:gray;'>否</span>"}</mes:td>
                         <mes:td>${cd.cremark}</mes:td>
                         <mes:td>
                             <a href="javascript:window.location.href='spec_kincode_modify.jsp?intId=${cd.id}'">更改</a>
