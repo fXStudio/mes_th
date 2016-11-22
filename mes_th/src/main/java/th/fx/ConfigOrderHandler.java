@@ -423,9 +423,8 @@ public class ConfigOrderHandler {
 		if (hour > 0) {
 			sb.append(hour + "小时");
 		}
-		if (minute > 0) {
-			sb.append(minute + "分");
-		}
+		sb.append(Math.max(1, minute) + "分");
+
 		return sb.toString();
 	}
 }
