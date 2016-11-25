@@ -20,7 +20,7 @@ public class DAO_WeldingSearch {
 	 */
 	public String getWeldingByTimeCarType(String startTime,String endTime){
 		String sql = "select d.cSEQNo,d.cCarNo,p.cQADNo,p.iTFASSNum " +
-			"from carData d,carData_D p " +
+			"from carData d, carData_D p " +
 			"where d.cCarNo=p.iCarId " +
 			"and d.dWBegin<=convert(varchar(100)," + startTime + ",20) " +
 			"and d.dWBegin>=convert(varchar(100)," + endTime + ",20)";
@@ -413,9 +413,9 @@ public class DAO_WeldingSearch {
 	 */
 	public String getcar(String sql_temp1){
 		String sql = "select c.cSEQNo,c.cSEQNo_A,c.cVinCode,c.cCarNo,dWBegin,dABegin,dCp6Begin," +
-				"(select max(cfilename) from productdata_w w where w." + sql_temp1 + ") cfilename_w," +
-				"(select max(cfilename) from productdata_a a where a." + sql_temp1 + ") cfilename_a " +
-				"from cardata c where c." + sql_temp1;
+				"(select max(cfilename) from v_productdata_w w where w." + sql_temp1 + ") cfilename_w," +
+				"(select max(cfilename) from v_productdata_a a where a." + sql_temp1 + ") cfilename_a " +
+				"from v_cardata c where c." + sql_temp1;
 		return sql;
 	}
 }
