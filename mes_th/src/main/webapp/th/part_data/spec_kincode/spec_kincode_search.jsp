@@ -152,6 +152,7 @@
                      <mes:td colspan="100%" align="center">
                          <form  name="form" style="margin: 0px"  method="get" onSubmit="return checkinput(this)" action="spec_kincode_search.jsp">
                               <a href="spec_kincode_add.jsp">【添加新记录】</a>
+                              <a href="spec_kincode_import.jsp">【批量导入】</a>
                          </form>
                       </mes:td>
                    </mes:tr>  

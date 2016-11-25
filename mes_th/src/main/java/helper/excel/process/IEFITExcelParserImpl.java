@@ -24,7 +24,7 @@ import helper.excel.persistence.SihuanPersistenceServcie;
  *
  * @author AjaxFan
  */
-public class ExcelParserImpl extends BaseExcelParser {
+public class IEFITExcelParserImpl extends BaseExcelParser {
 	/**
 	 * 计划模板的标题栏定义
 	 *

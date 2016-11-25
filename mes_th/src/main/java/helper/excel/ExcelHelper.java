@@ -4,7 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 
 import helper.excel.inters.IExcelParser;
-import helper.excel.process.ExcelParserImpl;
+import helper.excel.process.IEFITExcelParserImpl;
 
 /**
  * Excel 解析工具类
@@ -12,7 +12,7 @@ import helper.excel.process.ExcelParserImpl;
  * @author AjaxFan
  */
 public final class ExcelHelper {
-	private static IExcelParser excelParser = new ExcelParserImpl();
+	private static IExcelParser excelParser = new IEFITExcelParserImpl();
 
 	/**
 	 * 工具类是不可被实例化的
