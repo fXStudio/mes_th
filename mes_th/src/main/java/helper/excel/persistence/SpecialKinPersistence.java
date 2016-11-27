@@ -5,20 +5,21 @@ import java.sql.PreparedStatement;
 import java.util.List;
 
 import common.Conn_MES;
-import helper.excel.entities.FATHBean;
+import helper.excel.entities.SpecialKinBean;
 import helper.excel.inters.IDataPersistenceService;
 
 /**
- * 四环处理
- * 
+ * 特殊Kin号批量导入
  * @author Ajaxfan
+ *
  */
-public final class SihuanPersistenceServcie extends AbstractPersistence implements IDataPersistenceService<FATHBean> {
+public class SpecialKinPersistence implements IDataPersistenceService<SpecialKinBean> {
+
 	/**
-	 * 
+	 * 导入数据
 	 */
 	@Override
-	public int storeData(List<FATHBean> list) throws Exception {
+	public int storeData(List<SpecialKinBean> list) throws Exception {
 		int count = 0;
 
 		Connection conn = null;
@@ -27,14 +28,14 @@ public final class SihuanPersistenceServcie extends AbstractPersistence implemen
 		try {
 			conn = new Conn_MES().getConn();
 			conn.setAutoCommit(false);
-			stmt = conn.prepareStatement(toSql());
+			stmt = conn.prepareStatement("DELETE specialKin WHERE ccarno = ?;INSERT INTO specialKin (ccarno, cenabled, cremark) VALUES (?,?,?)");
 
 			// 数据变更方法
-			for (FATHBean bean : list) {
-				stmt.setString(1, bean.getChassi());
-				stmt.setObject(2, toDateTime(bean.getCp5adate(), bean.getCp5atime()));
-				stmt.setString(3, getSeq(bean.getSeq()));
-				stmt.setString(4, bean.getKnr().replaceAll("-", ""));
+			for (SpecialKinBean bean : list) {
+				stmt.setString(1, bean.getKincode());
+				stmt.setString(2, bean.getKincode());
+				stmt.setString(3, bean.getEnabled());
+				stmt.setString(4, bean.getRemark());
 
 				stmt.addBatch();
 			}
@@ -57,10 +58,5 @@ public final class SihuanPersistenceServcie extends AbstractPersistence implemen
 			}
 		}
 		return count;
-	}
-
-	@Override
-	protected String getPrefix() {
-		return "03";
 	}
 }

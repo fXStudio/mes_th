@@ -18,7 +18,7 @@ public class SpecialKinBean {
 	}
 
 	public void setEnabled(String enabled) {
-		this.enabled = enabled;
+		this.enabled = enabled != null && "1".equals(enabled) ? "1" : "0";
 	}
 
 	public String getRemark() {

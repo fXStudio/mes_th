@@ -1,12 +1,13 @@
 <%@ page contentType="text/html;charset=GBK" language="java" pageEncoding="GBK"%>
 <%@ page import="java.io.File"%>
+<%@ page import="java.io.FileInputStream"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
 <%@ page import="org.apache.commons.fileupload.FileItem"%>
 <%@ page import="org.apache.commons.fileupload.FileUploadException"%>
 <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory"%>
 <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
-<%@ page import="th.bs.bom.ReadExcel;"%>
+<%@ page import="helper.excel.ExcelHelper;"%>
 
 <%
     int max_memory_size = 2048;// 缓存容量
@@ -55,14 +56,14 @@
         }
     }
     // 是否添加成功
-    String msg = "添加成功";
+    String msg = "数据上传完成, 共影响数据条目: ";
 
     // 导入装配料号与配置信息
     if (file != null){
-        try{
-            ReadExcel.readXml(file);
-        }catch(Exception e){
-            msg = e.getMessage();
+        try {
+        	msg += ExcelHelper.parse(new FileInputStream(file), "spec_kincode");
+        } catch(Exception e){
+        	e.printStackTrace();
         }
     }
     session.setAttribute("mes_msg", msg);

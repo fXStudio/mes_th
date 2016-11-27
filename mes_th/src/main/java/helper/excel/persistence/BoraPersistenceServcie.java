@@ -13,7 +13,7 @@ import helper.excel.inters.IDataPersistenceService;
  * 
  * @author Ajaxfan
  */
-public final class BoraPersistenceServcie extends AbstractPersistence implements IDataPersistenceService {
+public final class BoraPersistenceServcie extends AbstractPersistence implements IDataPersistenceService<FATHBean> {
 	/**
 	 * 
 	 */

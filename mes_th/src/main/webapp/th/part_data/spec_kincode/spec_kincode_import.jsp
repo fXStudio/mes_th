@@ -29,12 +29,10 @@
                    if(obj != null){
                        String msg = (String)obj;
                        out.println("<script>var tip_obj=document.getElementById(\"tip\");tip_obj.innerHTML=\"" + msg + "\"</script>");
-                   } else {
-                	   response.sendRedirect("./spec_kincode_search.jsp");
                    }
                    session.removeAttribute("mes_msg");
             %>
-            <form name="form1" id="form1" action="upload.jsp" enctype="multipart/form-data" method="post" onsubmit="return check(this)">
+            <form name="form1" id="form1" action="spec_kincode_upload.jsp" enctype="multipart/form-data" method="post" onsubmit="return check(this)">
                 <table cellspacing=0 cellpadding=0 border=0 class="mac_table">
                     <tr>
                         <td>
@@ -48,12 +46,13 @@
                         <td colspan=2 align="center">
                             <mes:button id="qulityMsg_modified" reSourceURL="../../../JarResource" value="上传" submit="true"/>&nbsp;
                             <mes:button id="qulityMsg_reset" reSourceURL="../../../JarResource" value="重置" submit="false"/>
+                            <mes:button id="qulityMsg_back" reSourceURL="../../../JarResource" value="返回" submit="false" onclick="javascript:window.location.href='./spec_kincode_search.jsp'"/>
                         </td>
                     </tr>
                 </table>
             </form>
             <div class="div_normal">
-                    注：文件应为Excel格式. <a  href="./specialKin.xls">下载模板文件</a><br>
+                                                             注：文件应为Excel格式. <a  href="./specialKin.xls">下载模板文件</a><br>
             </div>
         </div>
     </body>

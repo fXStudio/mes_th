@@ -9,12 +9,12 @@ import helper.excel.entities.FATHBean;
  * 
  * @author Ajaxfan
  */
-public interface IDataPersistenceService {
+public interface IDataPersistenceService<T> {
 	/**
 	 * Êý¾Ý´æ´¢
 	 * 
 	 * @param list
 	 * @return
 	 */
-	public int storeData(List<FATHBean> list) throws Exception;
+	public int storeData(List<T> list) throws Exception;
 }
