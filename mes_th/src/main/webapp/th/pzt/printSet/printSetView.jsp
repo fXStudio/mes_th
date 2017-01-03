@@ -81,16 +81,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <form id="form1" name="form1"  action="printSetUpdate.jsp"  method="get">
 	     <table width="950" border="1" align="center" height="97">
 	     <tr>	
-	    	<td  width="50">groupid</td>
+	    	<td  width="25">组号</td>
 			<td width="150">描述</td>
 	     	<td width="100">打印标题</td>
 	     	<td width="100">总成</td>
-	     	<td width="100">打印辆份设定</td>
-	     	<td width="50">自动打印</td>
-	     	<td width="150">底盘号</td>
-	     	<td width="50">份数</td>
-			<td width="50">架号</td>
-	     	<td width="50">删除</td>
+	     	<td width="50">打印辆份</td>
+	     	<td width="25">自动</td>
+	     	<td width="110">底盘号</td>
+	     	<td width="25">份数</td>
+			<td width="30">架号</td>
+	     	<td width="35">删除</td>
+	     	<td width="35">复制</td>
 	     </tr>
 		 <%
 		 	try {
@@ -141,8 +142,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					out.write("<td>"+descript+"</td>");
 					out.write("<td>"+carTypeDesc+"</td>");
 					out.write("<td>"+tFassName+"</td>");
-					out.write("<td><label><input name='printRadio"+groupId+"' style='width:70px;' value='");
-					out.write(perTimeCount+ "'/>" + "辆份");
+					out.write("<td><label><input name='printRadio"+groupId+"' style='width:100%;' value='");
+					out.write(perTimeCount+ "'/>");
 					out.write("</label></td>");
 					
 					out.write("<td align='center'><input type='checkbox' name='checkBox"+groupId+"' id='checkBox"+groupId+"' ");
@@ -151,10 +152,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					out.write(" />");	
 					out.write("</label></td>");
 					
-					out.write("<td><input type='text' name='seqText"+groupId+"' id='seqText"+groupId+"' value='"+lastVin+"' /></td>");			
+					out.write("<td><input type='text' name='seqText"+groupId+"' id='seqText"+groupId+"' value='"+lastVin+"' style='width:110px;'/></td>");			
 					out.write("<td><input type='text' name='printPage"+groupId+"' id='printPage"+groupId+"' value='"+printPage+"' size='2' maxlength='2'/></td>");
 					out.write("<td><input type='text' name='printJh"+groupId+"' id='printJh"+groupId+"' value='0' size='3' maxlength='3'/></td>");
 					out.write("<td><input type='button' name='printDel"+groupId+"' id='printDel"+groupId+"' value='删除' onclick='printDel("+groupId+")'/></td>");			
+					out.write("<td><input type='button' name='printDel"+groupId+"' id='printDel"+groupId+"' value='复制' onclick='clone("+groupId+")'/></td>");			
 					out.write("</tr>");
 				}//end while printid;
 		    }
@@ -170,7 +172,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	}
 		  %>
 		  <tr>
-		  	<td colspan="7" align="center">
+		  	<td colspan="11" align="center">
 		  		<input type="submit" value="提交"/>
 		  	</td>
 		  </tr>
@@ -199,7 +201,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         // 删除打印配置
         function printDel(groupId) {
-           if(window.confirm("确定要删除配置想吗？")) {
+           if(window.confirm("确定要删除当前架号信息吗？")) {
                var carid = document.getElementById('printJh'+groupId).value;
                var rq = document.getElementById('rq').value;
                var vincode = document.getElementById('seqText'+groupId).value;
@@ -211,6 +213,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                } else {
                    window.location="printDel.jsp?groupId="+groupId+"&carId="+carid+"&rq="+rq+"&vincode="+vincode;
                }
+           }
+        }
+        
+        // 确认复制
+        function clone(groupId) {
+           if(window.confirm("通过复制可生成新的打印配置组，确认要执行此操作吗？")) {
+        	   window.location="cloneView.jsp?groupId="+groupId;
            }
         }
 	</script>
