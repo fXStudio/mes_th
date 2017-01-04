@@ -10,6 +10,7 @@ import helper.excel.inters.IDataPersistenceService;
 
 /**
  * 特殊Kin号批量导入
+ * 
  * @author Ajaxfan
  *
  */
@@ -28,16 +29,19 @@ public class SpecialKinPersistence implements IDataPersistenceService<SpecialKin
 		try {
 			conn = new Conn_MES().getConn();
 			conn.setAutoCommit(false);
-			stmt = conn.prepareStatement("DELETE specialKin WHERE ccarno = ?;INSERT INTO specialKin (ccarno, cenabled, cremark) VALUES (?,?,?)");
+			stmt = conn.prepareStatement(
+					"DELETE specialKin WHERE ccarno = ?;INSERT INTO specialKin (ccarno, cenabled, cremark) VALUES (?,?,?)");
 
 			// 数据变更方法
 			for (SpecialKinBean bean : list) {
-				stmt.setString(1, bean.getKincode());
-				stmt.setString(2, bean.getKincode());
-				stmt.setString(3, bean.getEnabled());
-				stmt.setString(4, bean.getRemark());
+				if (bean.getKincode() != null && bean.getKincode().trim().length() > 0) {
+					stmt.setString(1, bean.getKincode());
+					stmt.setString(2, bean.getKincode());
+					stmt.setString(3, bean.getEnabled());
+					stmt.setString(4, bean.getRemark());
 
-				stmt.addBatch();
+					stmt.addBatch();
+				}
 			}
 			count = stmt.executeBatch().length;
 			conn.commit();
