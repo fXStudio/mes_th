@@ -72,7 +72,7 @@
 					stmt.setString(8, request.getParameter("nPage"));
 					stmt.setString(9, request.getParameter("nPerTimeCount"));
 					stmt.setString(10, request.getParameterValues("cPrintMD")[i]);
-					stmt.setString(11, request.getParameter("cVinRule"));
+					stmt.setObject(11, "null".equals(request.getParameter("cVinRule")) ? null : request.getParameter("cVinRule"));
 					
 					stmt.addBatch();
 				}
