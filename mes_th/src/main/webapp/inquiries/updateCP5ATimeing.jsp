@@ -27,46 +27,41 @@
   
 	Connection con = null;
 	try {
-	    con = Conn.getConn();
-		ResultSet rs = null;
-		ResultSet rs_part = null;
+	    	con = Conn.getConn();
 		
-		if(vin!=null){
-			sql_check = "select count(*) from cardata where ccarno='" + kin + "'";
-			rs = con.createStatement().executeQuery(sql_check);
-			if(rs.next()){
-				count = rs.getInt(1);
-			}
-			if(count != 1 ){
-%>
-				<script>
-					<!-- 
-					alert("输入的数据有误,请重新输入!");
-					window.location.href='updateCP5ATime.jsp?d11=<%=time%>&vin=<%=vin%>';
-					 -->
-				</script>
-<%
-				return;
-			}
-			StringBuilder sb = new StringBuilder();
-			sb.append("update cardata set dABegin=");
-			sb.append(time == null || time.trim().length() == 0 ? null : "'" + time + "'");
-			if(vin != null && !"".equals(vin.trim())){
-				sb.append(", cvincode = '");
-				sb.append(vin);
+	    	for(String table : new String[]{"cardata", "history_cardata"}){
+				StringBuilder sb = new StringBuilder();
+				sb.append("update " + table + " set dABegin=");
+				sb.append(time == null || time.trim().length() == 0 ? null : "'" + time + "'");
+				if(vin != null && !"".equals(vin.trim())){
+					sb.append(", cvincode = '");
+					sb.append(vin);
+					sb.append("'");
+				}
+				if(seqno != null && !"".equals(seqno.trim())){
+					sb.append(", cseqno_a = '");
+					sb.append(seqno);
+					sb.append("'");
+				}
+				sb.append(" where ccarno='");
+				sb.append(kin);
 				sb.append("'");
-			}
-			if(seqno != null && !"".equals(seqno.trim())){
-				sb.append(", cseqno_a = '");
-				sb.append(seqno);
-				sb.append("'");
-			}
-			sb.append(" where ccarno='");
-			sb.append(kin);
-			sb.append("'");
-			
-			con.createStatement().execute(sb.toString());
-		}
+				
+				if(con.createStatement().executeUpdate(sb.toString()) > 0){
+					%>
+						<script type="text/javascript">
+							<!--
+								function back(){
+									alert("更新成功！");
+									window.location.href='updateCP5ATime.jsp?kin=<%=kin%>';
+								}
+								back();
+							//-->
+						</script>
+					<%
+					return;
+				}
+	    	}
 	} catch (Exception e){
 		e.printStackTrace();
 	}finally{
@@ -74,11 +69,12 @@
 			con.close();
 	}
 %>
-<<script type="text/javascript">
-<!--
-function back(){
-	alert("更新成功！");
-	window.location.href='updateCP5ATime.jsp?kin=<%=kin%>';
-}back();
-//-->
+<script type="text/javascript">
+	<!--
+		function back(){
+			alert("没有找到匹配的更新数据！");
+			window.location.href='updateCP5ATime.jsp?kin=<%=kin%>';
+		}
+		back();
+	//-->
 </script>
