@@ -73,6 +73,7 @@
 						}
 						out.write("<td style='display:none;'><input  name='cCode' value='" + rs.getString("ccode") + "'/></td>");
 						out.write("<td style='display:none;'><input name='cPrintMD' value='" + rs.getString("cprintmd") + "'/></td>");
+						out.write("<td style='display:none;'><input name='nTfassCount' value='" + rs.getString("ntfasscount") + "'/></td>");
 					out.write("<tr>");	
 				}
 			} catch (Exception e) {

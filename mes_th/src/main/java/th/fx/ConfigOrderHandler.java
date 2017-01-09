@@ -391,7 +391,7 @@ public class ConfigOrderHandler {
 		int minPartCount = entity.getMinPartCount();
 
 		// 判断自动打印标志，只有设置为自动打印的时候，这里才会生成这个串
-		if (entity.getAuto().equals("1") && minPartCount >= perTimeRow) {
+		if ("1".equals(entity.getAuto()) && minPartCount >= perTimeRow) {
 			StringBuilder openApp = new StringBuilder();
 			openApp.append("openApp(").append(entity.getGroupId()).append(",");
 			openApp.append(entity.getPrintRadio()).append(",").append(ch).append(",");

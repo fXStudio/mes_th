@@ -59,7 +59,7 @@
 			try {
 				conn = Conn.getConn();
 				conn.setAutoCommit(false);
-				stmt = conn.prepareStatement("insert into printset (ccode, cDescrip, iPrintGroupId, cFactory, cCarType, cCarTypeDesc, cTFASSName, nPage, nPerTimeCount, cPrintMD, cVinRule, cseqno_a, ibigno, icarno,clastvin) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1, 0,'')");
+				stmt = conn.prepareStatement("insert into printset (ccode, cDescrip, iPrintGroupId, cFactory, cCarType, cCarTypeDesc, cTFASSName, nPage, nPerTimeCount, cPrintMD, cVinRule, cseqno_a, ibigno, icarno,clastvin,ntfasscount,cauto) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 1, 0,'',?,0)");
 				
 				for(int i = 0; i < request.getParameterValues("cCode").length; i++) {
 					stmt.setString(1, request.getParameterValues("cCode")[i]);
@@ -73,6 +73,7 @@
 					stmt.setString(9, request.getParameter("nPerTimeCount"));
 					stmt.setString(10, request.getParameterValues("cPrintMD")[i]);
 					stmt.setObject(11, "null".equals(request.getParameter("cVinRule")) ? null : request.getParameter("cVinRule"));
+					stmt.setString(12, request.getParameter("nTfassCount"));
 					
 					stmt.addBatch();
 				}
