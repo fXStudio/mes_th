@@ -46,8 +46,11 @@
 				sb.append(" where ccarno='");
 				sb.append(kin);
 				sb.append("'");
-				
-				if(con.createStatement().executeUpdate(sb.toString()) > 0){
+
+				if(con.createStatement().executeUpdate(sb.toString()) > 0) {
+					if("history_cardata".equals(table)){
+						con.prepareStatement("EXEC UPDATE_TIMEING '" + kin + "'").execute();
+					}
 					%>
 						<script type="text/javascript">
 							<!--
