@@ -19,28 +19,27 @@
 			background-image:url(images/basket_put.png)!important;
 		}
 	</style>
-		
-	<script type="text/javascript" src="../ext-base.js"></script>
-	<script type="text/javascript" src="../ext-all.js"></script>
-	<script type="text/javascript" src="../ext-lang-zh_CN.js"></script>
-	
-	<script type="text/javascript" src="js/menu/EditableItem.js"></script>
-	<script type="text/javascript" src="js/menu/RangeMenu.js"></script>
-	
-	<script type="text/javascript" src="js/grid/GridFilters.js"></script>
-	<script type="text/javascript" src="js/grid/filter/Filter.js"></script>
-	<script type="text/javascript" src="js/grid/filter/StringFilter.js"></script>
-	<script type="text/javascript" src="js/grid/filter/DateFilter.js"></script>
-	<script type="text/javascript" src="js/grid/filter/ListFilter.js"></script>
-	<script type="text/javascript" src="js/grid/filter/NumericFilter.js"></script>
-	<script type="text/javascript" src="js/grid/filter/BooleanFilter.js"></script>
-	<script type="text/javascript" src="js/GroupSummary.js"></script>
-	
-	<script type="text/javascript" src="terminalCPageNoSearch.js" defer="defer"></script>
-	 
   </head>
   
   <body>
-	<div id="searchManager"></div>
+		<div id="searchManager"></div>
+	
+		<script type="text/javascript" src="../ext-base.js"></script>
+		<script type="text/javascript" src="../ext-all.js"></script>
+		<script type="text/javascript" src="../ext-lang-zh_CN.js"></script>
+		
+		<script type="text/javascript" src="js/menu/EditableItem.js"></script>
+		<script type="text/javascript" src="js/menu/RangeMenu.js"></script>
+		
+		<script type="text/javascript" src="js/grid/GridFilters.js"></script>
+		<script type="text/javascript" src="js/grid/filter/Filter.js"></script>
+		<script type="text/javascript" src="js/grid/filter/StringFilter.js"></script>
+		<script type="text/javascript" src="js/grid/filter/DateFilter.js"></script>
+		<script type="text/javascript" src="js/grid/filter/ListFilter.js"></script>
+		<script type="text/javascript" src="js/grid/filter/NumericFilter.js"></script>
+		<script type="text/javascript" src="js/grid/filter/BooleanFilter.js"></script>
+		<script type="text/javascript" src="js/GroupSummary.js"></script>
+		
+		<script type="text/javascript" src="terminalCPageNoSearch.js" defer="defer"></script>
   </body>
 </html>
