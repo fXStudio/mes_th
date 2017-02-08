@@ -14,36 +14,21 @@
         int index = Integer.parseInt(start);
         int pageSize = Integer.parseInt(limit);
         
-        Map map=request.getParameterMap();      
-        
-       // Iterator it = map.entrySet().iterator(); 
-       
-       // while(it.hasNext()){
-        
-		 //   	Map.Entry entry=(Map.Entry)it.next();
-			    //Map.Entry可以看成是一种特殊的Map,与Map不同的是Map.Entry只能含有一对键-值
-		 //	    String key=(String)entry.getKey();
-		 //	    String[] value=(String[])entry.getValue();
-		 //	    System.out.println("key:"+key+"   value:"+value[0]);
-	  //}
+        Map map = request.getParameterMap();      
 		
 		//分组,不包含指定类型时退出
 		int groupByNumber=0;
 		while(true){
-		
 			String filterType="filter["+groupByNumber+"][data][type]";
 			
 			if(map.containsKey(filterType)==false){
 				break;
 			}
-			
 		    groupByNumber++;
 			
 		}
-		
-		System.out.println("groupByNumber:"+groupByNumber);
-		//String condition=" where 0=0 and datediff(hh,printdate,getdate())<=24 ";
-		String condition=" where 0=0 and datediff(hh,printdate,getdate())<=24 and outdate is null and outpnostate is null ";
+
+		String condition=" where 0=0 ";
 		
 		for(int i=0;i<groupByNumber;i++){
 		
@@ -52,21 +37,13 @@
 			
 			String []filtertype=(String[])map.get(type);
 			
-			System.out.println(filtertype[0]);
-			
 			String field="filter["+i+"][field]";
 			
 			String []filterfield=(String[])map.get(field);
 			
-			System.out.println(filterfield[0]);
-			
 			String value="filter["+i+"][data][value]";
 			
 			String []filtervalue=(String[])map.get(value);
-			
-			System.out.println(filtervalue[0]);
-			
-			
 			
 			if(filtertype[0].equals("string")){
 			
@@ -77,8 +54,6 @@
 				String comparison="filter["+i+"][data][comparison]";
 			
 				String []filtercomparison=(String[])map.get(comparison);
-				
-				System.out.println(filtercomparison[0]);
 			
 				if(filtercomparison[0].equals("lt")){
 					filtercomparison[0]="<";
@@ -122,8 +97,6 @@
 				String comparison="filter["+i+"][data][comparison]";
 			
 				String []filtercomparison=(String[])map.get(comparison);
-				
-				System.out.println(filtercomparison[0]);
 			
 				if(filtercomparison[0].equals("lt")){
 					filtercomparison[0]="<";
@@ -138,9 +111,6 @@
 				condition+=" and "+filterfield[0]+""+filtercomparison[0]+"'"+filtervalue[0]+"'";
 			}
 		}
-		
-		
-        System.out.println(condition);
         
         int rows=new Terminal().getFilterCPageNoSeaCount(condition);
 	   	int total=rows;
@@ -149,21 +119,19 @@
         ResultSet rs = null;
         try {
             con= new Conn_MES().getConn();
-    		System.out.println("terminalCPageNoSeaOperator.jsp --- Open Connection");
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-            String sql="select * from (SELECT distinct PD.CPAGENO,P.cdescrip,"
-            		   +" CASE p.CCODE WHEN '1' THEN 'B8/Q5方向盘/气囊'"
-            		   +" ELSE P.CCARTYPEDESC END AS NAME,"
-                       +" CONVERT(VARCHAR,DAY(PD.CREMARK))+'-'+CONVERT(VARCHAR,PD.ICARNO) AS CODE,"
-                       +" CP.CAR,PD.dPrintTime as printdate,CP.outpnostate,"
-                       +" ps.recorddate as partdate,cs.recorddate as cardate,"
-                       +" cs.outrecorddate as outdate,pst.pagenostate"
-                       +" FROM PRINTSET P INNER JOIN PRINT_DATA PD ON P.ID=PD.IPRINTGROUPID"
-                       +" left JOIN pageno_state ps on pd.cpageno=ps.pageno"
-                       +" left JOIN CAR_PAGENO CP ON PD.CPAGENO=CP.PAGENO"
-                       +" left join car_state cs on cp.car=cs.car"
-                       +" left join pageno_state pst on pd.cpageno=pst.pageno) t "
+            String sql="SELECT PD.CPAGENO,P.cdescrip, P.CCARTYPEDESC AS NAME,"
+            		   +" CONVERT(VARCHAR,DAY(PD.CREMARK)) + '-' + CONVERT(VARCHAR,PD.ICARNO) AS CODE,"
+            		   +" CP.CAR, PD.dPrintTime as printdate, CP.outpnostate, "
+                       +" ps.recorddate as partdate, cs.recorddate as cardate, "
+                       +" cs.outrecorddate as outdate,PS.pagenostate "
+                       +" FROM PRINTSET P"
+                       +" INNER JOIN (select IPRINTGROUPID, CPAGENO, CREMARK, ICARNO, dPrintTime from PRINT_DATA where datediff(HH, dPrintTime, getdate())<=24 GROUP BY "
+                       +" IPRINTGROUPID, CPAGENO, CREMARK, ICARNO, dPrintTime) PD ON P.ID = PD.IPRINTGROUPID"
+                       +" LEFT JOIN pageno_state ps on pd.cpageno = ps.pageno"
+                       +" LEFT JOIN (select * from CAR_PAGENO where outpnostate is null) CP ON PD.CPAGENO = CP.PAGENO"
+                       +" LEFT join (select car, outrecorddate,recorddate from car_state where outrecorddate is null) cs on cp.car = cs.car"
                        +condition
                        +" order by CPAGENO DESC";
             
@@ -209,7 +177,6 @@ output=output.substring(0,output.length()-1);
 
             output += "]}";
             
-            System.out.println(output);
             response.getWriter().write(output);
 
         } catch (Exception e) {
@@ -243,7 +210,5 @@ output=output.substring(0,output.length()-1);
 		        		 con = null;
 		        	 }
 		         }
-
-    		System.out.println("terminalCPageNoSeaOperator.jsp --- Close Connection");
         }
 %>
