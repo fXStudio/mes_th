@@ -82,7 +82,6 @@
 			});
 	sm.handleMouseDown = Ext.emptyFn;// 不响应MouseDown事件
 	sm.on('rowselect', function(sm_, rowIndex, record) {// 行选中的时候\
-				
 				if (record.get("car") != "") {
 					Ext.Msg.show({
 								title : '系统提示',
@@ -93,6 +92,7 @@
 					grid.getSelectionModel().deselectRow(rowIndex);
 					return false;
 				}
+				
 			if (record.get("cdescrip") != "奥迪B8/Q5方向盘、安全气囊")
 			{
 				  if (record.get("pagenostate") != 1) {

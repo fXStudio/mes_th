@@ -6,7 +6,6 @@
 	<packaging>war</packaging>
 	<version>2.2.1</version>
 	<name>FATH Manufactory Execution Management</name>
-	<url>http://www.qm.com</url>
 
 	<dependencies>
 		<dependency>
