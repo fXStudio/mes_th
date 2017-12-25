@@ -161,11 +161,11 @@
 		if (entrycode == event.keyCode) {
 			document.getElementById("inrtxt").blur();	
 					if (!regexp.test(inrtxt_temp.value)) {
-						alert('序列号错误');
-document.getElementById("inrtxt").focus();
-						inrtxt_temp.value = "";
-
-						return;
+							alert('序列号错误');
+							document.getElementById("inrtxt").focus();
+							inrtxt_temp.value = "";
+	
+							return;
 					}
 		
 			var requestConfig = {
@@ -356,7 +356,7 @@ document.getElementById("inrtxt").focus();
 		var inrtxt = document.getElementById("inrtxt");
 
 		if (enterkey == e.keyCode) {
-document.getElementById("inptxt").blur();
+			document.getElementById("inptxt").blur();
 			intxt["sel"] = coreFunc();
 			inrtxt.readOnly=false;
 		}
@@ -383,11 +383,12 @@ document.getElementById("inptxt").blur();
 		var val = "";
 		if (isLetter.test(curscan)) {
 		
-			val = curscan.substring(7, 9)
+			val = curscan.substring(7, 9);
+			
 			if ((destination.trim() == "") && (curscan.trim() != "")) {
 				soundManager.play('failed');
 				alert('零件号错误');
-document.getElementById("inptxt").focus();
+				document.getElementById("inptxt").focus();
 				return false;
 			}
 			var temp = curscan;
