@@ -101,10 +101,10 @@
 			sql_ws = dao.getStat(ss.getCcarType(),searchsetid);
 	    	sql_temp3 = "where cx.dWBegin is not null and cx.dABegin is null and cx.dCp6Begin is null "; 
 		}
-	    sql_temp3 = sql_temp3 + " and substring(cx.cCarNo,6,1) in(" + ss.getCcarType() + ") ";
-	    
+	    sql_temp3 = sql_temp3 + " and substring(cx.cCarNo,6,1) in(" + ss.getCcarType() + ")";
+
 	    if(!"".equals(ss.getCfactory()))
-	    	   sql_temp3 = sql_temp3 + " and substring(cx.cSEQNo, 1, 2) in(" + ss.getCfactory() + ") ";
+	   	   sql_temp3 = sql_temp3 + " and substring(cx.cSEQNo, 1, 2) in (" + ss.getCfactory() + ") ";
 		
 	    for(int i=0;i<list_part.size();i++){
 			sql_temp1 = sql_temp1 + "max(aa."+list_part.get(i).getName().trim()+") as '"+list_part.get(i).getName().trim()+"',";
@@ -126,19 +126,19 @@
 		sql = sql + "right join tfassname pn on pn.id = c.itfassnameid ";
 		sql = sql + "inner join cardata cx on cx.cCarNo =c.icarid ";
 		sql = sql + sql_temp3;
-		if(searchsetid==3)
-			sql = sql + " and substring(ccarno,5,1)<>'7' ";
+	//	if(searchsetid==3)
+	//		sql = sql + " and substring(ccarno,5,1)<>'7' ";
 	//	sql = sql + "and cx.dWBegin<=convert(varchar(100)," + startTime + ",20) ";
 	//	sql = sql + "and cx.dWBegin>=convert(varchar(100)," + endTime + ",20)";
-		sql = sql + ")a)aa group by aa.icarid order by dwbegin,seq";
-//		sql = sql + ")cc on cd.id = cc.icarid";
+		sql = sql + ")a)aa group by aa.icarid order by dwbegin";
+	//	sql = sql + ")cc on cd.id = cc.icarid";
 
-		log.info("sql:  " + sql);
+		
 		table_width = 350+155*list_part.size();
 	%>
 	<!-- InstanceEndEditable -->
 	<%
-		rs = stmt.executeQuery(sql);
+		rs = stmt.executeQuery(sql);log.info("sql:  " + sql);
 	%>
 	<head>
 		<link rel="stylesheet" type="text/css" href="../cssfile/style.css">
@@ -262,7 +262,7 @@ tr {
 					<%
 						for (int i = 0; i < list_part.size(); i++) {
 					%>
-					<td align="left" width="180">
+					<td align="left" width="190">
 						<%=list_part.get(i).getName()%>
 					</td>
 					<td align="center" width="20">
